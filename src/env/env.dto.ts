@@ -48,4 +48,9 @@ export class ENV {
     @Transform(({ value }) => value.split(","))
     CORS_ALLOWED_URLS: string[]
 
+    @IsString()
+    BINANCE_API_KEY: string
+
+    @IsString()
+    BINANCE_SECRET_KEY: string
 }

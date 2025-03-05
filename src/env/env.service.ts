@@ -50,6 +50,6 @@ export class EnvService {
     }
 
     get appUrl(): string {
-        return `${this.envConfig.APP_PROTOCOL}://${this.envConfig.APP_HOST}:${this.envConfig.APP_PORT}/${this.envConfig.APP_PATH}`
+        return `${this.envConfig.APP_PROTOCOL}://${this.envConfig.APP_HOST}:${this.envConfig.APP_PORT}${this.envConfig.APP_PATH ? `/${this.envConfig.APP_PATH}` : ''}`
     }
 }

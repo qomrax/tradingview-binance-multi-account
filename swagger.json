@@ -214,6 +214,113 @@
           "auth"
         ]
       }
+    },
+    "/binance/test": {
+      "get": {
+        "operationId": "BinanceController_test",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "binance"
+        ]
+      }
+    },
+    "/binance/create-position": {
+      "post": {
+        "operationId": "BinanceController_createPosition",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePositionDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Position created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FuturesOrderDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "binance"
+        ]
+      }
+    },
+    "/settings": {
+      "get": {
+        "operationId": "SettingsController_getSettings",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Current settings",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SettingsDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Get current settings",
+        "tags": [
+          "settings"
+        ]
+      },
+      "put": {
+        "operationId": "SettingsController_updateSettings",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSettingsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Settings successfully updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SettingsDto"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearer": []
+          }
+        ],
+        "summary": "Update settings",
+        "tags": [
+          "settings"
+        ]
+      }
     }
   },
   "info": {
@@ -225,7 +332,7 @@
   "tags": [],
   "servers": [
     {
-      "url": "http://localhost:3000/"
+      "url": "http://localhost:3000"
     }
   ],
   "components": {
@@ -296,6 +403,221 @@
         },
         "required": [
           "status"
+        ]
+      },
+      "CreatePositionDto": {
+        "type": "object",
+        "properties": {
+          "symbol": {
+            "type": "string",
+            "example": "XRPUSDT",
+            "description": "Coin pair."
+          },
+          "side": {
+            "type": "string",
+            "example": "SELL",
+            "description": "Position side"
+          }
+        },
+        "required": [
+          "symbol",
+          "side"
+        ]
+      },
+      "FuturesOrderDto": {
+        "type": "object",
+        "properties": {
+          "clientOrderId": {
+            "type": "string",
+            "example": "order123",
+            "description": "Client order ID"
+          },
+          "cumQty": {
+            "type": "string",
+            "example": "0.001",
+            "description": "Cumulative quantity"
+          },
+          "cumQuote": {
+            "type": "string",
+            "example": "45.00",
+            "description": "Cumulative quote"
+          },
+          "executedQty": {
+            "type": "string",
+            "example": "0.001",
+            "description": "Executed quantity"
+          },
+          "orderId": {
+            "type": "number",
+            "example": 123456,
+            "description": "Order ID"
+          },
+          "avgPrice": {
+            "type": "string",
+            "example": "45000.00",
+            "description": "Average price"
+          },
+          "origQty": {
+            "type": "string",
+            "example": "1.0",
+            "description": "Original quantity"
+          },
+          "price": {
+            "type": "string",
+            "example": "45000.00",
+            "description": "Price"
+          },
+          "reduceOnly": {
+            "type": "boolean",
+            "example": false,
+            "description": "Reduce only flag"
+          },
+          "side": {
+            "type": "string",
+            "example": "BUY",
+            "description": "Order side"
+          },
+          "positionSide": {
+            "type": "string",
+            "example": "BOTH",
+            "description": "Position side"
+          },
+          "status": {
+            "type": "string",
+            "example": "NEW",
+            "description": "Order status"
+          },
+          "stopPrice": {
+            "type": "string",
+            "example": "45000.00",
+            "description": "Stop price"
+          },
+          "closePosition": {
+            "type": "boolean",
+            "example": false,
+            "description": "Close position flag"
+          },
+          "symbol": {
+            "type": "string",
+            "example": "BTCUSDT",
+            "description": "Symbol"
+          },
+          "timeInForce": {
+            "type": "string",
+            "example": "GTC",
+            "description": "Time in force"
+          },
+          "type": {
+            "type": "string",
+            "example": "MARKET",
+            "description": "Order type"
+          },
+          "updateTime": {
+            "type": "number",
+            "example": 1627891234567,
+            "description": "Update time"
+          }
+        },
+        "required": [
+          "clientOrderId",
+          "cumQty",
+          "cumQuote",
+          "executedQty",
+          "orderId",
+          "avgPrice",
+          "origQty",
+          "price",
+          "reduceOnly",
+          "side",
+          "positionSide",
+          "status",
+          "stopPrice",
+          "closePosition",
+          "symbol",
+          "timeInForce",
+          "type",
+          "updateTime"
+        ]
+      },
+      "SettingsDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 1,
+            "description": "Settings ID.",
+            "default": 1
+          },
+          "notionalPercentage": {
+            "type": "number",
+            "example": 5,
+            "description": "Notional percentage for settings.",
+            "maximum": 100,
+            "minimum": 1
+          },
+          "leverage": {
+            "type": "number",
+            "example": 10,
+            "description": "Leverage for settings."
+          },
+          "takeProfitPercentage": {
+            "type": "number",
+            "example": 5,
+            "description": "StopLoss percentage for settings.",
+            "maximum": 100,
+            "minimum": 1
+          },
+          "stopLossPercentage": {
+            "type": "number",
+            "example": 5,
+            "description": "Notional percentage for settings.",
+            "maximum": 100,
+            "minimum": 1
+          }
+        },
+        "required": [
+          "id",
+          "notionalPercentage",
+          "leverage",
+          "takeProfitPercentage",
+          "stopLossPercentage"
+        ]
+      },
+      "UpdateSettingsDto": {
+        "type": "object",
+        "properties": {
+          "notionalPercentage": {
+            "type": "number",
+            "example": 5,
+            "description": "Notional percentage for settings.",
+            "maximum": 100,
+            "minimum": 1
+          },
+          "leverage": {
+            "type": "number",
+            "example": 10,
+            "description": "Leverage for settings."
+          },
+          "takeProfitPercentage": {
+            "type": "number",
+            "example": 5,
+            "description": "TakeProfit percentage for settings.",
+            "maximum": 100,
+            "minimum": 1
+          },
+          "stopLossPercentage": {
+            "type": "number",
+            "example": 5,
+            "description": "Notional percentage for settings.",
+            "maximum": 100,
+            "minimum": 1
+          }
+        },
+        "required": [
+          "notionalPercentage",
+          "leverage",
+          "takeProfitPercentage",
+          "stopLossPercentage"
         ]
       }
     }

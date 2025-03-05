@@ -6,6 +6,10 @@ import { UsersModule } from 'src/users/users.module';
 import { AuthModule } from 'src/auth/auth.module';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
+import { BinanceModule } from './binance/binance.module';
+import { ConstantsModule } from './constants/constants.module';
+import { ConstantsService } from './constants/constants.service';
+import { SettingsModule } from './settings/settings.module';
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
@@ -34,9 +38,12 @@ import { PassportModule } from '@nestjs/passport';
     EnvModule,
     UsersModule,
     AuthModule,
+    BinanceModule,
+    ConstantsModule,
+    SettingsModule,
   ],
   controllers: [],
-  providers: [EnvService],
+  providers: [EnvService, ConstantsService],
 })
 export class AppModule {
   constructor(private envService: EnvService) { }

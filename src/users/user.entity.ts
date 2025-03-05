@@ -19,4 +19,10 @@ export class User {
 
     @Column({ default: true, name: 'is_active' })
     isActive: boolean;
+
+    @Column({ name: "binance_api_key" })
+    binanceApiKey: string
+
+    @Column({ name: "binance_secret_key" })
+    binanceSecretKey: string
 }
