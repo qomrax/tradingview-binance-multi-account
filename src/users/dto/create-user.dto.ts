@@ -19,4 +19,18 @@ export class CreateUserDto {
     @IsString()
     @MinLength(6)
     password: string;
+
+    @ApiProperty({
+        required: true,
+        description: "Binance api key!",
+    })
+    @IsString()
+    binanceApiKey: string
+
+    @ApiProperty({
+        required: true,
+        description: "Binance api key!",
+    })
+    @IsString()
+    binanceSecretKey: string
 }

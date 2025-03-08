@@ -362,11 +362,21 @@
             "example": "password123!",
             "description": "User password (Min 6 char!)",
             "minLength": 6
+          },
+          "binanceApiKey": {
+            "type": "string",
+            "description": "Binance api key!"
+          },
+          "binanceSecretKey": {
+            "type": "string",
+            "description": "Binance api key!"
           }
         },
         "required": [
           "email",
-          "password"
+          "password",
+          "binanceApiKey",
+          "binanceSecretKey"
         ]
       },
       "UpdateUserDto": {
@@ -608,7 +618,7 @@
           "stopLossPercentage": {
             "type": "number",
             "example": 5,
-            "description": "Notional percentage for settings.",
+            "description": "StopLoss percentage for settings.",
             "maximum": 100,
             "minimum": 1
           }

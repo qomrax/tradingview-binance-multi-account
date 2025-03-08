@@ -10,6 +10,7 @@ import { BinanceModule } from './binance/binance.module';
 import { ConstantsModule } from './constants/constants.module';
 import { ConstantsService } from './constants/constants.service';
 import { SettingsModule } from './settings/settings.module';
+import { UtilsModule } from './utils/utils.module';
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
@@ -41,6 +42,7 @@ import { SettingsModule } from './settings/settings.module';
     BinanceModule,
     ConstantsModule,
     SettingsModule,
+    UtilsModule,
   ],
   controllers: [],
   providers: [EnvService, ConstantsService],

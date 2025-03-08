@@ -8,6 +8,10 @@ export class ConstantsService {
         return this.findSymbol(symbolName).quantityPrecision
     }
 
+    findPricePrecision(symbolName: string): number {
+        return this.findSymbol(symbolName).pricePrecision
+    }
+
     findSymbol(symbolName: string) {
         const symbol = this.FUTURES_MARKET_INFO.symbols.find((symbol) => symbolName === symbol.symbol)
 
@@ -26,7 +30,9 @@ export class ConstantsService {
         return Number(minNotional.notional)
     }
 
-    ORDER_TYPE: "MARKET" = "MARKET"
+    MARKET_STOP_TYPE: "STOP_MARKET" = "STOP_MARKET"
+    MARKET_TAKE_PROFIT_TYPE: "TAKE_PROFIT_MARKET" = "TAKE_PROFIT_MARKET"
+    MARKET_ORDER_TYPE: "MARKET" = "MARKET"
     GUARANTEE_BUFFER_FOR_POSITION_OPENING_PERCENTAGE = 0.05
     FUTURES_MARKET_INFO = {
         "timezone": "UTC",

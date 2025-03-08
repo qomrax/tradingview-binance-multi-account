@@ -26,8 +26,8 @@ export class ClientsService {
         return this.clients_[0]
     }
 
-    async getClients(): Promise<Binance[]> {
-        return (await this.usersService.findAll()).map(user => Client({
+    async getClients() {
+        this.clients = (await this.usersService.findAll()).map(user => Client({
             apiKey: user.binanceApiKey,
             apiSecret: user.binanceSecretKey
         }))

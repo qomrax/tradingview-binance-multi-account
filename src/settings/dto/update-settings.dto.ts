@@ -39,7 +39,7 @@ export class UpdateSettingsDto {
 
     @ApiProperty({
         example: 5,
-        description: 'Notional percentage for settings.',
+        description: 'StopLoss percentage for settings.',
         required: true,
         maximum: 100,
         minimum: 1

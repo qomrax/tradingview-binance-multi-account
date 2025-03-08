@@ -17,8 +17,7 @@ export class SettingsService {
     }
 
     async setSettings(updateData: Partial<Settings>): Promise<Settings> {
-        console.log(updateData)
-        console.log(await this.settingsRepository.update(1, updateData))
+        await this.settingsRepository.update(1, updateData)
         return this.getSettings();
     }
 
