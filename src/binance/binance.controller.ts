@@ -14,7 +14,7 @@ export class BinanceController {
         await this.binanceService.test()
     }
 
-    @Post('webhook')
+    @Post('tradingview-webhook')
     @ApiBody({
         type: CreatePositionDto
     })

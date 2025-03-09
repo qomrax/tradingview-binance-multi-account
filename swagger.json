@@ -229,7 +229,7 @@
         ]
       }
     },
-    "/binance/webhook": {
+    "/binance/tradingview-webhook": {
       "post": {
         "operationId": "BinanceController_webhook",
         "parameters": [],
