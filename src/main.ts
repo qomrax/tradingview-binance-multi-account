@@ -13,12 +13,13 @@ async function bootstrap() {
     new ValidationPipe({
       transform: true,
       whitelist: true,
+      validateCustomDecorators: true
     }),
   );
 
   app.enableCors({
-    allowedHeaders: ['content-type'],
-    origin: envService.envConfig.CORS_ALLOWED_URLS,
+    allowedHeaders: "*",
+    origin: "*",
     credentials: true,
   });
 

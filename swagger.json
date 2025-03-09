@@ -229,9 +229,9 @@
         ]
       }
     },
-    "/binance/create-position": {
+    "/binance/webhook": {
       "post": {
-        "operationId": "BinanceController_createPosition",
+        "operationId": "BinanceController_webhook",
         "parameters": [],
         "requestBody": {
           "required": true,

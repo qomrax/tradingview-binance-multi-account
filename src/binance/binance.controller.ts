@@ -14,8 +14,7 @@ export class BinanceController {
         await this.binanceService.test()
     }
 
-
-    @Post('create-position')
+    @Post('webhook')
     @ApiBody({
         type: CreatePositionDto
     })
@@ -23,11 +22,8 @@ export class BinanceController {
         type: FuturesOrderDto,
         description: "Position created."
     })
-    async createPosition(@Body() createPositionDto: CreatePositionDto) {
-        // const futuresAccountInfo = await this.binanceService.getFuturesAccountInfo()
-        // const futuresMarkPrice = await this.binanceService.getFuturesMarkPrice()
-
-        // return await this.binanceService.openFuturesMarketOrder(createPositionDto.symbol, createPositionDto.side, futuresAccountInfo, futuresMarkPrice, 0.5)
+    async webhook(@Body() createPositionDto: CreatePositionDto) {
+        return await this.binanceService.webhook(createPositionDto)
     }
 
 }

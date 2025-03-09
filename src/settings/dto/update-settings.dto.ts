@@ -2,6 +2,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNumber } from 'class-validator';
 import { Transform } from 'class-transformer';
+import { Min, Max } from 'class-validator';
 
 export class UpdateSettingsDto {
     @ApiProperty({
@@ -11,10 +12,13 @@ export class UpdateSettingsDto {
         maximum: 100,
         minimum: 1
     })
+    @Min(0.01) // 1/100
+    @Max(1) // 100/100
     @Transform(({ value }) => {
         return value / 100
     })
     @IsNumber()
+
     notionalPercentage: number;
 
     @ApiProperty({
@@ -31,6 +35,8 @@ export class UpdateSettingsDto {
         maximum: 100,
         minimum: 1
     })
+    @Min(0.01) // 1/100
+    @Max(1) // 100/100
     @Transform(({ value }) => {
         return value / 100
     })
@@ -44,6 +50,8 @@ export class UpdateSettingsDto {
         maximum: 100,
         minimum: 1
     })
+    @Min(0.01) // 1/100
+    @Max(1) // 100/100
     @Transform(({ value }) => {
         return value / 100
     })
