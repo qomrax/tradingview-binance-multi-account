@@ -29,8 +29,8 @@ export class SettingsDto {
     })
     @Transform(div100)
     @IsNumber()
-    @Min(0.01) // 1/100
-    @Max(1) // 100/100
+    @Min(0.01)
+    @Max(1)
     notionalPercentage: number;
 
     @ApiProperty({
@@ -50,8 +50,8 @@ export class SettingsDto {
     })
     @Transform(div100)
     @IsNumber()
-    @Min(0.01) // 1/100
-    @Max(1) // 100/100
+    @Min(0.01)
+    @Max(1)
     takeProfitPercentage: number;
 
     @ApiProperty({
@@ -63,9 +63,14 @@ export class SettingsDto {
     })
     @Transform(div100)
     @IsNumber()
-    @Min(0.01) // 1/100
-    @Max(1) // 100/100
+    @Min(0.01)
+    @Max(1)
     stopLossPercentage: number;
+
+    @IsNumber()
+    @Min(1)
+    @Max(15)
+    maximumPosition: number;
 }
 
 export class SettingsResponseDto extends SettingsDto {

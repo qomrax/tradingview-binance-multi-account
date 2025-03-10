@@ -12,8 +12,8 @@ export class UpdateSettingsDto {
         maximum: 100,
         minimum: 1
     })
-    @Min(0.01) // 1/100
-    @Max(1) // 100/100
+    @Min(0.01)
+    @Max(1)
     @Transform(({ value }) => {
         return value / 100
     })
@@ -35,8 +35,8 @@ export class UpdateSettingsDto {
         maximum: 100,
         minimum: 1
     })
-    @Min(0.01) // 1/100
-    @Max(1) // 100/100
+    @Min(0.01)
+    @Max(1)
     @Transform(({ value }) => {
         return value / 100
     })
@@ -50,11 +50,16 @@ export class UpdateSettingsDto {
         maximum: 100,
         minimum: 1
     })
-    @Min(0.01) // 1/100
-    @Max(1) // 100/100
+    @Min(0.01)
+    @Max(1)
     @Transform(({ value }) => {
         return value / 100
     })
     @IsNumber()
     stopLossPercentage: number;
+
+    @IsNumber()
+    @Min(1)
+    @Max(15)
+    maximumPosition: number
 }
