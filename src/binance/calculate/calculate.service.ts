@@ -13,23 +13,28 @@ export class CalculateService {
         return String(fixedQuantity);
     }
 
-    public calculateStopPrices(markPrice: number, stopLossPercentage: number, takeProfitPercentage: number, side: OrderSide_LT, precision: number) {
-        const stopLossPriceDiff = markPrice * stopLossPercentage;
-        const takeProfitPriceDiff = markPrice * takeProfitPercentage;
-        let stopLossPrice: number, takeProfitPrice: number
+    public calculateStopPrices(markPrice: number, stopLossPercentage: number, takeProfitPercentage: number, side: OrderSide_LT, precision: number, leverage: number) {
+        // Adjust percentages by dividing by leverage
+        const adjustedStopLossPercentage = stopLossPercentage / leverage;
+        const adjustedTakeProfitPercentage = takeProfitPercentage / leverage;
+
+        const stopLossPriceDiff = markPrice * adjustedStopLossPercentage;
+        const takeProfitPriceDiff = markPrice * adjustedTakeProfitPercentage;
+
+        let stopLossPrice: number, takeProfitPrice: number;
 
         if (side === "BUY") {
-            stopLossPrice = markPrice - stopLossPriceDiff
-            takeProfitPrice = markPrice + takeProfitPriceDiff
+            stopLossPrice = markPrice - stopLossPriceDiff;
+            takeProfitPrice = markPrice + takeProfitPriceDiff;
         }
         else {
-            stopLossPrice = markPrice + stopLossPriceDiff
-            takeProfitPrice = markPrice - takeProfitPriceDiff
+            stopLossPrice = markPrice + stopLossPriceDiff;
+            takeProfitPrice = markPrice - takeProfitPriceDiff;
         }
-
 
         return [stopLossPrice, takeProfitPrice].map(stop => String(stop.toFixed(precision)));
     }
+
 
     public getSymbolPriceFromFuturesMarket(futuresMarkPrice: MarkPriceResult[], symbol: string) {
         const foundedMarkPrice = futuresMarkPrice.find(markPrice => markPrice.symbol === symbol);

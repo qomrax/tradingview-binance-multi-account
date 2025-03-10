@@ -93,7 +93,7 @@ export class OrderService {
     };
 
     public async openPosition(client: Binance, symbol: string, side: OrderSide_LT, futuresMarkPrice: MarkPriceResult[], settings: Settings) {
-        const { stopLossPercentage, takeProfitPercentage } = await this.settingsService.getSettings();
+        const { stopLossPercentage, takeProfitPercentage, leverage } = await this.settingsService.getSettings();
         const futuresAccountInfo = await client.futuresAccountInfo()
 
         const positionSide = side === "BUY" ? "LONG" : "SHORT"
@@ -102,7 +102,7 @@ export class OrderService {
         const notional = this.calculateService.calculatePositionNotional(minNotional, futuresAccountInfo, settings.notionalPercentage);
         const precision = this.constantsService.findPrecisionForSymbol(symbol);
         const pricePrecision = this.constantsService.findPricePrecision(symbol)
-        const [stopLossPrice, takeProfitPrice] = this.calculateService.calculateStopPrices(markPrice, stopLossPercentage, takeProfitPercentage, side, pricePrecision);
+        const [stopLossPrice, takeProfitPrice] = this.calculateService.calculateStopPrices(markPrice, stopLossPercentage, takeProfitPercentage, side, pricePrecision, leverage);
         const quantity = this.calculateService.calculateQuantity(markPrice, notional, precision);
 
         const stopOrders = await this.openStopOrders(client, symbol, side, stopLossPrice, takeProfitPrice, quantity, positionSide);
