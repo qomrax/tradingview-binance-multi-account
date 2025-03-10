@@ -31,9 +31,52 @@ export class BinanceService {
         })
         const settings = await this.settingsService.getSettings()
 
-        const allPositions = await this.clientsService.runOnAllClients<ReturnType<typeof this.openPosition>>((async (client) => {
+        const allPositions = await this.clientsService.runOnAllClients<ReturnType<typeof this.openPosition>>((async (client: Binance) => {
+            const accountInfo = await client.futuresAccountInfo()
+
+            const canPositionOpen = async (): Promise<boolean> => {
+                const openPositions = accountInfo.positions.map(position => ({
+                    ...position,
+                    positionAmt: Number(position.positionAmt)
+                })).filter(position => position.positionAmt !== 0)
+
+                if (openPositions.length >= settings.maximumPosition) {
+                    return false
+                }
+
+                if (openPositions.find(position => position.symbol === data.symbol)) {
+                    return false
+                }
+
+                return true
+            }
+
+            const isPositionOpen = await canPositionOpen()
+
+            if (!isPositionOpen) {
+                return {
+                    position: {
+                        status: false
+                    }, settings
+                }
+            }
+
+            const { leverage } = await client.futuresLeverage({ symbol: data.symbol, leverage: settings.leverage })
+
+            if (leverage !== settings.leverage) {
+                return {
+                    position: {
+                        status: false
+                    }, settings
+                }
+            }
+
+
             return await this.openPosition(client, data, futuresMarkPrice, settings)
+
         }).bind(this))
+
+        return allPositions;
     }
 
 
