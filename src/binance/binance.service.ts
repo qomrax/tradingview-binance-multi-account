@@ -82,10 +82,7 @@ export class BinanceService {
                     }, settings
                 }
             }
-
-
             return await this.openPosition(client, data, futuresMarkPrice, settings)
-
         }).bind(this))
 
         return allPositions;
