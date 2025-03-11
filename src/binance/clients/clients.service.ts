@@ -1,24 +1,26 @@
 import { Injectable } from '@nestjs/common';
-import Client, { Binance } from 'binance-api-node';
+import { Binance } from 'binance-api-node';
 import { UsersService } from 'src/users/users.service';
+import { CustomerClient } from './customer-client';
+import { User } from 'src/users/user.entity';
 
 @Injectable()
 export class ClientsService {
-    clients_: Binance[] = []
+    clients_: CustomerClient[] = [] // CHANGE!!
 
     constructor(private usersService: UsersService) {
         this.getClients();
     }
 
-    set clients(clients: Binance[]) {
+    set clients(clients: CustomerClient[]) { // CHANGE!!
         this.clients_ = clients
     }
 
-    get clients(): Binance[] {
+    get clients(): CustomerClient[] { // CHANGE!!
         return this.clients_
     }
 
-    get client(): Binance {
+    get client(): CustomerClient { // CHANGE!!
         if (this.clients_.length === 0) {
             throw Error("There is no client!");
         }
@@ -27,35 +29,33 @@ export class ClientsService {
     }
 
     async getClients() {
-        this.clients = (await this.usersService.findAll()).map(user => Client({
-            apiKey: user.binanceApiKey,
-            apiSecret: user.binanceSecretKey
-        }))
+        const users = await this.usersService.findAll();
+        this.clients = users.map(user => new CustomerClient(user)); // CHANGE!!
     }
 
-    async runOnAllClients<T>(operation: (client: Binance) => T): Promise<T[]> {
+    async runOnAllClients<T>(operation: (client: CustomerClient) => T): Promise<T[]> {
+        await this.getClients()
+        return await Promise.all(this.clients.map((customerClient: CustomerClient) => {
+            return operation(customerClient)
+        }
+        ))
+    }
+
+    async runOnSingleClient<T>(operation: (client: CustomerClient) => T): Promise<T> {
         await this.getClients()
 
-        return await Promise.all(this.clients.map((client: Binance) => operation(client)))
+        return await operation(this.client) // CHANGE!!
     }
 
-    async runOnSingleClient<T>(operation: (client: Binance) => T): Promise<T> {
-        await this.getClients()
-
-        return await operation(this.client)
+    async getFuturesAccountInfo(customerClient: CustomerClient) { // CHANGE!!
+        return await customerClient.client.futuresAccountInfo() // CHANGE!!
     }
 
-    async getFuturesAccountInfo(client: Binance) {
-        return await client.futuresAccountInfo()
+    async getFuturesMarkPrice(customerClient: CustomerClient) { // CHANGE!!
+        return await customerClient.client.futuresMarkPrice() // CHANGE!!
     }
 
-    async getFuturesMarkPrice(client: Binance) {
-        return await client.futuresMarkPrice()
-    }
-
-    async changeFuturesLeverage(client: Binance, symbol: string, leverage: number) {
-        return await client.futuresLeverage({ symbol, leverage })
+    async changeFuturesLeverage(customerClient: CustomerClient, symbol: string, leverage: number) { // CHANGE!!
+        return await customerClient.client.futuresLeverage({ symbol, leverage }) // CHANGE!!
     }
 }
-
-
