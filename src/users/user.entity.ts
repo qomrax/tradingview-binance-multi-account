@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, Unique, OneToMany } from 'typeorm'; // CHANGE !!
 import { Exclude } from 'class-transformer';
-import { HttpErrorLocal } from 'src/error/http-error-local';
+import { HttpErrorLocal } from 'src/binance/error/http-error-local';
+import { HttpResponseLocal } from 'src/binance/response/http-response';
 
 @Entity()
 @Unique(['email'])
@@ -29,4 +30,7 @@ export class User {
 
     @OneToMany(() => HttpErrorLocal, error => error.user) // CHANGE !!
     errors: HttpErrorLocal[];
+
+    @OneToMany(() => HttpResponseLocal, response => response.user) // CHANGE !!
+    responses: HttpResponseLocal[];
 }

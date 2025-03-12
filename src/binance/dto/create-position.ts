@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsIn, IsString } from 'class-validator';
 import { OrderSide_LT } from 'binance-api-node';
 
-export class CreatePositionDto {
+export class OpenPositionDto {
     @ApiProperty({
         example: "XRPUSDT",
         description: 'Coin pair.',

@@ -238,7 +238,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/CreatePositionDto"
+                "$ref": "#/components/schemas/OpenPositionDto"
               }
             }
           }
@@ -415,7 +415,7 @@
           "status"
         ]
       },
-      "CreatePositionDto": {
+      "OpenPositionDto": {
         "type": "object",
         "properties": {
           "symbol": {

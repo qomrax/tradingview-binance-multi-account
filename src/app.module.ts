@@ -11,7 +11,7 @@ import { ConstantsModule } from './constants/constants.module';
 import { ConstantsService } from './constants/constants.service';
 import { SettingsModule } from './settings/settings.module';
 import { UtilsModule } from './utils/utils.module';
-import { ErrorModule } from './error/error.module';
+import { ErrorModule } from './binance/error/error.module';
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({

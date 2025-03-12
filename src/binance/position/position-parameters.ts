@@ -1,18 +1,16 @@
 import { ConstantsService } from "src/constants/constants.service";
-import { OrderSide_LT, PositionSide_LT } from "binance-api-node";
-import { ClientManagerService } from "../client-manager/client-manager.service";
+import { OrderSide_LT, PositionSide_LT, StopMarketNewFuturesOrder, MarketNewFuturesOrder, TakeProfitMarketNewFuturesOrder } from "binance-api-node";
 import { SettingsService } from "src/settings/settings.service";
 import { Settings } from "src/settings/entity/settings.entity";
 
 export class PositionParameters {
-    markPrice: number;
     settings: Settings
 
     constructor(
         public symbol: string, public side: OrderSide_LT,
+        public markPrice: number,
         public constantsService: ConstantsService,
-        public clientManagerService: ClientManagerService,
-        public settingsService: SettingsService
+        public settingsService: SettingsService,
     ) {
 
     }
@@ -26,7 +24,7 @@ export class PositionParameters {
     }
 
     private get takeProfitPrice(): string {
-        const adjustedTakeProfitPercentage = this.settings.takeProfitPercentage / this.settings.leverage;
+        const adjustedTakeProfitPercentage = this.settings.takeProfitPercentage / this.leverage;
         const takeProfitPriceDiff = this.markPrice * adjustedTakeProfitPercentage;
 
         let stop: number;
@@ -41,7 +39,7 @@ export class PositionParameters {
     }
 
     private get stopLossPrice(): string {
-        const adjustedStopLossPercentage = this.settings.stopLossPercentage / this.settings.leverage;
+        const adjustedStopLossPercentage = this.settings.stopLossPercentage / this.leverage;
         const stopLossPriceDiff = this.markPrice * adjustedStopLossPercentage;
 
         let stop: number;
@@ -56,27 +54,37 @@ export class PositionParameters {
     }
 
     private get positionSide(): PositionSide_LT {
-        return this.side === "BUY" ? "LONG" : "SHORT"
+        const positionSide = this.side === "BUY" ? "LONG" : "SHORT"
+        return positionSide
     }
 
-    public get takeProfitMarketOrderParams() {
+    private get closeSide(): OrderSide_LT {
+        const closePositionSide = this.side === "BUY" ? "SELL" : "BUY"
+        return closePositionSide
+    }
+
+    public get takeProfitMarketOrderParams(): TakeProfitMarketNewFuturesOrder {
         return {
             ...this.defaultParams,
             stopPrice: this.takeProfitPrice,
-            type: this.constantsService.MARKET_TAKE_PROFIT_TYPE
+            type: this.constantsService.MARKET_TAKE_PROFIT_TYPE,
+            side: this.closeSide,
+            closePosition: "true",
         }
     }
 
-    public get stopLossMarketOrderParams() {
+    public get stopLossMarketOrderParams(): StopMarketNewFuturesOrder {
         return {
             ...this.defaultParams,
             stopPrice: this.stopLossPrice,
-            type: this.constantsService.MARKET_STOP_TYPE
+            type: this.constantsService.MARKET_STOP_TYPE,
+            side: this.closeSide,
+            closePosition: "true"
         }
     }
 
-    public get marketOrderParams() {
-
+    public get marketOrderParams(): MarketNewFuturesOrder {
+        //@ts-ignore
         return {
             ...this.defaultParams,
             type: this.constantsService.MARKET_ORDER_TYPE
@@ -95,12 +103,16 @@ export class PositionParameters {
         return this.settings.notionalPercentage
     }
 
-    public get minNotional() {
-        return this.constantsService.findMinNotional(this.symbol)
+    public get leverage() {
+        return this.settings.leverage;
     }
 
-    private async setMarketPrice() {
-        this.markPrice = await this.clientManagerService.getFuturesMarkPrice(this.symbol)
+    public get maximumPosition() {
+        return this.settings.maximumPosition
+    }
+
+    public get minNotional() {
+        return this.constantsService.findMinNotional(this.symbol)
     }
 
     private async setSettings() {
@@ -109,7 +121,7 @@ export class PositionParameters {
 
     public async prepareRemoteDatas(): Promise<boolean> {
         try {
-            await Promise.all([this.setMarketPrice(), this.setSettings()])
+            await this.setSettings()
             return true
         } catch (err) {
             console.log(err)
@@ -117,18 +129,18 @@ export class PositionParameters {
         }
     }
 
-    public static async createPositionParameters(
+    public static async create(
         symbol: string, side: OrderSide_LT,
+        markPrice: number,
         constantsService: ConstantsService,
-        clientManagerService: ClientManagerService,
         settingsService: SettingsService
     ) {
-        const positionParameters = new PositionParameters(symbol, side, constantsService, clientManagerService, settingsService)
+        const positionParameters = new PositionParameters(symbol, side, markPrice, constantsService, settingsService)
         const isPositionParametersPrepared = await positionParameters.prepareRemoteDatas()
         if (!isPositionParametersPrepared) {
-            return positionParameters
-        } else {
             throw Error("Position parameters can't prepared!")
         }
+
+        return positionParameters
     }
 }

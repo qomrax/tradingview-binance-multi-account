@@ -3,14 +3,17 @@ import { PositionParameters } from "./position-parameters";
 import { FuturesAccountInfoResult, FuturesOrder } from "binance-api-node";
 import { CustomerClient } from "../client-manager/customer-client";
 import { OrderType_LT } from "binance-api-node";
-import { ErrorService } from "src/error/error.service";
-import { HttpError } from "binance-api-node";
 
 export class Position {
     futuresAccountInfo: FuturesAccountInfoResult
 
-    constructor(private customerClient: CustomerClient, private positionParameters: PositionParameters, private constantsService: ConstantsService, private errorService: ErrorService) {
+    constructor(private customerClient: CustomerClient, private positionParameters: PositionParameters, private constantsService: ConstantsService) {
 
+    }
+
+    private get positions() {
+        const positions = this.futuresAccountInfo.positions.filter(position => Number(position.positionAmt) !== 0)
+        return positions
     }
 
     private get availableBalance() {
@@ -35,81 +38,115 @@ export class Position {
         return String(fixedQuantity);
     }
 
-    private get isBalanceEnough() {
-        if (!(this.availableBalance > this.positionNotional + this.bufferNotional)) {
-            return false
+    private get isPositionNotionNotEnoughForBinance() {
+        return this.positionParameters.minNotional > this.positionNotional
+    }
+
+    private get isAvailableNotBalanceEnough() {
+        return this.availableBalance < this.positionNotional + this.bufferNotional
+    }
+
+    private get isThisSymbolOpened() {
+        const position = this.positions.find((position => position.symbol === this.positionParameters.symbol))
+        return !!position
+    }
+
+    private get isPositionCountMoreOrEqualWithMaxPositionCount() {
+        const isPositionCountMoreOrEqualWithMaxPositionCount = this.positionParameters.maximumPosition <= this.positions.length
+        return isPositionCountMoreOrEqualWithMaxPositionCount
+    }
+
+
+    private get openPositionsError(): string[] {
+        const errors: string[] = [];
+
+        if (this.isAvailableNotBalanceEnough) {
+            errors.push(`Insufficient balance. Available: ${this.availableBalance}, Required: ${this.positionNotional + this.bufferNotional}`);
         }
 
-        if (this.positionParameters.minNotional > this.positionNotional) {
-            return false
+        if (this.isPositionNotionNotEnoughForBinance) {
+            errors.push(`Position notional ${this.positionNotional} < Min required ${this.positionParameters.minNotional}`);
         }
 
-        return true;
+        if (this.isThisSymbolOpened) {
+            errors.push(`Position already exists for ${this.positionParameters.symbol}`);
+        }
+
+        if (this.isPositionCountMoreOrEqualWithMaxPositionCount) {
+            errors.push(`Max positions reached (${this.positionParameters.maximumPosition})`);
+        }
+
+        return errors;
+    }
+
+    get canPositionOpen() {
+        return this.openPositionsError.length === 0;
     }
 
     private async setFuturesAccountInfo() {
         this.futuresAccountInfo = await this.customerClient.client.futuresAccountInfo()
     }
 
-    public static async create(customerClient: CustomerClient, positionParameters: PositionParameters, constantsService: ConstantsService, errorService: ErrorService) {
-        const position = new Position(customerClient, positionParameters, constantsService, errorService)
-        await Promise.all([position.setFuturesAccountInfo()])
+    public static async create(customerClient: CustomerClient, positionParameters: PositionParameters, constantsService: ConstantsService) {
+        const position = new Position(customerClient, positionParameters, constantsService)
+        await Promise.all([position.setFuturesAccountInfo(), position.changeLeverage()])
+        return position;
     }
 
-    public async open() {
-        if (!this.isBalanceEnough) {
+    private async openOrders() {
+        if (!this.canPositionOpen) {
             return {
-
-                status: false,
-                reason: "Balance is not enough!"
+                error: { message: this.openPositionsError.pop(), type: "local" }
             }
         }
 
         const stopOrder = await this.openOrder("STOP_MARKET", false)
 
-        if (!stopOrder.status) {
-            return {
-                status: false,
-                reason: "Market Stop Loss can't open!"
-            }
-        }
         const takeOrder = await this.openOrder("TAKE_PROFIT_MARKET")
 
-        if (!takeOrder.status) {
-            return {
-                status: false,
-                reason: "Market Take Profit can't open!"
-            }
-        }
-
         const marketOrder = await this.openOrder("MARKET")
-        if (!marketOrder.status) {
+
+
+        return [stopOrder, takeOrder, marketOrder].map(order => ({
+            type: order.type,
+            clientOrderId: order.clientOrderId,
+            status: order.status,
+            side: order.side,
+            positionSide: order.positionSide,
+            stopPrice: order.stopPrice,
+        }))
+    }
+
+    public async openPosition() {
+        try {
+            return await this.openOrders()
+        }
+        catch (err) {
             return {
-                status: false,
-                reason: "Market Order can't open!"
+                error: {
+                    url: err.url,
+                    code: err.code,
+                    message: err.message,
+                    type: "binance"
+                }
             }
         }
     }
 
+    private async changeLeverage() {
+        return await this.customerClient.client.futuresLeverage({ symbol: this.positionParameters.symbol, leverage: this.positionParameters.leverage })
+    }
+
     private async openOrder(orderType: OrderType_LT, cancelIfFailure: boolean = true) {
         try {
-            const order = await this.order(orderType)
-            return {
-                status: true,
-                order
-            }
+            return await this.order(orderType)
         } catch (err) {
-            this.error(err)
             if (cancelIfFailure) {
                 this.cancelOrders()
             }
 
-            return {
-                status: false,
-            }
+            throw err;
         }
-
-
     }
 
     private async marketOrderStopLoss(): Promise<FuturesOrder> {
@@ -134,14 +171,10 @@ export class Position {
     }
 
     private async cancelOrders() {
-        const cancelOrders = this.customerClient.client.futuresCancelAllOpenOrders({ symbol: this.positionParameters.symbol })
-
-        cancelOrders.catch(this.error)
-
-        await cancelOrders
+        await this.customerClient.client.futuresCancelAllOpenOrders({ symbol: this.positionParameters.symbol })
     }
 
-    private async order(orderType: OrderType_LT) {
+    private async order(orderType: OrderType_LT): Promise<FuturesOrder> {
         if (orderType === "MARKET") {
             return await this.marketOrder()
         } else if (orderType === "TAKE_PROFIT_MARKET") {
@@ -149,13 +182,8 @@ export class Position {
         } else if (orderType === "STOP_MARKET") {
             return await this.marketOrderStopLoss()
         }
-    }
 
-    private get error() {
-        const errorFunc = async (err: HttpError) => {
-            return await this.customerClient.error(err)
-        }
-        return errorFunc.bind(this)
+        throw Error("Order type not matching!")
     }
 }
 

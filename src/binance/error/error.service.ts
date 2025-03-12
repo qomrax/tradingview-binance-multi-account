@@ -45,7 +45,6 @@ export class ErrorService {
         console.log(`[${this.date}][${httpErrorBinance.code}][${httpErrorBinance.url}][${httpErrorBinance.message}][${email}]`)
     }
 
-
     private get date(): string {
         return new Date().toLocaleString('tr-TR');
     }
