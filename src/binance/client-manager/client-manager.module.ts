@@ -10,10 +10,12 @@ import { UtilsService } from 'src/utils/utils.service';
 import { UtilsModule } from 'src/utils/utils.module';
 import { UsersService } from 'src/users/users.service';
 import { UsersModule } from 'src/users/users.module';
+import { ErrorService } from 'src/error/error.service';
+import { ErrorModule } from 'src/error/error.module';
 
 
 @Module({
-  providers: [ClientManagerService, PositionService, OrderService, CalculateService, UtilsService, UsersService],
-  imports: [PositionModule, OrderModule, CalculateModule, UtilsModule, UsersModule]
+  providers: [ClientManagerService, PositionService, OrderService, CalculateService, UtilsService, UsersService, ErrorService],
+  imports: [PositionModule, OrderModule, CalculateModule, UtilsModule, UsersModule, ErrorModule]
 })
 export class ClientManagerModule { }

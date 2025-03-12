@@ -1,0 +1,13 @@
+import { Global, Module } from '@nestjs/common';
+import { ErrorService } from './error.service';
+import { UsersModule } from 'src/users/users.module';
+import { UsersService } from 'src/users/users.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { HttpErrorLocal } from './http-error-local';
+
+@Module({
+  providers: [ErrorService, UsersService],
+  imports: [UsersModule, TypeOrmModule.forFeature([HttpErrorLocal])],
+  exports: [TypeOrmModule]
+})
+export class ErrorModule { }

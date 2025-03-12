@@ -13,10 +13,12 @@ import { PositionService } from './position/position.service';
 import { PositionModule } from './position/position.module';
 import { ClientManagerModule } from './client-manager/client-manager.module';
 import { ClientManagerService } from './client-manager/client-manager.service';
+import { ErrorService } from 'src/error/error.service';
+import { ErrorModule } from 'src/error/error.module';
 
 @Module({
-  providers: [BinanceService, UsersService, UtilsService, OrderService, CalculateService, PositionService, ClientManagerService],
+  providers: [BinanceService, UsersService, UtilsService, OrderService, CalculateService, PositionService, ClientManagerService, ErrorService],
   controllers: [BinanceController],
-  imports: [UsersModule, OrderModule, CalculateModule, UtilsModule, PositionModule, ClientManagerModule]
+  imports: [UsersModule, OrderModule, CalculateModule, UtilsModule, PositionModule, ClientManagerModule, ErrorModule]
 })
 export class BinanceModule { }

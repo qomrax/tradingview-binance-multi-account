@@ -12,7 +12,6 @@ export class CalculateService {
     }
 
     public calculateStopPrices(markPrice: number, stopLossPercentage: number, takeProfitPercentage: number, side: OrderSide_LT, precision: number, leverage: number) {
-        // Adjust percentages by dividing by leverage
         const adjustedStopLossPercentage = stopLossPercentage / leverage;
         const adjustedTakeProfitPercentage = takeProfitPercentage / leverage;
 

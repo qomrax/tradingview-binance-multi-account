@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, Unique } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, Unique, OneToMany } from 'typeorm'; // CHANGE !!
 import { Exclude } from 'class-transformer';
+import { HttpErrorLocal } from 'src/error/http-error-local';
 
 @Entity()
 @Unique(['email'])
@@ -7,7 +8,7 @@ export class User {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({ unique: true })
     email: string;
 
     @Column()
@@ -25,4 +26,7 @@ export class User {
 
     @Column({ name: "binance_secret_key" })
     binanceSecretKey: string
+
+    @OneToMany(() => HttpErrorLocal, error => error.user) // CHANGE !!
+    errors: HttpErrorLocal[];
 }

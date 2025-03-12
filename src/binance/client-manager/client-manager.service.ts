@@ -5,15 +5,17 @@ import { CreatePositionDto } from '../dto/create-position';
 import { MarkPriceResult } from 'binance-api-node';
 import { Settings } from 'src/settings/entity/settings.entity';
 import { PositionService } from '../position/position.service';
+import { ErrorService } from 'src/error/error.service';
 @Injectable()
 export class ClientManagerService {
     clients_: CustomerClient[] = []
 
     constructor(
         private usersService: UsersService,
-        private positionService: PositionService
+        private positionService: PositionService,
+        private errorService: ErrorService
     ) {
-        this.getClients();
+        this.getClients()
     }
 
     private set clients(clients: CustomerClient[]) {
@@ -34,7 +36,7 @@ export class ClientManagerService {
 
     private async getClients() {
         const users = await this.usersService.findAll();
-        this.clients = users.map(user => new CustomerClient(user));
+        this.clients = users.map(user => new CustomerClient(user, this.errorService));
     }
 
     async runOnAllClients<T>(operation: (client: CustomerClient) => Promise<T>): Promise<T[]> {
@@ -51,30 +53,33 @@ export class ClientManagerService {
         return await operation(this.client)
     }
 
-    private async getFuturesAccountInfo(customerClient: CustomerClient) {
+    async getFuturesAccountInfo(customerClient: CustomerClient) {
         return await customerClient.client.futuresAccountInfo()
     }
 
-    private async getFuturesMarkPrice(customerClient: CustomerClient) {
-        return await customerClient.client.futuresMarkPrice()
+    async getFuturesMarkPrice(symbol: string): Promise<number> {
+        const price = await this.client.client.futuresPrices({ symbol })
+        return Number(price[symbol])
     }
 
-    private async changeFuturesLeverage(customerClient: CustomerClient, symbol: string, leverage: number) {
+    async changeFuturesLeverage(customerClient: CustomerClient, symbol: string, leverage: number) {
         return await customerClient.client.futuresLeverage({ symbol, leverage })
     }
 
-    async openPosition(client: CustomerClient, position: CreatePositionDto, futuresMarkPrice: MarkPriceResult[], settings: Settings) {
+    async openPosition(customerClient: CustomerClient, position: CreatePositionDto, futuresMarkPrice: MarkPriceResult[], settings: Settings) {
+        // CHANGE!!
         return {
             position: await this.positionService.openPosition(
-                client, position.symbol, position.side, futuresMarkPrice
+                customerClient, position.symbol, position.side, futuresMarkPrice
             ),
             settings,
         }
     }
 
     async openMultiplePositions(data: CreatePositionDto, futuresMarkPrice: MarkPriceResult[], settings: Settings) {
-        const allPositions = await this.runOnAllClients<any>(async (client: CustomerClient) => {
-            const accountInfo = await client.client.futuresAccountInfo()
+        // CHANGE!!
+        return await this.runOnAllClients<any>(async (customerClient: CustomerClient) => {
+            const accountInfo = await this.getFuturesAccountInfo(customerClient); // CHANGE!!
 
             const canPositionOpen = async (): Promise<boolean> => {
                 const openPositions = accountInfo.positions.map(position => ({
@@ -103,7 +108,7 @@ export class ClientManagerService {
                 }
             }
 
-            const { leverage } = await client.client.futuresLeverage({ symbol: data.symbol, leverage: settings.leverage })
+            const { leverage } = await this.changeFuturesLeverage(customerClient, data.symbol, settings.leverage); // CHANGE!!
 
             if (leverage !== settings.leverage) {
                 return {
@@ -112,9 +117,10 @@ export class ClientManagerService {
                     }, settings
                 }
             }
-            return await this.openPosition(client, data, futuresMarkPrice, settings)
+            return await this.openPosition(customerClient, data, futuresMarkPrice, settings)
         })
-
-        return allPositions;
     }
+
+
+
 }
