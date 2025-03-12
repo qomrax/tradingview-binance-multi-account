@@ -3,9 +3,7 @@ import { OrderSide_LT, FuturesAccountInfoResult, MarkPriceResult } from 'binance
 import { ConstantsService } from 'src/constants/constants.service';
 @Injectable()
 export class CalculateService {
-    constructor(private constantsService: ConstantsService) {
-
-    }
+    constructor(private constantsService: ConstantsService) { }
 
     public calculateQuantity(markPrice: number, notional: number, precision: number) {
         const quantity = notional / markPrice;
@@ -34,7 +32,6 @@ export class CalculateService {
 
         return [stopLossPrice, takeProfitPrice].map(stop => String(stop.toFixed(precision)));
     }
-
 
     public getSymbolPriceFromFuturesMarket(futuresMarkPrice: MarkPriceResult[], symbol: string) {
         const foundedMarkPrice = futuresMarkPrice.find(markPrice => markPrice.symbol === symbol);

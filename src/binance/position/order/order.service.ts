@@ -1,17 +1,14 @@
 import { Injectable } from '@nestjs/common';
 
-import { Binance, FuturesOrder, MarkPriceResult, PositionSide_LT } from 'binance-api-node';
+import { Binance, FuturesOrder, PositionSide_LT } from 'binance-api-node';
 
 import { OrderSide_LT } from 'binance-api-node';
 import { ConstantsService } from 'src/constants/constants.service';
-import { SettingsService } from 'src/settings/settings.service';
-import { ClientsService } from 'src/binance/position/clients/clients.service';
-import { CalculateService } from '../calculate/calculate.service';
 import { UtilsService } from 'src/utils/utils.service';
 
 @Injectable()
 export class OrderService {
-    constructor(private constantsService: ConstantsService, private settingsService: SettingsService, private clientsService: ClientsService, private calculateService: CalculateService, private utilsService: UtilsService) {
+    constructor(private constantsService: ConstantsService, private utilsService: UtilsService) {
     }
 
     public async openFuturesMarketOrder(

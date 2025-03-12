@@ -23,7 +23,7 @@ export class BinanceController {
         description: "Position created."
     })
     async webhook(@Body() createPositionDto: CreatePositionDto) {
-        return await this.binanceService.webhook(createPositionDto)
+        // return await this.binanceService.webhook(createPositionDto)
     }
 
 }
