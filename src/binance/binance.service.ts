@@ -1,20 +1,20 @@
 import { Injectable } from '@nestjs/common';
-import { Binance, MarkPriceResult } from 'binance-api-node';
+import { MarkPriceResult, Binance } from 'binance-api-node';
 import { writeFileSync } from 'fs';
-
 import { ConstantsService } from 'src/constants/constants.service';
 import { SettingsService } from 'src/settings/settings.service';
 import { UsersService } from 'src/users/users.service';
-import { ClientsService } from 'src/binance/clients/clients.service';
-import { OrderService } from './order/order.service';
+import { ClientsService } from 'src/binance/position/clients/clients.service';
+import { OrderService } from './position/order/order.service';
 import { CreatePositionDto } from './dto/create-position';
 import { Settings } from 'src/settings/entity/settings.entity';
-import { CustomerClient } from './clients/customer-client';
+import { CustomerClient } from './position/clients/customer-client';
+import { PositionService } from './position/position.service';
 
 
 @Injectable()
 export class BinanceService {
-    constructor(private settingsService: SettingsService, private usersService: UsersService, private clientsService: ClientsService, private orderService: OrderService) {
+    constructor(private settingsService: SettingsService, private clientsService: ClientsService, private positionService: PositionService) {
     }
 
     async test() {
@@ -43,8 +43,23 @@ export class BinanceService {
         })
         const settings = await this.settingsService.getSettings()
 
-        const allPositions = await this.clientsService.runOnAllClients<ReturnType<typeof this.openPosition>>((async (client: Binance) => {
-            const accountInfo = await client.futuresAccountInfo()
+        return this.openMultiplePositions(data, futuresMarkPrice, settings)
+    }
+
+
+    async openPosition(client: CustomerClient, position: CreatePositionDto, futuresMarkPrice: MarkPriceResult[], settings: Settings) {
+        return {
+            position: await this.positionService.openPosition(
+                client.client, position.symbol, position.side, futuresMarkPrice
+            ),
+            settings,
+        }
+    }
+
+
+    async openMultiplePositions(data: CreatePositionDto, futuresMarkPrice: MarkPriceResult[], settings: Settings) {
+        const allPositions = await this.clientsService.runOnAllClients<ReturnType<typeof this.openPosition>>((async (client: CustomerClient) => {
+            const accountInfo = await client.client.futuresAccountInfo()
 
             const canPositionOpen = async (): Promise<boolean> => {
                 const openPositions = accountInfo.positions.map(position => ({
@@ -73,7 +88,7 @@ export class BinanceService {
                 }
             }
 
-            const { leverage } = await client.futuresLeverage({ symbol: data.symbol, leverage: settings.leverage })
+            const { leverage } = await client.client.futuresLeverage({ symbol: data.symbol, leverage: settings.leverage })
 
             if (leverage !== settings.leverage) {
                 return {
@@ -86,15 +101,5 @@ export class BinanceService {
         }).bind(this))
 
         return allPositions;
-    }
-
-
-    async openPosition(client: Binance, position: CreatePositionDto, futuresMarkPrice: MarkPriceResult[], settings: Settings) {
-        return {
-            position: await this.orderService.openPosition(
-                client, position.symbol, position.side, futuresMarkPrice, settings
-            ),
-            settings,
-        }
     }
 }

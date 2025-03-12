@@ -1,12 +1,11 @@
 import { Injectable } from '@nestjs/common';
 
-import { Binance, FuturesAccountInfoResult, FuturesOrder, MarkPrice, MarkPriceResult, PositionSide, PositionSide_LT } from 'binance-api-node';
+import { Binance, FuturesOrder, MarkPriceResult, PositionSide_LT } from 'binance-api-node';
 
 import { OrderSide_LT } from 'binance-api-node';
 import { ConstantsService } from 'src/constants/constants.service';
 import { SettingsService } from 'src/settings/settings.service';
-import { ClientsService } from 'src/binance/clients/clients.service';
-import { Settings } from 'src/settings/entity/settings.entity';
+import { ClientsService } from 'src/binance/position/clients/clients.service';
 import { CalculateService } from '../calculate/calculate.service';
 import { UtilsService } from 'src/utils/utils.service';
 
@@ -15,7 +14,7 @@ export class OrderService {
     constructor(private constantsService: ConstantsService, private settingsService: SettingsService, private clientsService: ClientsService, private calculateService: CalculateService, private utilsService: UtilsService) {
     }
 
-    private async openFuturesMarketOrder(
+    public async openFuturesMarketOrder(
         client: Binance,
         symbol: string, side: OrderSide_LT,
         quantity: string,
@@ -24,7 +23,7 @@ export class OrderService {
         return await client.futuresOrder({ symbol, side, quantity, positionSide, type: this.constantsService.MARKET_ORDER_TYPE });
     }
 
-    private async openFuturesStopOrder(
+    public async openFuturesStopOrder(
         client: Binance,
         symbol: string, side: OrderSide_LT,
         quantity: string,
@@ -41,7 +40,7 @@ export class OrderService {
         return await client.futuresOrder({ ...params, type: this.constantsService.MARKET_STOP_TYPE, positionSide })
     }
 
-    private async isFailedStop<T>(
+    public async isFailedStop<T>(
         client: Binance,
         symbol: string, side: OrderSide_LT,
         quantity: string,
@@ -53,7 +52,7 @@ export class OrderService {
         return this.utilsService.isFailed(this.openFuturesStopOrder, [client, symbol, side, quantity, stopPrice, positionSide, stopLoss], this)
     }
 
-    private async isFailedMarket<T>(client: Binance,
+    public async isFailedMarket<T>(client: Binance,
         symbol: string, side: OrderSide_LT,
         quantity: string,
         positionSide: PositionSide_LT
@@ -63,11 +62,11 @@ export class OrderService {
 
     }
 
-    private async cancelStop(client: Binance, symbol: string) {
+    public async cancelStop(client: Binance, symbol: string) {
         return await client.cancelOpenOrders({ symbol })
     }
 
-    private async openStopOrders(client: Binance, symbol: string, side: OrderSide_LT, stopLossPrice: string, takeProfitPrice: string, quantity: string, positionSide: PositionSide_LT) {
+    public async openStopOrders(client: Binance, symbol: string, side: OrderSide_LT, stopLossPrice: string, takeProfitPrice: string, quantity: string, positionSide: PositionSide_LT) {
         const reverseSide = side === "BUY" ? "SELL" : "BUY";
 
         const openStopLoss = async () => { return await this.isFailedStop(client, symbol, reverseSide, quantity, stopLossPrice, positionSide) };
@@ -91,40 +90,4 @@ export class OrderService {
             cancelStop
         }
     };
-
-    public async openPosition(client: Binance, symbol: string, side: OrderSide_LT, futuresMarkPrice: MarkPriceResult[], settings: Settings) {
-        const { stopLossPercentage, takeProfitPercentage, leverage } = await this.settingsService.getSettings();
-        const futuresAccountInfo = await client.futuresAccountInfo()
-
-        const positionSide = side === "BUY" ? "LONG" : "SHORT"
-        const markPrice = this.calculateService.getSymbolPriceFromFuturesMarket(futuresMarkPrice, symbol);
-        const minNotional = this.constantsService.findMinNotional(symbol);
-        const notional = this.calculateService.calculatePositionNotional(minNotional, futuresAccountInfo, settings.notionalPercentage);
-        const precision = this.constantsService.findPrecisionForSymbol(symbol);
-        const pricePrecision = this.constantsService.findPricePrecision(symbol)
-        const [stopLossPrice, takeProfitPrice] = this.calculateService.calculateStopPrices(markPrice, stopLossPercentage, takeProfitPercentage, side, pricePrecision, leverage);
-        const quantity = this.calculateService.calculateQuantity(markPrice, notional, precision);
-
-        const stopOrders = await this.openStopOrders(client, symbol, side, stopLossPrice, takeProfitPrice, quantity, positionSide);
-
-        if (!stopOrders.status) {
-            if (stopOrders.cancelStop) {
-                await stopOrders.cancelStop()
-            }
-
-            return {
-                status: false
-            }
-        }
-
-        const mainOrderStatus = await this.isFailedMarket(client, symbol, side, quantity, positionSide)
-
-        if (mainOrderStatus.result) {
-            await stopOrders.cancelStop();
-        }
-
-        return {
-            status: !mainOrderStatus.result
-        }
-    }
 }
