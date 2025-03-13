@@ -1,10 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, Unique, OneToMany } from 'typeorm'; // CHANGE !!
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm'; // CHANGE !!
 import { Exclude } from 'class-transformer';
 import { HttpErrorLocal } from 'src/binance/error/http-error-local.entity';
 import { HttpResponseLocal } from 'src/binance/response/http-response';
 
 @Entity()
-@Unique(['email'])
 export class User {
     @PrimaryGeneratedColumn()
     id: number;

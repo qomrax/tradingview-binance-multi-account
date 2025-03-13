@@ -1,7 +1,7 @@
 import { ConstantsService } from "src/constants/constants.service";
 import { OrderSide_LT, PositionSide_LT, StopMarketNewFuturesOrder, MarketNewFuturesOrder, TakeProfitMarketNewFuturesOrder } from "binance-api-node";
 import { SettingsService } from "src/settings/settings.service";
-import { Settings } from "src/settings/entity/settings.entity";
+import { Settings } from "src/settings/settings.entity";
 
 export class PositionParameters {
     settings: Settings
