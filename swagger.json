@@ -215,20 +215,6 @@
         ]
       }
     },
-    "/binance/test": {
-      "get": {
-        "operationId": "BinanceController_test",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "binance"
-        ]
-      }
-    },
     "/binance/tradingview-webhook": {
       "post": {
         "operationId": "BinanceController_webhook",
@@ -257,6 +243,44 @@
         },
         "tags": [
           "binance"
+        ]
+      }
+    },
+    "/errors/error": {
+      "get": {
+        "operationId": "ErrorController_find",
+        "parameters": [
+          {
+            "name": "page",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Errors"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Error"
         ]
       }
     },
@@ -547,6 +571,88 @@
           "timeInForce",
           "type",
           "updateTime"
+        ]
+      },
+      "PaginationResponseDto": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "number"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          },
+          "totalPage": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "page",
+          "limit",
+          "total",
+          "totalPage"
+        ]
+      },
+      "HttpErrorLocalDto": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/CreateUserDto"
+          },
+          "code": {
+            "type": "number"
+          },
+          "message": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "date": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "additionalMessage": {
+            "type": "string",
+            "default": false
+          },
+          "email": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "user",
+          "code",
+          "message",
+          "url",
+          "name",
+          "date",
+          "additionalMessage",
+          "email"
+        ]
+      },
+      "Errors": {
+        "type": "object",
+        "properties": {
+          "pagination": {
+            "$ref": "#/components/schemas/PaginationResponseDto"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HttpErrorLocalDto"
+            }
+          }
+        },
+        "required": [
+          "pagination",
+          "data"
         ]
       },
       "SettingsDto": {

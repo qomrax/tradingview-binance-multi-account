@@ -2,7 +2,7 @@ import { Global, Injectable } from '@nestjs/common';
 import { HttpError as HttpErrorBinance } from 'binance-api-node';
 import { UsersService } from 'src/users/users.service';
 import { Repository } from 'typeorm';
-import { HttpErrorLocal } from './http-error-local';
+import { HttpErrorLocal } from './http-error-local.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 
 
@@ -48,4 +48,30 @@ export class ErrorService {
     private get date(): string {
         return new Date().toLocaleString('tr-TR');
     }
+
+    public async pagination(page: number, limit: number) {
+        const skip = (page - 1) * limit; // CHANGE !!
+        const [data, total] = await this.errorRepository.findAndCount({ // CHANGE !!
+            skip,
+            take: limit,
+            relations: ["user"]
+        });
+
+        return {
+            data: data.map(item => {
+                const { user } = item;
+                delete item.user
+                return {
+                    ...item, email: user.email
+                }
+            }),
+            pagination: {
+                total,
+                page,
+                limit,
+                totalPages: Math.ceil(total / limit),
+            }
+        };
+    }
+
 }

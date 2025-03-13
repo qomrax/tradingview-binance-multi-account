@@ -10,7 +10,6 @@ import { BinanceModule } from './binance/binance.module';
 import { ConstantsModule } from './constants/constants.module';
 import { ConstantsService } from './constants/constants.service';
 import { SettingsModule } from './settings/settings.module';
-import { UtilsModule } from './utils/utils.module';
 import { ErrorModule } from './binance/error/error.module';
 @Module({
   imports: [
@@ -43,7 +42,6 @@ import { ErrorModule } from './binance/error/error.module';
     BinanceModule,
     ConstantsModule,
     SettingsModule,
-    UtilsModule,
     ErrorModule,
   ],
   controllers: [],

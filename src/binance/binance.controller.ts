@@ -9,11 +9,6 @@ import { FuturesOrderDto } from './dto/binance.dto';
 export class BinanceController {
     constructor(private binanceService: BinanceService) { }
 
-    @Get('test')
-    async test() {
-        await this.binanceService.test()
-    }
-
     @Post('tradingview-webhook')
     @ApiBody({
         type: OpenPositionDto
