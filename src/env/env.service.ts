@@ -50,6 +50,13 @@ export class EnvService {
     }
 
     get appUrl(): string {
-        return `${this.envConfig.APP_PROTOCOL}://${this.envConfig.APP_HOST}:${this.envConfig.APP_PORT}${this.envConfig.APP_PATH ? `/${this.envConfig.APP_PATH}` : ''}`
+        const path = `${this.envConfig.APP_PATH ? `/${this.envConfig.APP_PATH}` : ''}`
+
+        if (this.isDevelopment) {
+            return `${this.envConfig.APP_PROTOCOL}://${this.envConfig.APP_HOST}:${this.envConfig.APP_PORT}${path}`
+        } else {
+            return `${this.envConfig.APP_PROTOCOL}://${this.envConfig.APP_HOST}${path}`
+
+        }
     }
 }
