@@ -17,11 +17,13 @@ export class ErrorService {
 
         this.log(httpErrorBinance, user.email, additionalMessage)
 
+        const name = httpErrorBinance.name === "Error" ? "Binance" : httpErrorBinance.name
+
         const httpError = this.errorRepository.create({
             code: httpErrorBinance.code,
             message: httpErrorBinance.message,
             url: httpErrorBinance.url,
-            name: httpErrorBinance.name,
+            name,
             date: new Date(),
             user,
         })

@@ -35,7 +35,9 @@ export class CustomerClient {
 
     get error() {
         const error = async (httpError: HttpError) => {
-            return await this.errorService.insert(httpError, this.user.id)
+            const error = this.errorService.insert(httpError, this.user.id)
+            error.catch(console.log);
+            return await error
         }
 
         return error.bind(this)

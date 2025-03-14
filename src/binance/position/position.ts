@@ -57,30 +57,44 @@ export class Position {
     }
 
 
-    private get openPositionsError(): string[] {
-        const errors: string[] = [];
+    private get openPositionsError(): string {
 
         if (this.isAvailableNotBalanceEnough) {
-            errors.push(`Insufficient balance. Available: ${this.availableBalance}, Required: ${this.positionNotional + this.bufferNotional}`);
+            return `Insufficient balance. Available: ${this.availableBalance}, Required: ${this.positionNotional + this.bufferNotional}`;
         }
 
         if (this.isPositionNotionNotEnoughForBinance) {
-            errors.push(`Position notional ${this.positionNotional} < Min required ${this.positionParameters.minNotional}`);
+            return `Position notional ${this.positionNotional} < Min required ${this.positionParameters.minNotional}`;
         }
 
         if (this.isThisSymbolOpened) {
-            errors.push(`Position already exists for ${this.positionParameters.symbol}`);
+            return `Position already exists for ${this.positionParameters.symbol}`;
         }
 
         if (this.isPositionCountMoreOrEqualWithMaxPositionCount) {
-            errors.push(`Max positions reached (${this.positionParameters.maximumPosition})`);
+            return `Max positions reached (${this.positionParameters.maximumPosition})`;
         }
 
-        return errors;
     }
 
     get canPositionOpen() {
-        return this.openPositionsError.length === 0;
+        if (this.isAvailableNotBalanceEnough) {
+            return false
+        }
+
+        if (this.isPositionNotionNotEnoughForBinance) {
+            return false
+        }
+
+        if (this.isThisSymbolOpened) {
+            return false;
+        }
+
+        if (this.isPositionCountMoreOrEqualWithMaxPositionCount) {
+            return false;
+        }
+
+        return true
     }
 
     private async setFuturesAccountInfo() {
@@ -95,15 +109,18 @@ export class Position {
 
     private async openOrders() {
         if (!this.canPositionOpen) {
+            this.customerClient.error({
+                code: 1,
+                message: this.openPositionsError,
+                name: "Local"
+            })
             return {
-                error: { message: this.openPositionsError.pop(), type: "local" }
+                error: { message: this.openPositionsError, type: "Local" }
             }
         }
 
         const stopOrder = await this.openOrder("STOP_MARKET", false)
-
         const takeOrder = await this.openOrder("TAKE_PROFIT_MARKET")
-
         const marketOrder = await this.openOrder("MARKET")
 
 
