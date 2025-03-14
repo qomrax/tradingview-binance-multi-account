@@ -20,7 +20,7 @@ export class CustomerClient {
                     return async (...args: any[]) => {
                         try {
                             const data = await member.apply(target, args);
-                            this.response(member?.name).catch(console.log)
+                            this.response(member.name)
                             return data
                         } catch (error) {
                             await this.error(error);
@@ -36,7 +36,6 @@ export class CustomerClient {
     get error() {
         const error = async (httpError: HttpError) => {
             const error = this.errorService.insert(httpError, this.user.id)
-            error.catch(console.log);
             return await error
         }
 
@@ -45,7 +44,8 @@ export class CustomerClient {
 
     get response() {
         const response = async (httpResponse: any) => {
-            return await this.responseService.insert(httpResponse, this.user.id)
+            const response = this.responseService.insert(httpResponse, this.user.id)
+            return await response;
         }
 
         return response.bind(this)

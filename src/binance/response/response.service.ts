@@ -33,10 +33,10 @@ export class ResponseService {
 
     log(response: any, email: string, additionalMessage?: string) {
         if (additionalMessage) {
-            console.log(`[${this.date}][response][${email}][${additionalMessage}]`)
+            console.log(`[${this.date}][${response}][${email}][${additionalMessage}]`)
             return
         }
-        console.log(`[${this.date}][response][${email}]`)
+        console.log(`[${this.date}][${response}][${email}]`)
     }
 
     private get date(): string {

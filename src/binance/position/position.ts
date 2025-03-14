@@ -112,7 +112,8 @@ export class Position {
             this.customerClient.error({
                 code: 1,
                 message: this.openPositionsError,
-                name: "Local"
+                name: "Local",
+                url: "openOrders"
             })
             return {
                 error: { message: this.openPositionsError, type: "Local" }
