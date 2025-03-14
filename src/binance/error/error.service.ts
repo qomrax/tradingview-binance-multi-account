@@ -53,8 +53,11 @@ export class ErrorService {
         const skip = (page - 1) * limit; // CHANGE !!
         const [data, total] = await this.errorRepository.findAndCount({ // CHANGE !!
             skip,
-            take: limit,
-            relations: ["user"]
+            take: 1000,
+            relations: ["user"],
+            order: {
+                date: "DESC"
+            }
         });
 
         return {
