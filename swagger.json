@@ -356,7 +356,7 @@
   "tags": [],
   "servers": [
     {
-      "url": "https://binance-tradingview.qraxiss.com/api"
+      "url": "https://api.binance-tradingview.qraxiss.com"
     }
   ],
   "components": {
