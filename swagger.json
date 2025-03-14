@@ -444,7 +444,7 @@
         "properties": {
           "symbol": {
             "type": "string",
-            "example": "XRPUSDT",
+            "example": "XRPUSDT.P",
             "description": "Coin pair."
           },
           "side": {
