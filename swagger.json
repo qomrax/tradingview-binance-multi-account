@@ -356,7 +356,7 @@
   "tags": [],
   "servers": [
     {
-      "url": "https://api.tradingview-binance.qraxiss.com"
+      "url": "http://localhost:3002"
     }
   ],
   "components": {
