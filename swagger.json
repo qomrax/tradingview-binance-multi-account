@@ -224,7 +224,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/OpenPositionDto"
+                "$ref": "#/components/schemas/OpenPositionWithAuth"
               }
             }
           }
@@ -279,6 +279,11 @@
             }
           }
         },
+        "security": [
+          {
+            "JWT-auth": []
+          }
+        ],
         "tags": [
           "Error"
         ]
@@ -303,6 +308,9 @@
         "security": [
           {
             "bearer": []
+          },
+          {
+            "JWT-auth": []
           }
         ],
         "summary": "Get current settings",
@@ -338,6 +346,9 @@
         "security": [
           {
             "bearer": []
+          },
+          {
+            "JWT-auth": []
           }
         ],
         "summary": "Update settings",
@@ -439,7 +450,7 @@
           "status"
         ]
       },
-      "OpenPositionDto": {
+      "OpenPositionWithAuth": {
         "type": "object",
         "properties": {
           "symbol": {
@@ -451,11 +462,17 @@
             "type": "string",
             "example": "SELL",
             "description": "Position side"
+          },
+          "key": {
+            "type": "string",
+            "example": "secretpassword",
+            "description": "Crude auth for tradingview webhooks."
           }
         },
         "required": [
           "symbol",
-          "side"
+          "side",
+          "key"
         ]
       },
       "FuturesOrderDto": {

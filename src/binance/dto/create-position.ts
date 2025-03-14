@@ -24,3 +24,12 @@ export class OpenPositionDto {
     @IsString()
     side: OrderSide_LT
 }
+
+export class OpenPositionWithAuth extends OpenPositionDto {
+    @ApiProperty({
+        example: "secretpassword",
+        description: "Crude auth for tradingview webhooks."
+    })
+    @IsString()
+    key: string
+}

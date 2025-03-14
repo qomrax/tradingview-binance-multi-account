@@ -13,6 +13,8 @@ import {
 } from '@nestjs/swagger';
 
 import { plainToInstance } from 'class-transformer';
+import { JwtAuth } from 'src/auth/decorators/jwt.decorator';
+
 
 @ApiTags('settings')
 @ApiBearerAuth()
@@ -20,6 +22,7 @@ import { plainToInstance } from 'class-transformer';
 export class SettingsController {
     constructor(private readonly settingsService: SettingsService) { }
 
+    @JwtAuth()
     @Get()
     @ApiOperation({ summary: 'Get current settings' })
     @ApiResponse({ status: 200, description: 'Current settings', type: SettingsDto })
@@ -28,6 +31,7 @@ export class SettingsController {
         return plainToInstance(SettingsResponseDto, settings);
     }
 
+    @JwtAuth()
     @Put()
     @ApiOperation({ summary: 'Update settings' })
     @ApiResponse({ status: 200, description: 'Settings successfully updated', type: SettingsDto })

@@ -1,8 +1,9 @@
-import { Request, Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { BinanceService } from './binance.service';
 import { ApiBody, ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
-import { OpenPositionDto } from './dto/create-position';
+import { OpenPositionDto, OpenPositionWithAuth } from './dto/create-position';
 import { FuturesOrderDto } from './dto/binance.dto';
+import { EnvService } from 'src/env/env.service';
 
 @ApiTags('binance')
 @Controller('binance')
@@ -10,7 +11,7 @@ export class BinanceController {
     private queue: any[] = [];
     private processing = false;
 
-    constructor(private binanceService: BinanceService) { }
+    constructor(private binanceService: BinanceService, private envService: EnvService) { }
 
     private async addToQueue(task: () => Promise<any>): Promise<any> {
         return new Promise((resolve, reject) => {
@@ -36,20 +37,26 @@ export class BinanceController {
             reject(error);
         } finally {
             this.processing = false;
-            await this.sleep(100);
+            await this.sleep(50);
             this.processQueue();
         }
     }
 
     @Post('tradingview-webhook')
     @ApiBody({
-        type: OpenPositionDto
+        type: OpenPositionWithAuth
     })
     @ApiCreatedResponse({
         type: FuturesOrderDto,
         description: "Position created."
     })
-    async webhook(@Body() createPositionDto: OpenPositionDto) {
+    async webhook(@Body() createPositionDto: OpenPositionWithAuth) {
+        if (createPositionDto.key !== this.envService.envConfig.ADMIN_KEY) {
+            return {
+                status: false
+            }
+        }
+
         this.addToQueue(async () => {
             try {
                 console.log("start", new Date().toLocaleString());
@@ -62,6 +69,6 @@ export class BinanceController {
             }
         });
 
-        return { status: "ok" };
+        return { status: true };
     }
 }

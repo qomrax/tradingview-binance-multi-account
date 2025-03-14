@@ -11,7 +11,7 @@ export class ErrorController {
 
   }
 
-  // @JwtAuth()
+  @JwtAuth()
   @Get("error")
   @ApiResponse({ type: Errors })
   async find(@Query() paginationInputDto: PaginationInputDto) {
