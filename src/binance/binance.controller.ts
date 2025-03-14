@@ -59,9 +59,7 @@ export class BinanceController {
 
         this.addToQueue(async () => {
             try {
-                console.log("start", new Date().toLocaleString());
                 const webhook = await this.binanceService.webhook(createPositionDto);
-                console.log("sccs", new Date().toLocaleString());
                 return webhook
 
             } catch (err) {
