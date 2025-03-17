@@ -71,4 +71,8 @@ export class ClientManagerService {
             result: await this.runOnAllClients(openPosition)
         }
     }
+
+    public async closeTriggeredOrders() {
+
+    }
 }

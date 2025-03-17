@@ -8,7 +8,6 @@ export class Position {
     futuresAccountInfo: FuturesAccountInfoResult
 
     constructor(private customerClient: CustomerClient, private positionParameters: PositionParameters, private constantsService: ConstantsService) {
-
     }
 
     private get positions() {
@@ -17,7 +16,9 @@ export class Position {
     }
 
     private get availableBalance() {
-        return Number(this.futuresAccountInfo.availableBalance)
+        const availableBalance = Number(this.futuresAccountInfo.availableBalance)
+
+        return availableBalance * (1 - this.constantsService.GUARANTEE_BUFFER_FOR_POSITION_OPENING_PERCENTAGE)
     }
 
     private get totalMarginBalance() {
@@ -52,10 +53,10 @@ export class Position {
     }
 
     private get isPositionCountMoreOrEqualWithMaxPositionCount() {
-        const isPositionCountMoreOrEqualWithMaxPositionCount = this.positionParameters.maximumPosition <= this.positions.length
+        // const isPositionCountMoreOrEqualWithMaxPositionCount = this.positionParameters.maximumPosition <= this.positions.length
+        const isPositionCountMoreOrEqualWithMaxPositionCount = false
         return isPositionCountMoreOrEqualWithMaxPositionCount
     }
-
 
     private get openPositionsError(): string {
 
@@ -74,7 +75,6 @@ export class Position {
         if (this.isPositionCountMoreOrEqualWithMaxPositionCount) {
             return `Max positions reached (${this.positionParameters.maximumPosition})`;
         }
-
     }
 
     get canPositionOpen() {
@@ -103,7 +103,7 @@ export class Position {
 
     public static async create(customerClient: CustomerClient, positionParameters: PositionParameters, constantsService: ConstantsService) {
         const position = new Position(customerClient, positionParameters, constantsService)
-        await Promise.all([position.setFuturesAccountInfo(), position.changeLeverage()])
+        await Promise.all([position.setFuturesAccountInfo(), position.changeLeverage(), position.changeMarginType()])
         return position;
     }
 
@@ -120,9 +120,18 @@ export class Position {
             }
         }
 
-        const stopOrder = await this.openOrder("STOP_MARKET", false)
-        const takeOrder = await this.openOrder("TAKE_PROFIT_MARKET")
-        const marketOrder = await this.openOrder("MARKET")
+        const marketOrder = await this.openOrder("MARKET", {
+            closePosition: false,
+            cancelOrders: false
+        })
+        const stopOrder = await this.openOrder("STOP_MARKET", {
+            closePosition: true,
+            cancelOrders: false
+        })
+        const takeOrder = await this.openOrder("TAKE_PROFIT_MARKET", {
+            closePosition: true,
+            cancelOrders: true
+        })
 
 
         return [stopOrder, takeOrder, marketOrder].map(order => ({
@@ -135,6 +144,31 @@ export class Position {
         }))
     }
 
+    private async openOrder(orderType: OrderType_LT, takeBack: {
+        closePosition: boolean,
+        cancelOrders: boolean,
+    } = {
+            closePosition: false,
+            cancelOrders: true
+        }) {
+
+        const { cancelOrders, closePosition } = takeBack
+
+        try {
+            return await this.order(orderType)
+        } catch (err) {
+            if (cancelOrders) {
+                await this.cancelOrders()
+            }
+
+            if (closePosition) {
+                await this.closePosition()
+            }
+
+            throw err;
+        }
+    }
+
     public async openPosition() {
         try {
             return await this.openOrders()
@@ -145,7 +179,7 @@ export class Position {
                     url: err.url,
                     code: err.code,
                     message: err.message,
-                    type: "binance"
+                    type: "Binance"
                 }
             }
         }
@@ -155,15 +189,15 @@ export class Position {
         return await this.customerClient.client.futuresLeverage({ symbol: this.positionParameters.symbol, leverage: this.positionParameters.leverage })
     }
 
-    private async openOrder(orderType: OrderType_LT, cancelIfFailure: boolean = true) {
+    private async changeMarginType() {
         try {
-            return await this.order(orderType)
-        } catch (err) {
-            if (cancelIfFailure) {
-                this.cancelOrders()
+            return await this.customerClient.client.futuresMarginType({ symbol: this.positionParameters.symbol, marginType: this.constantsService.MARGIN_TYPE })
+        } catch (error) {
+            if (error.code === -4046) {
+                return
             }
 
-            throw err;
+            throw error
         }
     }
 
@@ -190,6 +224,13 @@ export class Position {
 
     private async cancelOrders() {
         await this.customerClient.client.futuresCancelAllOpenOrders({ symbol: this.positionParameters.symbol })
+    }
+
+    private async closePosition(): Promise<FuturesOrder> {
+        return await this.customerClient.client.futuresOrder({
+            ...this.positionParameters.closePositionParams,
+            quantity: this.quantity
+        })
     }
 
     private async order(orderType: OrderType_LT): Promise<FuturesOrder> {

@@ -63,31 +63,43 @@ export class PositionParameters {
         return closePositionSide
     }
 
+
     public get takeProfitMarketOrderParams(): TakeProfitMarketNewFuturesOrder {
+        const timeInForce: "GTE_GTC" = "GTE_GTC"
         return {
             ...this.defaultParams,
             stopPrice: this.takeProfitPrice,
             type: this.constantsService.MARKET_TAKE_PROFIT_TYPE,
             side: this.closeSide,
             closePosition: "true",
+            timeInForce
         }
     }
 
     public get stopLossMarketOrderParams(): StopMarketNewFuturesOrder {
+        const timeInForce: "GTE_GTC" = "GTE_GTC"
         return {
             ...this.defaultParams,
             stopPrice: this.stopLossPrice,
             type: this.constantsService.MARKET_STOP_TYPE,
             side: this.closeSide,
-            closePosition: "true"
+            closePosition: "true",
+            timeInForce
         }
     }
 
-    public get marketOrderParams(): MarketNewFuturesOrder {
-        //@ts-ignore
+
+    public get marketOrderParams() {
         return {
             ...this.defaultParams,
             type: this.constantsService.MARKET_ORDER_TYPE
+        }
+    }
+
+    public get closePositionParams() {
+        return {
+            ...this.marketOrderParams,
+            side: this.closeSide,
         }
     }
 

@@ -50,7 +50,4 @@ export class CustomerClient {
 
         return response.bind(this)
     }
-
-
-
 }

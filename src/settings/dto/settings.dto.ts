@@ -67,9 +67,9 @@ export class SettingsDto {
     @Max(1)
     stopLossPercentage: number;
 
-    @IsNumber()
-    @Min(1)
-    @Max(15)
+    // @IsNumber()
+    // @Min(1)
+    // @Max(15)
     maximumPosition: number;
 }
 
