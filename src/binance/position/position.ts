@@ -26,7 +26,7 @@ export class Position {
     }
 
     private get positionNotional() {
-        return this.totalMarginBalance * this.positionParameters.notionalPercentage;
+        return this.totalMarginBalance * this.positionParameters.notionalPercentage * this.positionParameters.leverage;
     }
 
     private get bufferNotional() {
