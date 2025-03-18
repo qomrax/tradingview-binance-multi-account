@@ -60,39 +60,42 @@ export class Position {
 
     private get openPositionsError(): string {
 
-        if (this.isAvailableNotBalanceEnough) {
-            return `Insufficient balance. Available: ${this.availableBalance}, Required: ${this.positionNotional + this.bufferNotional}`;
-        }
+        // if (this.isAvailableNotBalanceEnough) {
+        //     return `Insufficient balance. Available: ${this.availableBalance}, Required: ${this.positionNotional + this.bufferNotional}`;
+        // }
 
-        if (this.isPositionNotionNotEnoughForBinance) {
-            return `Position notional ${this.positionNotional} < Min required ${this.positionParameters.minNotional}`;
-        }
+        // if (this.isPositionNotionNotEnoughForBinance) {
+        //     return `Position notional ${this.positionNotional} < Min required ${this.positionParameters.minNotional}`;
+        // }
 
         if (this.isThisSymbolOpened) {
             return `Position already exists for ${this.positionParameters.symbol}`;
         }
 
-        if (this.isPositionCountMoreOrEqualWithMaxPositionCount) {
-            return `Max positions reached (${this.positionParameters.maximumPosition})`;
-        }
+        // if (this.isPositionCountMoreOrEqualWithMaxPositionCount) {
+        //     return `Max positions reached (${this.positionParameters.maximumPosition})`;
+        // }
     }
 
     get canPositionOpen() {
-        if (this.isAvailableNotBalanceEnough) {
-            return false
-        }
-
-        if (this.isPositionNotionNotEnoughForBinance) {
-            return false
-        }
-
         if (this.isThisSymbolOpened) {
             return false;
         }
 
-        if (this.isPositionCountMoreOrEqualWithMaxPositionCount) {
-            return false;
-        }
+
+        // if (this.isAvailableNotBalanceEnough) {
+        //     return false
+        // }
+
+        // if (this.isPositionNotionNotEnoughForBinance) {
+        //     return false
+        // }
+
+
+
+        // if (this.isPositionCountMoreOrEqualWithMaxPositionCount) {
+        //     return false;
+        // }
 
         return true
     }
