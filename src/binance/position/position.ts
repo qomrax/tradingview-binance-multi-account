@@ -26,7 +26,7 @@ export class Position {
     }
 
     private get positionNotional() {
-        return this.totalMarginBalance * this.positionParameters.notionalPercentage * this.positionParameters.leverage;
+        return this.totalMarginBalance * this.positionParameters.notionalPercentage;
     }
 
     private get bufferNotional() {
@@ -35,7 +35,8 @@ export class Position {
 
     private get quantity(): string {
         const quantity = this.positionNotional / this.positionParameters.markPrice;
-        const fixedQuantity = quantity.toFixed(this.positionParameters.quantityPrecision);
+        const leveragedQuantity = quantity * this.positionParameters.leverage
+        const fixedQuantity = leveragedQuantity.toFixed(this.positionParameters.quantityPrecision);
         return String(fixedQuantity);
     }
 
