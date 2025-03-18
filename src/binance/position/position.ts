@@ -196,11 +196,7 @@ export class Position {
         try {
             return await this.customerClient.client.futuresMarginType({ symbol: this.positionParameters.symbol, marginType: this.constantsService.MARGIN_TYPE })
         } catch (error) {
-            if (error.code === -4046) {
-                return
-            }
-
-            throw error
+            return
         }
     }
 
