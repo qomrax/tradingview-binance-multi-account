@@ -16,7 +16,9 @@ export class ConstantsService {
         const symbol = this.FUTURES_MARKET_INFO.symbols.find((symbol) => symbolName === symbol.symbol)
 
         if (!symbol) {
-            throw new Error("Symbol not found!")
+            const err = new Error(`${symbol} info not found!`)
+            console.log(err)
+            throw err
         }
 
         return symbol
@@ -37,7 +39,7 @@ export class ConstantsService {
     GUARANTEE_BUFFER_FOR_POSITION_OPENING_PERCENTAGE = 0.01
     FUTURES_MARKET_INFO = {
         "timezone": "UTC",
-        "serverTime": 1740384010712,
+        "serverTime": 1742378673060,
         "futuresType": "U_MARGINED",
         "rateLimits": [
             {
@@ -129,40 +131,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.10",
+                        "maxPrice": "4529764",
                         "minPrice": "556.80",
-                        "maxPrice": "4529764"
-                    },
-                    {
-                        "maxQty": "1000",
-                        "minQty": "0.001",
-                        "stepSize": "0.001",
-                        "filterType": "LOT_SIZE"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "minQty": "0.001",
-                        "maxQty": "120",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "0.001",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "maxQty": "1000"
+                    },
+                    {
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "0.001",
+                        "minQty": "0.001",
+                        "maxQty": "120"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "100"
                     },
                     {
-                        "multiplierDown": "0.9500",
-                        "multiplierUp": "1.0500",
+                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4"
+                        "multiplierUp": "1.0500",
+                        "multiplierDown": "0.9500"
                     }
                 ],
                 "orderTypes": [
@@ -208,40 +210,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "maxPrice": "306177",
                         "filterType": "PRICE_FILTER",
                         "tickSize": "0.01",
-                        "minPrice": "39.86",
-                        "maxPrice": "306177"
+                        "minPrice": "39.86"
                     },
                     {
-                        "stepSize": "0.001",
                         "minQty": "0.001",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "10000"
+                        "maxQty": "10000",
+                        "stepSize": "0.001"
                     },
                     {
+                        "minQty": "0.001",
                         "stepSize": "0.001",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "2000",
-                        "minQty": "0.001"
+                        "maxQty": "2000"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "20"
+                        "notional": "20",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.0500",
+                        "multiplierDown": "0.9500",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.9500"
+                        "multiplierUp": "1.0500",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -288,15 +290,15 @@ export class ConstantsService {
                 "filters": [
                     {
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "13.93",
                         "tickSize": "0.01",
-                        "maxPrice": "100000"
+                        "maxPrice": "100000",
+                        "minPrice": "13.93"
                     },
                     {
-                        "minQty": "0.001",
-                        "filterType": "LOT_SIZE",
+                        "maxQty": "10000",
                         "stepSize": "0.001",
-                        "maxQty": "10000"
+                        "minQty": "0.001",
+                        "filterType": "LOT_SIZE"
                     },
                     {
                         "stepSize": "0.001",
@@ -309,18 +311,18 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "20",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "20"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4",
                         "multiplierDown": "0.9500",
                         "multiplierUp": "1.0500",
-                        "multiplierDecimal": "4"
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -366,30 +368,30 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0143",
                         "tickSize": "0.0001",
+                        "minPrice": "0.0143",
                         "maxPrice": "100000",
                         "filterType": "PRICE_FILTER"
                     },
                     {
-                        "maxQty": "10000000",
-                        "filterType": "LOT_SIZE",
                         "minQty": "0.1",
-                        "stepSize": "0.1"
+                        "stepSize": "0.1",
+                        "maxQty": "10000000",
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "minQty": "0.1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "0.1",
-                        "maxQty": "2000000"
+                        "minQty": "0.1",
+                        "maxQty": "2000000",
+                        "stepSize": "0.1"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
@@ -397,8 +399,8 @@ export class ConstantsService {
                     },
                     {
                         "multiplierUp": "1.0500",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.9500"
                     }
                 ],
@@ -445,39 +447,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "100000",
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.001",
                         "minPrice": "0.111",
-                        "filterType": "PRICE_FILTER"
+                        "maxPrice": "100000"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "minQty": "0.1",
+                        "filterType": "LOT_SIZE",
                         "maxQty": "1000000",
                         "stepSize": "0.1"
                     },
                     {
+                        "maxQty": "120000",
                         "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1",
-                        "maxQty": "120000",
                         "stepSize": "0.1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "limit": 10,
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
+                        "multiplierDown": "0.9000",
                         "multiplierUp": "1.1000",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.9000",
                         "filterType": "PERCENT_PRICE"
                     }
                 ],
@@ -525,39 +527,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "3.61",
-                        "tickSize": "0.01",
+                        "maxPrice": "100000",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "100000"
+                        "tickSize": "0.01"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "0.001",
                         "maxQty": "10000",
-                        "minQty": "0.001"
+                        "minQty": "0.001",
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "0.001"
                     },
                     {
+                        "minQty": "0.001",
                         "maxQty": "5000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "0.001",
-                        "minQty": "0.001"
+                        "stepSize": "0.001"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "20"
+                        "notional": "20",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.0500",
-                        "multiplierDown": "0.9500",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.9500"
                     }
                 ],
                 "orderTypes": [
@@ -603,38 +605,38 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.00132",
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "20000",
-                        "tickSize": "0.00001"
+                        "tickSize": "0.00001",
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.00132"
                     },
                     {
                         "minQty": "1",
-                        "filterType": "LOT_SIZE",
                         "stepSize": "1",
+                        "filterType": "LOT_SIZE",
                         "maxQty": "10000000"
                     },
                     {
+                        "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "5000000",
-                        "minQty": "1",
-                        "stepSize": "1"
+                        "minQty": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.0500",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
                         "multiplierDown": "0.9500"
                     }
@@ -682,21 +684,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "100000",
+                        "minPrice": "1.051",
                         "tickSize": "0.001",
-                        "minPrice": "1.051"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
+                        "stepSize": "0.01",
                         "minQty": "0.01",
                         "maxQty": "100000",
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "0.01"
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "minQty": "0.01",
-                        "maxQty": "10000",
                         "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "10000",
+                        "minQty": "0.01",
                         "stepSize": "0.01"
                     },
                     {
@@ -704,17 +706,17 @@ export class ConstantsService {
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "20"
                     },
                     {
+                        "multiplierUp": "1.1000",
                         "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.9000",
-                        "multiplierUp": "1.1000",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -761,22 +763,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "tickSize": "0.001",
+                        "maxPrice": "100000",
                         "minPrice": "0.464",
-                        "maxPrice": "100000"
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.001"
                     },
                     {
                         "maxQty": "200000",
-                        "stepSize": "0.01",
                         "filterType": "LOT_SIZE",
+                        "stepSize": "0.01",
                         "minQty": "0.01"
                     },
                     {
                         "stepSize": "0.01",
+                        "minQty": "0.01",
                         "maxQty": "20000",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.01"
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -787,13 +789,13 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "20"
+                        "notional": "20",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.9000",
                         "multiplierUp": "1.1000",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -840,40 +842,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.00648",
                         "tickSize": "0.00001",
-                        "maxPrice": "20000",
-                        "minPrice": "0.00648"
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "20000"
                     },
                     {
+                        "maxQty": "10000000",
+                        "minQty": "1",
                         "stepSize": "1",
-                        "filterType": "LOT_SIZE",
-                        "minQty": "1",
-                        "maxQty": "10000000"
+                        "filterType": "LOT_SIZE"
                     },
                     {
+                        "minQty": "1",
+                        "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "1000000",
-                        "minQty": "1",
-                        "stepSize": "1"
+                        "maxQty": "1000000"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
+                        "multiplierUp": "1.0500",
                         "multiplierDown": "0.9500",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.0500"
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -919,22 +921,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.01740",
                         "tickSize": "0.00010",
+                        "minPrice": "0.01740",
+                        "filterType": "PRICE_FILTER",
                         "maxPrice": "20000"
                     },
                     {
-                        "maxQty": "2000000",
-                        "stepSize": "1",
                         "minQty": "1",
-                        "filterType": "LOT_SIZE"
+                        "stepSize": "1",
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "2000000"
                     },
                     {
                         "maxQty": "300000",
-                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -945,14 +947,14 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.0500",
-                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.9500"
+                        "multiplierUp": "1.0500",
+                        "multiplierDown": "0.9500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -1000,20 +1002,20 @@ export class ConstantsService {
                     {
                         "minPrice": "4.36",
                         "tickSize": "0.01",
-                        "filterType": "PRICE_FILTER",
-                        "maxPrice": "100000"
+                        "maxPrice": "100000",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "filterType": "LOT_SIZE",
-                        "maxQty": "10000",
                         "minQty": "0.001",
-                        "stepSize": "0.001"
+                        "stepSize": "0.001",
+                        "maxQty": "10000"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "0.001",
-                        "maxQty": "1200",
-                        "minQty": "0.001"
+                        "minQty": "0.001",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "1200"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -1028,9 +1030,9 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
+                        "multiplierUp": "1.0500",
                         "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.0500",
                         "multiplierDown": "0.9500"
                     }
                 ],
@@ -1077,21 +1079,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "3.82",
-                        "tickSize": "0.01",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "100000"
+                        "minPrice": "3.82",
+                        "maxPrice": "100000",
+                        "tickSize": "0.01"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "minQty": "0.001",
+                        "filterType": "LOT_SIZE",
                         "maxQty": "10000",
                         "stepSize": "0.001"
                     },
                     {
-                        "minQty": "0.001",
                         "stepSize": "0.001",
                         "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "0.001",
                         "maxQty": "3000"
                     },
                     {
@@ -1109,8 +1111,8 @@ export class ConstantsService {
                     {
                         "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1000",
-                        "multiplierDown": "0.9000",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.9000"
                     }
                 ],
                 "orderTypes": [
@@ -1156,22 +1158,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "2.85",
                         "tickSize": "0.01",
                         "maxPrice": "100000",
-                        "filterType": "PRICE_FILTER"
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "2.85"
                     },
                     {
                         "filterType": "LOT_SIZE",
-                        "stepSize": "0.001",
+                        "minQty": "0.001",
                         "maxQty": "6000",
-                        "minQty": "0.001"
+                        "stepSize": "0.001"
                     },
                     {
-                        "maxQty": "4000",
-                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "0.001",
-                        "minQty": "0.001"
+                        "minQty": "0.001",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "2000"
                     },
                     {
                         "limit": 200,
@@ -1186,10 +1188,10 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -1235,40 +1237,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.064",
                         "maxPrice": "100000",
-                        "tickSize": "0.001",
-                        "filterType": "PRICE_FILTER"
+                        "tickSize": "0.001"
                     },
                     {
-                        "stepSize": "0.1",
-                        "filterType": "LOT_SIZE",
+                        "minQty": "0.1",
                         "maxQty": "1000000",
-                        "minQty": "0.1"
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "0.1"
                     },
                     {
-                        "stepSize": "0.1",
-                        "maxQty": "100000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.1"
+                        "stepSize": "0.1",
+                        "minQty": "0.1",
+                        "maxQty": "100000"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "limit": 10,
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
                         "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1000",
-                        "multiplierDown": "0.9000",
-                        "multiplierDecimal": "4"
+                        "multiplierDown": "0.9000"
                     }
                 ],
                 "orderTypes": [
@@ -1314,40 +1316,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
+                        "minPrice": "6.600",
                         "tickSize": "0.010",
                         "maxPrice": "100000",
-                        "minPrice": "6.600"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "minQty": "0.01",
-                        "maxQty": "100000",
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "0.01",
+                        "maxQty": "100000"
+                    },
+                    {
+                        "maxQty": "2000",
+                        "minQty": "0.01",
+                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "0.01"
                     },
                     {
-                        "stepSize": "0.01",
-                        "maxQty": "2000",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.01"
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
-                    },
-                    {
-                        "multiplierDecimal": "4",
-                        "multiplierDown": "0.9500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.0500"
+                        "multiplierUp": "1.0500",
+                        "multiplierDown": "0.9500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -1393,40 +1395,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.251",
                         "filterType": "PRICE_FILTER",
+                        "tickSize": "0.001",
                         "maxPrice": "100000",
-                        "tickSize": "0.001"
+                        "minPrice": "0.251"
                     },
                     {
+                        "stepSize": "0.01",
                         "maxQty": "100000",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "0.01",
                         "minQty": "0.01"
                     },
                     {
                         "minQty": "0.01",
                         "maxQty": "20000",
-                        "stepSize": "0.01",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "0.01"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1000",
                         "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.9000"
+                        "multiplierDown": "0.9000",
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -1472,30 +1474,30 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "100000",
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0001",
-                        "minPrice": "0.0241",
-                        "filterType": "PRICE_FILTER"
+                        "maxPrice": "100000",
+                        "minPrice": "0.0241"
                     },
                     {
-                        "maxQty": "1000000",
-                        "filterType": "LOT_SIZE",
                         "stepSize": "0.1",
-                        "minQty": "0.1"
+                        "filterType": "LOT_SIZE",
+                        "minQty": "0.1",
+                        "maxQty": "1000000"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "250000",
+                        "stepSize": "0.1",
                         "minQty": "0.1",
-                        "stepSize": "0.1"
+                        "maxQty": "250000",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
@@ -1503,9 +1505,9 @@ export class ConstantsService {
                     },
                     {
                         "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500"
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -1552,15 +1554,15 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.0205",
-                        "maxPrice": "100000",
                         "filterType": "PRICE_FILTER",
+                        "maxPrice": "100000",
                         "tickSize": "0.0001"
                     },
                     {
+                        "stepSize": "0.1",
                         "filterType": "LOT_SIZE",
-                        "minQty": "0.1",
                         "maxQty": "1000000",
-                        "stepSize": "0.1"
+                        "minQty": "0.1"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
@@ -1569,22 +1571,22 @@ export class ConstantsService {
                         "stepSize": "0.1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -1630,22 +1632,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0134",
-                        "tickSize": "0.0001",
                         "maxPrice": "100000",
-                        "filterType": "PRICE_FILTER"
+                        "tickSize": "0.0001",
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0134"
                     },
                     {
-                        "minQty": "0.1",
                         "maxQty": "1000000",
                         "stepSize": "0.1",
-                        "filterType": "LOT_SIZE"
+                        "filterType": "LOT_SIZE",
+                        "minQty": "0.1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "600000",
                         "minQty": "0.1",
-                        "stepSize": "0.1"
+                        "maxQty": "600000",
+                        "stepSize": "0.1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -1660,10 +1662,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000",
-                        "multiplierDecimal": "4"
+                        "multiplierUp": "1.1000",
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -1710,39 +1712,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "tickSize": "0.000001",
-                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.002080",
                         "maxPrice": "2000",
-                        "minPrice": "0.002080"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
+                        "minQty": "1",
+                        "stepSize": "1",
                         "maxQty": "10000000",
-                        "filterType": "LOT_SIZE",
-                        "minQty": "1",
-                        "stepSize": "1"
+                        "filterType": "LOT_SIZE"
                     },
                     {
+                        "stepSize": "1",
                         "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "2500000",
-                        "stepSize": "1"
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.0500",
                         "multiplierDown": "0.9500",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4"
+                        "multiplierUp": "1.0500",
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -1788,22 +1790,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "maxPrice": "100000",
                         "filterType": "PRICE_FILTER",
                         "minPrice": "1.093",
-                        "tickSize": "0.001",
-                        "maxPrice": "100000"
+                        "tickSize": "0.001"
                     },
                     {
-                        "minQty": "0.01",
                         "stepSize": "0.01",
-                        "maxQty": "100000",
-                        "filterType": "LOT_SIZE"
+                        "filterType": "LOT_SIZE",
+                        "minQty": "0.01",
+                        "maxQty": "100000"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "10000",
                         "minQty": "0.01",
-                        "stepSize": "0.01",
-                        "maxQty": "10000"
+                        "stepSize": "0.01"
                     },
                     {
                         "limit": 200,
@@ -1814,14 +1816,14 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.0500",
-                        "multiplierDown": "0.9500",
+                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4"
+                        "multiplierDown": "0.9500",
+                        "multiplierUp": "1.0500"
                     }
                 ],
                 "orderTypes": [
@@ -1867,40 +1869,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "maxPrice": "100000",
                         "minPrice": "0.246",
+                        "maxPrice": "100000",
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.001"
                     },
                     {
-                        "maxQty": "500000",
+                        "stepSize": "0.1",
                         "filterType": "LOT_SIZE",
-                        "minQty": "0.1",
-                        "stepSize": "0.1"
+                        "maxQty": "500000",
+                        "minQty": "0.1"
                     },
                     {
-                        "minQty": "0.1",
-                        "stepSize": "0.1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "10000",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "stepSize": "0.1",
+                        "minQty": "0.1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1000",
-                        "multiplierDown": "0.9000"
+                        "multiplierDown": "0.9000",
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -1940,46 +1942,46 @@ export class ConstantsService {
                 "underlyingSubType": [
                     "Layer-1"
                 ],
-                "triggerProtect": "0.1000",
+                "triggerProtect": "0.2000",
                 "liquidationFee": "0.012500",
-                "marketTakeBound": "0.10",
+                "marketTakeBound": "0.20",
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.000001",
-                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.000587",
                         "maxPrice": "2000",
-                        "minPrice": "0.000587"
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.000001"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "maxQty": "80000000",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "1",
                         "minQty": "1"
                     },
                     {
-                        "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "10000000",
                         "minQty": "1",
-                        "maxQty": "10000000"
+                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
+                        "multiplierUp": "1.2000",
                         "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.9000",
-                        "multiplierUp": "1.1000"
+                        "multiplierDown": "0.8000"
                     }
                 ],
                 "orderTypes": [
@@ -2025,26 +2027,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "1000",
-                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0001",
-                        "minPrice": "0.1070"
+                        "minPrice": "0.1070",
+                        "maxPrice": "1000",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "minQty": "0.1",
                         "maxQty": "1000000",
-                        "stepSize": "0.1",
-                        "filterType": "LOT_SIZE"
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "0.1"
                     },
                     {
                         "minQty": "0.1",
                         "maxQty": "100000",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "0.1"
+                        "stepSize": "0.1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -2055,10 +2057,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1000",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.9000"
+                        "multiplierDown": "0.9000",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -2104,40 +2106,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0001",
-                        "maxPrice": "1000",
+                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0141",
-                        "filterType": "PRICE_FILTER"
+                        "maxPrice": "1000",
+                        "tickSize": "0.0001"
                     },
                     {
-                        "minQty": "0.1",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "0.1",
-                        "maxQty": "1000000"
+                        "minQty": "0.1",
+                        "maxQty": "1000000",
+                        "stepSize": "0.1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "0.1",
                         "minQty": "0.1",
-                        "maxQty": "500000"
+                        "maxQty": "500000",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "0.1"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "multiplierUp": "1.0500",
-                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.9500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.9500"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -2183,14 +2185,14 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.00219",
                         "maxPrice": "100",
-                        "tickSize": "0.00001"
+                        "tickSize": "0.00001",
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.00219"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "minQty": "1",
+                        "filterType": "LOT_SIZE",
                         "maxQty": "10000000",
                         "stepSize": "1"
                     },
@@ -2205,17 +2207,17 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.9000",
                         "multiplierUp": "1.1000",
+                        "multiplierDown": "0.9000",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -2263,29 +2265,29 @@ export class ConstantsService {
                 "filters": [
                     {
                         "tickSize": "0.00010",
-                        "maxPrice": "181",
+                        "minPrice": "0.03200",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.03200"
+                        "maxPrice": "181"
                     },
                     {
-                        "stepSize": "1",
+                        "minQty": "1",
                         "maxQty": "5000000",
-                        "minQty": "1",
-                        "filterType": "LOT_SIZE"
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "1"
                     },
                     {
-                        "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "50000",
                         "stepSize": "1",
-                        "maxQty": "50000"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
@@ -2293,9 +2295,9 @@ export class ConstantsService {
                     },
                     {
                         "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4",
                         "multiplierDown": "0.9000",
-                        "multiplierUp": "1.1000",
-                        "multiplierDecimal": "4"
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -2341,40 +2343,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0179",
                         "tickSize": "0.0001",
                         "maxPrice": "1000",
+                        "minPrice": "0.0179",
                         "filterType": "PRICE_FILTER"
                     },
                     {
-                        "maxQty": "1000000",
                         "minQty": "0.1",
                         "stepSize": "0.1",
-                        "filterType": "LOT_SIZE"
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "1000000"
                     },
                     {
+                        "minQty": "0.1",
                         "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "250000",
-                        "stepSize": "0.1",
-                        "minQty": "0.1"
+                        "stepSize": "0.1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -2420,22 +2422,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.01",
                         "minPrice": "8",
+                        "tickSize": "0.01",
                         "maxPrice": "100000",
                         "filterType": "PRICE_FILTER"
                     },
                     {
-                        "minQty": "0.001",
                         "filterType": "LOT_SIZE",
+                        "maxQty": "10000",
                         "stepSize": "0.001",
-                        "maxQty": "10000"
+                        "minQty": "0.001"
                     },
                     {
-                        "minQty": "0.001",
                         "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "1000",
                         "stepSize": "0.001",
-                        "maxQty": "1000"
+                        "minQty": "0.001"
                     },
                     {
                         "limit": 200,
@@ -2450,10 +2452,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.9000",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1000",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.9000"
                     }
                 ],
                 "orderTypes": [
@@ -2501,20 +2503,20 @@ export class ConstantsService {
                     {
                         "filterType": "PRICE_FILTER",
                         "tickSize": "0.0001",
-                        "maxPrice": "1000",
-                        "minPrice": "0.1060"
+                        "minPrice": "0.1060",
+                        "maxPrice": "1000"
                     },
                     {
-                        "maxQty": "1000000",
-                        "stepSize": "0.1",
                         "filterType": "LOT_SIZE",
-                        "minQty": "0.1"
+                        "minQty": "0.1",
+                        "maxQty": "1000000",
+                        "stepSize": "0.1"
                     },
                     {
-                        "maxQty": "100000",
-                        "minQty": "0.1",
                         "stepSize": "0.1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "0.1",
+                        "maxQty": "100000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -2529,10 +2531,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1000",
-                        "multiplierDown": "0.9000"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.9000",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -2578,26 +2580,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.000010",
                         "maxPrice": "30",
+                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.002440"
                     },
                     {
-                        "stepSize": "1",
-                        "filterType": "LOT_SIZE",
                         "minQty": "1",
-                        "maxQty": "50000000"
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "50000000",
+                        "stepSize": "1"
                     },
                     {
                         "maxQty": "30000000",
+                        "minQty": "1",
                         "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1"
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -2608,8 +2610,8 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.9000",
                         "multiplierDecimal": "4",
+                        "multiplierDown": "0.9000",
                         "multiplierUp": "1.1000",
                         "filterType": "PERCENT_PRICE"
                     }
@@ -2657,30 +2659,30 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0454",
-                        "tickSize": "0.0001",
                         "maxPrice": "1000",
+                        "tickSize": "0.0001",
+                        "minPrice": "0.0454",
                         "filterType": "PRICE_FILTER"
                     },
                     {
+                        "stepSize": "0.1",
                         "maxQty": "1000000",
                         "minQty": "0.1",
-                        "stepSize": "0.1",
                         "filterType": "LOT_SIZE"
                     },
                     {
-                        "stepSize": "0.1",
                         "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1",
-                        "maxQty": "80000"
+                        "stepSize": "0.1",
+                        "maxQty": "300000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "notional": "5",
@@ -2688,8 +2690,8 @@ export class ConstantsService {
                     },
                     {
                         "multiplierDown": "0.9000",
-                        "multiplierUp": "1.1000",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1000",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -2737,21 +2739,21 @@ export class ConstantsService {
                 "filters": [
                     {
                         "filterType": "PRICE_FILTER",
+                        "maxPrice": "653",
                         "minPrice": "0.0593",
-                        "tickSize": "0.0001",
-                        "maxPrice": "653"
-                    },
-                    {
-                        "maxQty": "1000000",
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "0.1",
-                        "minQty": "0.1"
+                        "tickSize": "0.0001"
                     },
                     {
                         "minQty": "0.1",
-                        "maxQty": "100000",
+                        "stepSize": "0.1",
+                        "maxQty": "1000000",
+                        "filterType": "LOT_SIZE"
+                    },
+                    {
+                        "stepSize": "0.1",
+                        "minQty": "0.1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "0.1"
+                        "maxQty": "100000"
                     },
                     {
                         "limit": 200,
@@ -2766,9 +2768,9 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1000",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4",
                         "multiplierDown": "0.9000"
                     }
                 ],
@@ -2816,39 +2818,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "maxPrice": "783",
-                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0001",
                         "minPrice": "0.1647",
-                        "tickSize": "0.0001"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "filterType": "LOT_SIZE",
-                        "minQty": "0.1",
+                        "stepSize": "0.1",
                         "maxQty": "2000000",
-                        "stepSize": "0.1"
+                        "minQty": "0.1"
                     },
                     {
-                        "stepSize": "0.1",
-                        "maxQty": "80000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.1"
+                        "maxQty": "80000",
+                        "minQty": "0.1",
+                        "stepSize": "0.1"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1000",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.9000",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1000",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -2894,26 +2896,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.1029",
-                        "tickSize": "0.0001",
+                        "filterType": "PRICE_FILTER",
                         "maxPrice": "432",
-                        "filterType": "PRICE_FILTER"
+                        "tickSize": "0.0001",
+                        "minPrice": "0.1029"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "minQty": "0.1",
                         "maxQty": "1000000",
-                        "stepSize": "0.1"
+                        "stepSize": "0.1",
+                        "filterType": "LOT_SIZE",
+                        "minQty": "0.1"
                     },
                     {
-                        "maxQty": "35000",
-                        "minQty": "0.1",
                         "stepSize": "0.1",
+                        "minQty": "0.1",
+                        "maxQty": "35000",
                         "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -2924,9 +2926,9 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.9000",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1000"
                     }
                 ],
@@ -2973,22 +2975,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.3420",
+                        "tickSize": "0.0001",
                         "maxPrice": "2249",
-                        "tickSize": "0.0001"
+                        "minPrice": "0.3420",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "stepSize": "0.1",
-                        "filterType": "LOT_SIZE",
                         "minQty": "0.1",
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "0.1",
                         "maxQty": "1000000"
                     },
                     {
-                        "stepSize": "0.1",
                         "minQty": "0.1",
+                        "maxQty": "16000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "16000"
+                        "stepSize": "0.1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -2999,14 +3001,14 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1000",
-                        "multiplierDecimal": "4",
-                        "multiplierDown": "0.9000"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.9000",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -3053,29 +3055,29 @@ export class ConstantsService {
                 "filters": [
                     {
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "351788",
                         "tickSize": "0.10",
+                        "maxPrice": "351788",
                         "minPrice": "50"
                     },
                     {
-                        "maxQty": "10000",
+                        "minQty": "0.001",
                         "stepSize": "0.001",
-                        "filterType": "LOT_SIZE",
-                        "minQty": "0.001"
+                        "maxQty": "10000",
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "stepSize": "0.001",
-                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.001",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "0.001",
                         "maxQty": "100"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "notional": "5",
@@ -3083,9 +3085,9 @@ export class ConstantsService {
                     },
                     {
                         "multiplierUp": "1.1000",
+                        "multiplierDecimal": "4",
                         "multiplierDown": "0.9000",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4"
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -3131,26 +3133,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.001",
                         "minPrice": "0.164",
                         "filterType": "PRICE_FILTER",
+                        "tickSize": "0.001",
                         "maxPrice": "1144"
                     },
                     {
                         "maxQty": "1000000",
-                        "stepSize": "0.1",
                         "minQty": "0.1",
-                        "filterType": "LOT_SIZE"
-                    },
-                    {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "50000",
-                        "minQty": "0.1",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "0.1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "stepSize": "0.1",
+                        "minQty": "0.1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "50000"
+                    },
+                    {
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -3161,8 +3163,8 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.9000",
+                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1000"
                     }
@@ -3211,19 +3213,19 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.373",
-                        "maxPrice": "2398",
                         "filterType": "PRICE_FILTER",
+                        "maxPrice": "2398",
                         "tickSize": "0.001"
                     },
                     {
                         "maxQty": "1000000",
-                        "minQty": "0.1",
                         "stepSize": "0.1",
-                        "filterType": "LOT_SIZE"
+                        "filterType": "LOT_SIZE",
+                        "minQty": "0.1"
                     },
                     {
-                        "minQty": "0.1",
                         "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "0.1",
                         "stepSize": "0.1",
                         "maxQty": "50000"
                     },
@@ -3240,10 +3242,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.0500",
-                        "multiplierDown": "0.9500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.9500"
                     }
                 ],
                 "orderTypes": [
@@ -3289,40 +3291,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "33.8",
                         "tickSize": "0.1",
+                        "filterType": "PRICE_FILTER",
                         "maxPrice": "230680",
-                        "filterType": "PRICE_FILTER"
+                        "minPrice": "33.8"
                     },
                     {
-                        "stepSize": "0.001",
-                        "minQty": "0.001",
                         "maxQty": "10000",
-                        "filterType": "LOT_SIZE"
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "0.001",
+                        "minQty": "0.001"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.001",
+                        "stepSize": "0.001",
                         "maxQty": "40",
-                        "stepSize": "0.001"
+                        "minQty": "0.001"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4"
+                        "multiplierUp": "1.1000",
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -3369,20 +3371,20 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "667",
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "3836373",
-                        "tickSize": "1"
+                        "tickSize": "1",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
+                        "stepSize": "0.001",
                         "filterType": "LOT_SIZE",
                         "maxQty": "500",
-                        "stepSize": "0.001",
                         "minQty": "0.001"
                     },
                     {
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.001",
                         "stepSize": "0.001",
-                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "20"
                     },
                     {
@@ -3394,8 +3396,8 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "multiplierUp": "1.1000",
@@ -3448,38 +3450,38 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.630",
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "5000",
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.001"
                     },
                     {
-                        "minQty": "0.1",
                         "maxQty": "1000000",
-                        "stepSize": "0.1",
-                        "filterType": "LOT_SIZE"
+                        "minQty": "0.1",
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "0.1"
                     },
                     {
+                        "maxQty": "20000",
                         "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1",
-                        "stepSize": "0.1",
-                        "maxQty": "20000"
+                        "stepSize": "0.1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1000",
                         "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
+                        "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000"
                     }
                 ],
@@ -3526,22 +3528,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.031",
-                        "tickSize": "0.001",
+                        "maxPrice": "1000",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "1000"
+                        "minPrice": "0.031",
+                        "tickSize": "0.001"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "0.1",
+                        "maxQty": "1000000",
                         "minQty": "0.1",
-                        "maxQty": "1000000"
+                        "stepSize": "0.1",
+                        "filterType": "LOT_SIZE"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "300000",
+                        "stepSize": "0.1",
                         "minQty": "0.1",
-                        "stepSize": "0.1"
+                        "maxQty": "300000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -3552,14 +3554,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -3605,40 +3607,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "1.230",
-                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.001",
                         "maxPrice": "5138",
-                        "tickSize": "0.001"
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "1.230"
                     },
                     {
-                        "minQty": "0.1",
                         "maxQty": "1000000",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "0.1"
+                        "stepSize": "0.1",
+                        "minQty": "0.1"
                     },
                     {
                         "maxQty": "2000",
-                        "stepSize": "0.1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "stepSize": "0.1"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500"
+                        "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -3690,34 +3692,34 @@ export class ConstantsService {
                         "tickSize": "0.0010"
                     },
                     {
+                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1",
-                        "stepSize": "1",
-                        "maxQty": "10000000"
+                        "maxQty": "10000000",
+                        "minQty": "1"
                     },
                     {
-                        "minQty": "1",
                         "maxQty": "50000",
-                        "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000",
-                        "filterType": "PERCENT_PRICE"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1000",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -3763,21 +3765,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.1430",
                         "tickSize": "0.0001",
-                        "maxPrice": "1301",
-                        "filterType": "PRICE_FILTER"
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.1430",
+                        "maxPrice": "1301"
                     },
                     {
-                        "maxQty": "10000000",
-                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1"
+                        "stepSize": "1",
+                        "minQty": "1",
+                        "maxQty": "10000000"
                     },
                     {
-                        "minQty": "1",
-                        "maxQty": "25000",
                         "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
+                        "maxQty": "70000",
                         "stepSize": "1"
                     },
                     {
@@ -3789,14 +3791,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000",
-                        "multiplierUp": "1.1000"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -3842,40 +3844,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "1.770",
+                        "maxPrice": "14295",
                         "tickSize": "0.001",
-                        "filterType": "PRICE_FILTER",
-                        "maxPrice": "14295"
+                        "minPrice": "1.770",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "stepSize": "0.1",
                         "maxQty": "1000000",
                         "filterType": "LOT_SIZE",
-                        "minQty": "0.1"
+                        "minQty": "0.1",
+                        "stepSize": "0.1"
                     },
                     {
+                        "maxQty": "2000",
                         "stepSize": "0.1",
                         "minQty": "0.1",
-                        "maxQty": "2000",
                         "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000",
-                        "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierUp": "1.1000",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -3921,39 +3923,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "tickSize": "0.0100",
                         "minPrice": "0.4200",
                         "maxPrice": "6857",
-                        "tickSize": "0.0100",
                         "filterType": "PRICE_FILTER"
                     },
                     {
+                        "maxQty": "1000000",
                         "filterType": "LOT_SIZE",
                         "minQty": "1",
-                        "maxQty": "1000000",
                         "stepSize": "1"
                     },
                     {
                         "minQty": "1",
-                        "maxQty": "5000",
+                        "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1"
+                        "maxQty": "5000"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.0500",
                         "multiplierDown": "0.9500",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -4000,40 +4002,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0001",
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "400",
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0001",
                         "minPrice": "0.0234"
                     },
                     {
-                        "minQty": "1",
                         "maxQty": "10000000",
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "minQty": "1",
+                        "filterType": "LOT_SIZE"
                     },
                     {
+                        "maxQty": "300000",
                         "minQty": "1",
                         "stepSize": "1",
-                        "maxQty": "300000",
                         "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000",
-                        "multiplierDecimal": "4"
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -4079,16 +4081,16 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0190",
+                        "filterType": "PRICE_FILTER",
                         "maxPrice": "121",
-                        "tickSize": "0.0001",
-                        "filterType": "PRICE_FILTER"
+                        "minPrice": "0.0190",
+                        "tickSize": "0.0001"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "10000000",
                         "stepSize": "1",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "maxQty": "10000000",
+                        "filterType": "LOT_SIZE"
                     },
                     {
                         "minQty": "1",
@@ -4105,14 +4107,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1000",
-                        "multiplierDown": "0.9000",
-                        "multiplierDecimal": "4"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.9000"
                     }
                 ],
                 "orderTypes": [
@@ -4158,40 +4160,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.00001",
+                        "maxPrice": "22",
                         "filterType": "PRICE_FILTER",
                         "minPrice": "0.00360",
-                        "maxPrice": "22"
+                        "tickSize": "0.00001"
                     },
                     {
-                        "maxQty": "10000000",
                         "filterType": "LOT_SIZE",
                         "minQty": "1",
+                        "maxQty": "10000000",
                         "stepSize": "1"
                     },
                     {
-                        "stepSize": "1",
-                        "minQty": "1",
                         "maxQty": "350000",
+                        "minQty": "1",
+                        "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -4238,39 +4240,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "filterType": "PRICE_FILTER",
+                        "maxPrice": "2684",
                         "minPrice": "0.3730",
-                        "tickSize": "0.0010",
-                        "maxPrice": "2684"
+                        "tickSize": "0.0010"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "10000000",
+                        "minQty": "1",
                         "stepSize": "1",
-                        "minQty": "1"
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "10000000"
                     },
                     {
-                        "maxQty": "25000",
                         "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "maxQty": "25000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1000",
-                        "multiplierDown": "0.9000",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1000",
+                        "multiplierDown": "0.9000"
                     }
                 ],
                 "orderTypes": [
@@ -4316,39 +4318,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.3500",
                         "filterType": "PRICE_FILTER",
+                        "minPrice": "0.3500",
                         "maxPrice": "2403",
                         "tickSize": "0.0010"
                     },
                     {
-                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
+                        "maxQty": "100000",
                         "minQty": "1",
-                        "maxQty": "100000"
+                        "stepSize": "1"
                     },
                     {
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
-                        "stepSize": "1",
                         "maxQty": "5000",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "stepSize": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000",
+                        "multiplierUp": "1.1000",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -4395,40 +4397,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "maxPrice": "41",
                         "minPrice": "0.007700",
+                        "maxPrice": "41",
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.000100"
                     },
                     {
-                        "stepSize": "1",
-                        "minQty": "1",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "10000000"
+                        "minQty": "1",
+                        "maxQty": "10000000",
+                        "stepSize": "1"
                     },
                     {
+                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1",
                         "maxQty": "250000",
-                        "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "minQty": "1"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -4474,22 +4476,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "153",
                         "tickSize": "0.00001",
                         "minPrice": "0.02250",
-                        "maxPrice": "153"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "minQty": "1",
                         "filterType": "LOT_SIZE",
+                        "stepSize": "1",
                         "maxQty": "10000000",
-                        "stepSize": "1"
+                        "minQty": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1",
                         "minQty": "1",
-                        "maxQty": "100000"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "500000",
+                        "stepSize": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -4500,14 +4502,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1000",
-                        "multiplierDown": "0.9000",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.9000",
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -4553,26 +4555,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0001",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0096",
-                        "maxPrice": "1000"
+                        "maxPrice": "1000",
+                        "tickSize": "0.0001",
+                        "minPrice": "0.0096"
                     },
                     {
-                        "maxQty": "10000000",
                         "stepSize": "1",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "maxQty": "10000000"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1",
                         "stepSize": "1",
-                        "maxQty": "1000000"
+                        "maxQty": "1000000",
+                        "minQty": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "limit": 10,
@@ -4583,10 +4585,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500"
+                        "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -4633,39 +4635,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.00880",
-                        "maxPrice": "100",
+                        "tickSize": "0.00001",
                         "filterType": "PRICE_FILTER",
-                        "tickSize": "0.00001"
+                        "maxPrice": "100"
                     },
                     {
+                        "stepSize": "1",
+                        "maxQty": "10000000",
+                        "minQty": "1",
+                        "filterType": "LOT_SIZE"
+                    },
+                    {
+                        "maxQty": "1000000",
                         "minQty": "1",
                         "stepSize": "1",
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "10000000"
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "1000000",
-                        "stepSize": "1"
-                    },
-                    {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "limit": 10,
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.2500",
                         "multiplierDown": "0.7500",
-                        "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.2500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -4711,30 +4713,30 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "minPrice": "4.060",
                         "filterType": "PRICE_FILTER",
                         "maxPrice": "28450",
-                        "minPrice": "4.060",
                         "tickSize": "0.001"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "minQty": "0.1",
                         "stepSize": "0.1",
-                        "maxQty": "1000000"
+                        "maxQty": "1000000",
+                        "minQty": "0.1",
+                        "filterType": "LOT_SIZE"
                     },
                     {
+                        "maxQty": "5000",
                         "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "0.1",
-                        "minQty": "0.1",
-                        "maxQty": "5000"
+                        "minQty": "0.1"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "notional": "5",
@@ -4743,8 +4745,8 @@ export class ConstantsService {
                     {
                         "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1000",
-                        "multiplierDown": "0.9000"
+                        "multiplierDown": "0.9000",
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -4790,40 +4792,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0480",
                         "maxPrice": "1000",
-                        "tickSize": "0.0010",
-                        "minPrice": "0.0480"
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0010"
                     },
                     {
+                        "filterType": "LOT_SIZE",
                         "maxQty": "10000000",
-                        "minQty": "1",
                         "stepSize": "1",
-                        "filterType": "LOT_SIZE"
+                        "minQty": "1"
                     },
                     {
-                        "stepSize": "1",
-                        "minQty": "1",
                         "maxQty": "24000",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.9000",
-                        "multiplierDecimal": "4",
-                        "multiplierUp": "1.1000"
+                        "multiplierUp": "1.1000",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -4871,18 +4873,18 @@ export class ConstantsService {
                     {
                         "tickSize": "0.010",
                         "maxPrice": "38702",
-                        "minPrice": "4.340",
-                        "filterType": "PRICE_FILTER"
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "4.340"
                     },
                     {
                         "minQty": "0.1",
-                        "stepSize": "0.1",
+                        "maxQty": "1000000",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "1000000"
+                        "stepSize": "0.1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "0.1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1",
                         "maxQty": "1250"
                     },
@@ -4899,10 +4901,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.9000",
                         "multiplierUp": "1.1000",
-                        "multiplierDecimal": "4"
+                        "multiplierDown": "0.9000",
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -4948,39 +4950,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.001",
                         "maxPrice": "10000",
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "1.381"
+                        "tickSize": "0.001",
+                        "minPrice": "1.381",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "filterType": "LOT_SIZE",
+                        "maxQty": "10000000",
                         "stepSize": "0.1",
-                        "minQty": "0.1",
-                        "maxQty": "10000000"
+                        "minQty": "0.1"
                     },
                     {
+                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "0.1",
-                        "maxQty": "20000",
                         "minQty": "0.1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "maxQty": "20000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.9000",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1000"
                     }
                 ],
@@ -5027,40 +5029,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.000778",
                         "tickSize": "0.000001",
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "10"
                     },
                     {
                         "maxQty": "50000000",
-                        "filterType": "LOT_SIZE",
                         "minQty": "1",
+                        "stepSize": "1",
+                        "filterType": "LOT_SIZE"
+                    },
+                    {
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
+                        "maxQty": "10000000",
                         "stepSize": "1"
                     },
                     {
-                        "maxQty": "10000000",
-                        "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1"
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
-                    },
-                    {
-                        "multiplierUp": "1.1000",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.9000",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierUp": "1.1000",
+                        "multiplierDown": "0.9000"
                     }
                 ],
                 "orderTypes": [
@@ -5106,22 +5108,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "100",
                         "minPrice": "0.00520",
                         "tickSize": "0.00001",
-                        "maxPrice": "100"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "maxQty": "10000000",
                         "stepSize": "1",
                         "minQty": "1",
+                        "maxQty": "10000000",
                         "filterType": "LOT_SIZE"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
                         "stepSize": "1",
                         "maxQty": "500000",
-                        "minQty": "1"
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -5132,14 +5134,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
+                        "multiplierUp": "1.1000",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.9000",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1000"
+                        "multiplierDown": "0.9000"
                     }
                 ],
                 "orderTypes": [
@@ -5185,40 +5187,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.00010",
+                        "tickSize": "0.00010",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "100",
-                        "tickSize": "0.00010"
+                        "minPrice": "0.00010",
+                        "maxPrice": "100"
                     },
                     {
-                        "maxQty": "10000000",
                         "minQty": "1",
                         "stepSize": "1",
+                        "maxQty": "10000000",
                         "filterType": "LOT_SIZE"
                     },
                     {
-                        "maxQty": "100000",
-                        "minQty": "1",
                         "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "maxQty": "100000",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1000",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.9000",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -5264,40 +5266,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.00517",
                         "maxPrice": "100",
-                        "filterType": "PRICE_FILTER",
-                        "tickSize": "0.00001"
+                        "tickSize": "0.00001",
+                        "minPrice": "0.00517",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "maxQty": "10000000",
-                        "filterType": "LOT_SIZE",
                         "stepSize": "1",
-                        "minQty": "1"
+                        "filterType": "LOT_SIZE",
+                        "minQty": "1",
+                        "maxQty": "10000000"
                     },
                     {
                         "minQty": "1",
-                        "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "800000"
+                        "maxQty": "800000",
+                        "stepSize": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.9000",
-                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1000"
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1000",
+                        "multiplierDown": "0.9000"
                     }
                 ],
                 "orderTypes": [
@@ -5344,39 +5346,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.03610",
-                        "maxPrice": "204",
+                        "tickSize": "0.00010",
                         "filterType": "PRICE_FILTER",
-                        "tickSize": "0.00010"
+                        "maxPrice": "204"
                     },
                     {
+                        "minQty": "1",
+                        "filterType": "LOT_SIZE",
                         "maxQty": "10000000",
+                        "stepSize": "1"
+                    },
+                    {
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
                         "stepSize": "1",
-                        "filterType": "LOT_SIZE"
+                        "maxQty": "50000"
                     },
                     {
-                        "maxQty": "50000",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1",
-                        "minQty": "1"
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
-                    },
-                    {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -5422,22 +5424,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.02600",
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "180",
-                        "tickSize": "0.00010"
+                        "tickSize": "0.00010",
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.02600"
+                    },
+                    {
+                        "minQty": "1",
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "10000000",
+                        "stepSize": "1"
                     },
                     {
                         "stepSize": "1",
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "10000000",
-                        "minQty": "1"
-                    },
-                    {
-                        "maxQty": "88000",
-                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
-                        "stepSize": "1"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "88000"
                     },
                     {
                         "limit": 200,
@@ -5452,9 +5454,9 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "multiplierUp": "1.1000",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1000",
+                        "multiplierDecimal": "4",
                         "multiplierDown": "0.9000"
                     }
                 ],
@@ -5502,13 +5504,13 @@ export class ConstantsService {
                 "filters": [
                     {
                         "filterType": "PRICE_FILTER",
-                        "tickSize": "0.00100",
+                        "minPrice": "0.08000",
                         "maxPrice": "6989",
-                        "minPrice": "0.08000"
+                        "tickSize": "0.00100"
                     },
                     {
-                        "minQty": "1",
                         "stepSize": "1",
+                        "minQty": "1",
                         "filterType": "LOT_SIZE",
                         "maxQty": "10000000"
                     },
@@ -5519,21 +5521,21 @@ export class ConstantsService {
                         "stepSize": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
+                        "multiplierDown": "0.9000",
                         "multiplierUp": "1.1000",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.9000",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -5580,26 +5582,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.00001",
                         "minPrice": "0.01760",
+                        "filterType": "PRICE_FILTER",
                         "maxPrice": "100",
-                        "filterType": "PRICE_FILTER"
+                        "tickSize": "0.00001"
                     },
                     {
                         "maxQty": "5000000",
-                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1"
-                    },
-                    {
-                        "maxQty": "540000",
-                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "minQty": "1",
+                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "540000"
+                    },
+                    {
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "limit": 10,
@@ -5610,8 +5612,8 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000"
                     }
@@ -5659,10 +5661,10 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.001",
                         "minPrice": "1.437",
+                        "maxPrice": "10000",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "10000"
+                        "tickSize": "0.001"
                     },
                     {
                         "filterType": "LOT_SIZE",
@@ -5671,28 +5673,28 @@ export class ConstantsService {
                         "minQty": "0.1"
                     },
                     {
-                        "minQty": "0.1",
                         "maxQty": "10000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "0.1"
+                        "stepSize": "0.1",
+                        "minQty": "0.1"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -5738,40 +5740,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.00544",
-                        "tickSize": "0.00001",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "100"
+                        "maxPrice": "100",
+                        "minPrice": "0.00544",
+                        "tickSize": "0.00001"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "maxQty": "10000000",
-                        "stepSize": "1",
-                        "minQty": "1"
-                    },
-                    {
+                        "filterType": "LOT_SIZE",
                         "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "500000",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "minQty": "1",
+                        "maxQty": "500000",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1"
+                    },
+                    {
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "limit": 10,
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500"
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -5817,40 +5819,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.00001",
                         "minPrice": "0.01398",
-                        "maxPrice": "100",
-                        "filterType": "PRICE_FILTER"
+                        "maxPrice": "100"
                     },
                     {
+                        "stepSize": "1",
+                        "filterType": "LOT_SIZE",
                         "minQty": "1",
-                        "maxQty": "1000000",
-                        "stepSize": "1",
-                        "filterType": "LOT_SIZE"
+                        "maxQty": "1000000"
                     },
                     {
-                        "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1",
-                        "maxQty": "500000"
+                        "maxQty": "500000",
+                        "stepSize": "1",
+                        "minQty": "1"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "multiplierUp": "1.1000",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.9000"
+                        "multiplierDown": "0.9000",
+                        "multiplierUp": "1.1000",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -5896,10 +5898,10 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0001",
                         "minPrice": "0.0613",
-                        "maxPrice": "100000",
-                        "filterType": "PRICE_FILTER"
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0001",
+                        "maxPrice": "100000"
                     },
                     {
                         "maxQty": "5000000",
@@ -5908,28 +5910,28 @@ export class ConstantsService {
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
                         "maxQty": "500000"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "limit": 10,
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000",
-                        "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -5975,38 +5977,38 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "100",
-                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.00001",
                         "minPrice": "0.00447",
-                        "tickSize": "0.00001"
+                        "maxPrice": "100",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "stepSize": "1",
                         "maxQty": "10000000",
+                        "filterType": "LOT_SIZE",
                         "minQty": "1"
                     },
                     {
                         "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "850000",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "maxQty": "850000"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1000",
+                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.9000"
                     }
@@ -6056,20 +6058,20 @@ export class ConstantsService {
                     {
                         "maxPrice": "20000",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.00500",
-                        "tickSize": "0.00001"
+                        "tickSize": "0.00001",
+                        "minPrice": "0.00500"
                     },
                     {
-                        "maxQty": "10000000",
+                        "minQty": "1",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1",
-                        "minQty": "1"
+                        "maxQty": "10000000",
+                        "stepSize": "1"
                     },
                     {
                         "stepSize": "1",
                         "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "500000"
+                        "maxQty": "500000",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -6084,10 +6086,10 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4"
+                        "multiplierUp": "1.1000",
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -6139,34 +6141,34 @@ export class ConstantsService {
                         "tickSize": "0.000010"
                     },
                     {
-                        "maxQty": "60000000",
                         "stepSize": "1",
-                        "filterType": "LOT_SIZE",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "maxQty": "60000000",
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "minQty": "1",
                         "maxQty": "5000000",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1"
+                        "minQty": "1",
+                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000",
-                        "multiplierUp": "1.1000"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -6213,37 +6215,37 @@ export class ConstantsService {
                 "filters": [
                     {
                         "tickSize": "0.001",
-                        "maxPrice": "100000",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.077"
+                        "minPrice": "0.077",
+                        "maxPrice": "100000"
                     },
                     {
-                        "stepSize": "0.1",
-                        "minQty": "0.1",
+                        "maxQty": "5000000",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "5000000"
+                        "minQty": "0.1",
+                        "stepSize": "0.1"
                     },
                     {
-                        "minQty": "0.1",
-                        "maxQty": "150000",
                         "stepSize": "0.1",
+                        "maxQty": "150000",
+                        "minQty": "0.1",
                         "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDown": "0.9000",
                         "multiplierDecimal": "4",
+                        "multiplierDown": "0.9000",
                         "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1000"
                     }
@@ -6291,20 +6293,20 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.001",
                         "filterType": "PRICE_FILTER",
                         "minPrice": "0.222",
+                        "tickSize": "0.001",
                         "maxPrice": "10000"
                     },
                     {
-                        "minQty": "0.1",
                         "maxQty": "100000",
+                        "minQty": "0.1",
                         "filterType": "LOT_SIZE",
                         "stepSize": "0.1"
                     },
                     {
-                        "maxQty": "8000",
                         "stepSize": "0.1",
+                        "maxQty": "8000",
                         "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1"
                     },
@@ -6313,18 +6315,18 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4"
+                        "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -6371,39 +6373,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.000516",
-                        "tickSize": "0.000001",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "2000"
+                        "maxPrice": "2000",
+                        "tickSize": "0.000001"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "minQty": "1",
                         "stepSize": "1",
-                        "maxQty": "200000000"
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "200000000",
+                        "minQty": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "10000000",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4"
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -6449,21 +6451,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.00001",
+                        "minPrice": "0.00154",
                         "filterType": "PRICE_FILTER",
                         "maxPrice": "20000",
-                        "minPrice": "0.00154"
+                        "tickSize": "0.00001"
                     },
                     {
-                        "minQty": "1",
                         "filterType": "LOT_SIZE",
                         "stepSize": "1",
+                        "minQty": "1",
                         "maxQty": "10000000"
                     },
                     {
-                        "minQty": "1",
-                        "maxQty": "3000000",
                         "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "3000000",
+                        "minQty": "1",
                         "stepSize": "1"
                     },
                     {
@@ -6475,14 +6477,14 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1000",
-                        "multiplierDown": "0.9000",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.9000"
                     }
                 ],
                 "orderTypes": [
@@ -6528,40 +6530,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0001",
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0223",
-                        "maxPrice": "100000"
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "100000",
+                        "tickSize": "0.0001"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "minQty": "1",
                         "stepSize": "1",
+                        "filterType": "LOT_SIZE",
                         "maxQty": "5000000"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "50000",
+                        "minQty": "1",
                         "stepSize": "1",
-                        "minQty": "1"
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.9000",
-                        "multiplierUp": "1.1000",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDown": "0.9000",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -6607,21 +6609,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "100000",
-                        "minPrice": "0.0035",
                         "tickSize": "0.0001",
-                        "filterType": "PRICE_FILTER"
+                        "maxPrice": "100000",
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0035"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "1",
                         "maxQty": "10000000",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "1"
                     },
                     {
                         "minQty": "1",
-                        "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1",
                         "maxQty": "2000000"
                     },
                     {
@@ -6629,18 +6631,18 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
+                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.9000",
                         "multiplierUp": "1.1000",
-                        "multiplierDecimal": "4"
+                        "multiplierDown": "0.9000"
                     }
                 ],
                 "orderTypes": [
@@ -6686,40 +6688,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.001",
+                        "filterType": "PRICE_FILTER",
                         "maxPrice": "100000",
                         "minPrice": "0.668",
-                        "filterType": "PRICE_FILTER"
+                        "tickSize": "0.001"
                     },
                     {
-                        "minQty": "0.1",
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "0.1",
                         "maxQty": "1000000",
-                        "stepSize": "0.1",
-                        "filterType": "LOT_SIZE"
+                        "minQty": "0.1"
                     },
                     {
                         "stepSize": "0.1",
-                        "maxQty": "1000",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "maxQty": "1000"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierUp": "11500",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "8500",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "8500"
+                        "multiplierUp": "11500"
                     }
                 ],
                 "orderTypes": [
@@ -6765,22 +6767,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "20000",
                         "tickSize": "0.00001",
+                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.00328"
                     },
                     {
-                        "maxQty": "5000000",
-                        "minQty": "1",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "1",
-                        "filterType": "LOT_SIZE"
+                        "minQty": "1",
+                        "maxQty": "5000000"
                     },
                     {
+                        "stepSize": "1",
                         "maxQty": "800000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1",
-                        "stepSize": "1"
+                        "minQty": "1"
                     },
                     {
                         "limit": 200,
@@ -6795,10 +6797,10 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1000",
-                        "multiplierDown": "0.9000"
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.9000",
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -6844,40 +6846,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0031",
                         "maxPrice": "100000",
-                        "tickSize": "0.0001",
-                        "filterType": "PRICE_FILTER"
+                        "minPrice": "0.0031",
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0001"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "1000000",
+                        "stepSize": "1",
                         "minQty": "1",
-                        "stepSize": "1"
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "1000000"
                     },
                     {
                         "minQty": "1",
                         "maxQty": "250000",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1000",
-                        "multiplierDown": "0.9000",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.9000",
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -6924,21 +6926,21 @@ export class ConstantsService {
                 "filters": [
                     {
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "100000",
                         "minPrice": "0.0136",
+                        "maxPrice": "100000",
                         "tickSize": "0.0001"
                     },
                     {
-                        "minQty": "1",
                         "stepSize": "1",
                         "maxQty": "1000000",
+                        "minQty": "1",
                         "filterType": "LOT_SIZE"
                     },
                     {
-                        "maxQty": "200000",
                         "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1"
+                        "maxQty": "200000",
+                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -6949,14 +6951,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
                         "multiplierDown": "0.9000",
-                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1000"
+                        "multiplierUp": "1.1000",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -7002,30 +7004,30 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "maxPrice": "100000",
                         "minPrice": "0.120",
-                        "tickSize": "0.001"
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.001",
+                        "maxPrice": "100000"
                     },
                     {
-                        "stepSize": "0.1",
-                        "maxQty": "50000",
+                        "filterType": "LOT_SIZE",
                         "minQty": "0.1",
-                        "filterType": "LOT_SIZE"
+                        "stepSize": "0.1",
+                        "maxQty": "50000"
                     },
                     {
                         "maxQty": "50000",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1",
-                        "stepSize": "0.1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "stepSize": "0.1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
@@ -7033,9 +7035,9 @@ export class ConstantsService {
                     },
                     {
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.9000",
+                        "multiplierUp": "1.1000",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1000"
+                        "multiplierDown": "0.9000"
                     }
                 ],
                 "orderTypes": [
@@ -7081,40 +7083,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "tickSize": "0.00001",
                         "maxPrice": "20000",
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.00279",
-                        "tickSize": "0.00001"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "10000000",
+                        "stepSize": "1",
                         "minQty": "1",
-                        "stepSize": "1"
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "10000000"
                     },
                     {
                         "maxQty": "1000000",
                         "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.9000",
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1000",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.9000"
                     }
                 ],
                 "orderTypes": [
@@ -7161,39 +7163,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "maxPrice": "20000",
-                        "minPrice": "0.00124",
                         "filterType": "PRICE_FILTER",
+                        "minPrice": "0.00124",
                         "tickSize": "0.00001"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "minQty": "1",
                         "maxQty": "10000000",
+                        "minQty": "1",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "1"
                     },
                     {
-                        "maxQty": "5000000",
                         "stepSize": "1",
-                        "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "5000000",
+                        "minQty": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.9000",
-                        "multiplierUp": "1.1000",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -7240,38 +7242,38 @@ export class ConstantsService {
                 "filters": [
                     {
                         "tickSize": "0.00001",
-                        "maxPrice": "20000",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.00087"
+                        "minPrice": "0.00087",
+                        "maxPrice": "20000"
                     },
                     {
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1",
                         "maxQty": "100000000",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "stepSize": "1"
                     },
                     {
-                        "maxQty": "25000000",
                         "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "maxQty": "25000000",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.9000",
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1000"
                     }
                 ],
@@ -7318,39 +7320,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.00048",
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "20000",
-                        "tickSize": "0.00001"
+                        "tickSize": "0.00001",
+                        "minPrice": "0.00048",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
+                        "maxQty": "50000000",
                         "minQty": "1",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1",
-                        "maxQty": "50000000"
+                        "stepSize": "1"
                     },
                     {
-                        "minQty": "1",
+                        "stepSize": "1",
                         "maxQty": "5000000",
-                        "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE"
                     }
                 ],
@@ -7397,21 +7399,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.000070",
-                        "tickSize": "0.000001",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "2000"
+                        "minPrice": "0.000070",
+                        "maxPrice": "2000",
+                        "tickSize": "0.000001"
                     },
                     {
-                        "stepSize": "1",
                         "maxQty": "500000000",
-                        "filterType": "LOT_SIZE",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "stepSize": "1",
+                        "filterType": "LOT_SIZE"
                     },
                     {
                         "minQty": "1",
-                        "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1",
                         "maxQty": "50000000"
                     },
                     {
@@ -7419,18 +7421,18 @@ export class ConstantsService {
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1000",
-                        "multiplierDown": "0.9000",
+                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4"
+                        "multiplierUp": "1.1000",
+                        "multiplierDown": "0.9000"
                     }
                 ],
                 "orderTypes": [
@@ -7477,29 +7479,29 @@ export class ConstantsService {
                 "filters": [
                     {
                         "tickSize": "0.00001",
-                        "minPrice": "0.00050",
+                        "maxPrice": "20000",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "20000"
+                        "minPrice": "0.00050"
                     },
                     {
-                        "minQty": "1",
                         "maxQty": "10000000",
-                        "stepSize": "1",
-                        "filterType": "LOT_SIZE"
-                    },
-                    {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "3000000",
                         "minQty": "1",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "3000000",
+                        "stepSize": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
+                    },
+                    {
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "notional": "5",
@@ -7508,8 +7510,8 @@ export class ConstantsService {
                     {
                         "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1000",
-                        "multiplierDown": "0.9000"
+                        "multiplierDown": "0.9000",
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -7556,21 +7558,21 @@ export class ConstantsService {
                 "filters": [
                     {
                         "tickSize": "0.000001",
+                        "maxPrice": "2000",
                         "minPrice": "0.000129",
-                        "filterType": "PRICE_FILTER",
-                        "maxPrice": "2000"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
+                        "minQty": "1",
                         "maxQty": "50000000",
                         "stepSize": "1",
-                        "minQty": "1",
                         "filterType": "LOT_SIZE"
                     },
                     {
                         "maxQty": "20000000",
+                        "stepSize": "1",
                         "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1"
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "limit": 200,
@@ -7585,9 +7587,9 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1000",
                         "multiplierDecimal": "4",
+                        "multiplierUp": "1.1000",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.9000"
                     }
                 ],
@@ -7634,16 +7636,16 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0001",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "100000",
-                        "minPrice": "0.0390"
+                        "tickSize": "0.0001",
+                        "minPrice": "0.0390",
+                        "maxPrice": "100000"
                     },
                     {
                         "minQty": "1",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "1",
-                        "maxQty": "1000000",
-                        "filterType": "LOT_SIZE"
+                        "maxQty": "1000000"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
@@ -7652,12 +7654,12 @@ export class ConstantsService {
                         "minQty": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
@@ -7665,9 +7667,9 @@ export class ConstantsService {
                     },
                     {
                         "multiplierUp": "1.1000",
+                        "multiplierDecimal": "4",
                         "multiplierDown": "0.9000",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4"
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -7715,14 +7717,14 @@ export class ConstantsService {
                     {
                         "maxPrice": "100000",
                         "minPrice": "0.0137",
-                        "tickSize": "0.0001",
-                        "filterType": "PRICE_FILTER"
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0001"
                     },
                     {
-                        "minQty": "1",
-                        "filterType": "LOT_SIZE",
                         "maxQty": "10000000",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "filterType": "LOT_SIZE",
+                        "minQty": "1"
                     },
                     {
                         "stepSize": "1",
@@ -7735,17 +7737,17 @@ export class ConstantsService {
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
                         "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -7792,22 +7794,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.00001",
                         "maxPrice": "20000",
+                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.00602"
                     },
                     {
+                        "maxQty": "10000000",
                         "filterType": "LOT_SIZE",
                         "minQty": "1",
-                        "stepSize": "1",
-                        "maxQty": "10000000"
+                        "stepSize": "1"
                     },
                     {
+                        "stepSize": "1",
                         "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "710000",
-                        "stepSize": "1"
+                        "maxQty": "710000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -7823,9 +7825,9 @@ export class ConstantsService {
                     },
                     {
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000",
-                        "filterType": "PERCENT_PRICE"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -7872,9 +7874,9 @@ export class ConstantsService {
                 "filters": [
                     {
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.000368",
                         "maxPrice": "2000",
-                        "tickSize": "0.000001"
+                        "tickSize": "0.000001",
+                        "minPrice": "0.000368"
                     },
                     {
                         "minQty": "1",
@@ -7883,14 +7885,14 @@ export class ConstantsService {
                         "maxQty": "10000000"
                     },
                     {
-                        "stepSize": "1",
-                        "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "5000000"
+                        "minQty": "1",
+                        "maxQty": "5000000",
+                        "stepSize": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "limit": 10,
@@ -7901,9 +7903,9 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1000",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.9000",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1000",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -7951,39 +7953,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "tickSize": "0.00001",
+                        "minPrice": "0.00131",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "20000",
-                        "minPrice": "0.00131"
+                        "maxPrice": "20000"
                     },
                     {
                         "filterType": "LOT_SIZE",
-                        "maxQty": "10000000",
                         "minQty": "1",
+                        "maxQty": "10000000",
                         "stepSize": "1"
                     },
                     {
                         "minQty": "1",
-                        "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1",
                         "maxQty": "7200000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "limit": 10,
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1000",
                         "multiplierDecimal": "4",
+                        "multiplierDown": "0.9000",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.9000"
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -8029,26 +8031,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.000157",
-                        "maxPrice": "2000",
+                        "tickSize": "0.000001",
                         "filterType": "PRICE_FILTER",
-                        "tickSize": "0.000001"
+                        "minPrice": "0.000157",
+                        "maxPrice": "2000"
                     },
                     {
-                        "minQty": "1",
-                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "800000000"
+                        "maxQty": "800000000",
+                        "minQty": "1",
+                        "stepSize": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "50000000",
                         "stepSize": "1",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -8059,10 +8061,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1000",
+                        "multiplierDecimal": "4",
                         "multiplierDown": "0.9000",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4"
+                        "multiplierUp": "1.1000",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -8108,22 +8110,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0001",
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001",
-                        "maxPrice": "100000"
+                        "tickSize": "0.0001",
+                        "maxPrice": "100000",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "maxQty": "5000000",
-                        "filterType": "LOT_SIZE",
                         "minQty": "1",
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "5000000",
                         "stepSize": "1"
                     },
                     {
-                        "maxQty": "500000",
+                        "minQty": "1",
                         "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1"
+                        "maxQty": "500000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -8138,8 +8140,8 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1000",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000",
                         "multiplierDecimal": "4"
                     }
@@ -8187,22 +8189,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "maxPrice": "100000",
                         "filterType": "PRICE_FILTER",
                         "tickSize": "0.001",
-                        "minPrice": "0.200",
-                        "maxPrice": "100000"
+                        "minPrice": "0.200"
                     },
                     {
-                        "stepSize": "0.1",
-                        "minQty": "0.1",
                         "maxQty": "100000",
-                        "filterType": "LOT_SIZE"
+                        "stepSize": "0.1",
+                        "filterType": "LOT_SIZE",
+                        "minQty": "0.1"
                     },
                     {
-                        "maxQty": "150000",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1",
-                        "stepSize": "0.1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "maxQty": "150000",
+                        "stepSize": "0.1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -8213,14 +8215,14 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1000",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.9000",
-                        "multiplierUp": "1.1000"
+                        "multiplierDown": "0.9000"
                     }
                 ],
                 "orderTypes": [
@@ -8272,24 +8274,24 @@ export class ConstantsService {
                         "minPrice": "10"
                     },
                     {
-                        "minQty": "0.001",
-                        "maxQty": "10000",
+                        "stepSize": "0.001",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "0.001"
+                        "maxQty": "10000",
+                        "minQty": "0.001"
                     },
                     {
+                        "stepSize": "0.001",
                         "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.001",
-                        "stepSize": "0.001",
                         "maxQty": "100"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
@@ -8298,8 +8300,8 @@ export class ConstantsService {
                     {
                         "multiplierUp": "1.1000",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.9000",
-                        "filterType": "PERCENT_PRICE"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.9000"
                     }
                 ],
                 "orderTypes": [
@@ -8352,15 +8354,15 @@ export class ConstantsService {
                     },
                     {
                         "maxQty": "10000000",
+                        "minQty": "1",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1",
-                        "minQty": "1"
+                        "stepSize": "1"
                     },
                     {
-                        "stepSize": "1",
                         "maxQty": "2000000",
-                        "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1",
+                        "minQty": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -8376,8 +8378,8 @@ export class ConstantsService {
                     },
                     {
                         "multiplierUp": "1.1000",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.9000",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -8424,15 +8426,15 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.001",
                         "filterType": "PRICE_FILTER",
                         "minPrice": "0.010",
-                        "maxPrice": "100000"
+                        "maxPrice": "100000",
+                        "tickSize": "0.001"
                     },
                     {
+                        "stepSize": "0.1",
                         "minQty": "0.1",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "0.1",
                         "maxQty": "500000"
                     },
                     {
@@ -8446,18 +8448,18 @@ export class ConstantsService {
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
                         "multiplierUp": "1.1000",
-                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.9000",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.9000"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -8503,22 +8505,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "tickSize": "0.0001",
                         "filterType": "PRICE_FILTER",
                         "minPrice": "0.0010",
-                        "maxPrice": "100000",
-                        "tickSize": "0.0001"
+                        "maxPrice": "100000"
                     },
                     {
-                        "minQty": "1",
-                        "filterType": "LOT_SIZE",
                         "stepSize": "1",
-                        "maxQty": "2500000"
+                        "maxQty": "2500000",
+                        "filterType": "LOT_SIZE",
+                        "minQty": "1"
                     },
                     {
+                        "maxQty": "300000",
                         "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
-                        "stepSize": "1",
-                        "maxQty": "300000"
+                        "stepSize": "1"
                     },
                     {
                         "limit": 200,
@@ -8529,14 +8531,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1000",
-                        "multiplierDown": "0.9000",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1000",
+                        "multiplierDown": "0.9000"
                     }
                 ],
                 "orderTypes": [
@@ -8582,9 +8584,9 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "100000",
                         "tickSize": "0.0001",
                         "minPrice": "0.0040",
+                        "maxPrice": "100000",
                         "filterType": "PRICE_FILTER"
                     },
                     {
@@ -8594,28 +8596,28 @@ export class ConstantsService {
                         "stepSize": "1"
                     },
                     {
-                        "maxQty": "40000",
-                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "maxQty": "40000",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.9000",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1000",
-                        "multiplierDown": "0.9000"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -8661,9 +8663,9 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "tickSize": "0.0001",
                         "minPrice": "0.0040",
                         "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0001",
                         "maxPrice": "100000"
                     },
                     {
@@ -8673,18 +8675,18 @@ export class ConstantsService {
                         "maxQty": "10000000"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "1000000",
+                        "minQty": "1",
                         "stepSize": "1",
-                        "minQty": "1"
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "notional": "5",
@@ -8692,8 +8694,8 @@ export class ConstantsService {
                     },
                     {
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE"
                     }
                 ],
@@ -8740,10 +8742,10 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.010",
                         "tickSize": "0.001",
-                        "maxPrice": "100000"
+                        "maxPrice": "100000",
+                        "minPrice": "0.010",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "maxQty": "1000000",
@@ -8752,28 +8754,28 @@ export class ConstantsService {
                         "filterType": "LOT_SIZE"
                     },
                     {
-                        "stepSize": "0.1",
+                        "minQty": "0.1",
                         "maxQty": "220000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.1"
+                        "stepSize": "0.1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.9000",
                         "multiplierUp": "1.1000",
-                        "multiplierDown": "0.9000"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -8819,26 +8821,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.00050",
                         "maxPrice": "20000",
-                        "tickSize": "0.00001"
+                        "tickSize": "0.00001",
+                        "minPrice": "0.00050",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
+                        "filterType": "LOT_SIZE",
                         "minQty": "1",
                         "maxQty": "50000000",
-                        "stepSize": "1",
-                        "filterType": "LOT_SIZE"
+                        "stepSize": "1"
                     },
                     {
                         "stepSize": "1",
-                        "minQty": "1",
                         "maxQty": "2900000",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -8849,9 +8851,9 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -8898,40 +8900,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "maxPrice": "20000",
+                        "minPrice": "0.00050",
                         "tickSize": "0.00001",
-                        "minPrice": "0.00050"
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "20000"
                     },
                     {
-                        "maxQty": "10000000",
-                        "minQty": "1",
                         "filterType": "LOT_SIZE",
+                        "stepSize": "1",
+                        "minQty": "1",
+                        "maxQty": "10000000"
+                    },
+                    {
+                        "maxQty": "2000000",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1",
-                        "stepSize": "1",
-                        "maxQty": "2000000"
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
-                    },
-                    {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4",
                         "multiplierDown": "0.9000",
-                        "multiplierUp": "1.1000",
-                        "multiplierDecimal": "4"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -8977,26 +8979,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "minPrice": "0.010",
                         "tickSize": "0.001",
                         "maxPrice": "100000",
-                        "minPrice": "0.010",
                         "filterType": "PRICE_FILTER"
                     },
                     {
-                        "stepSize": "0.1",
+                        "minQty": "0.1",
                         "maxQty": "1000000",
                         "filterType": "LOT_SIZE",
-                        "minQty": "0.1"
-                    },
-                    {
-                        "minQty": "0.1",
-                        "maxQty": "500000",
-                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "0.1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "stepSize": "0.1",
+                        "minQty": "0.1",
+                        "maxQty": "500000",
+                        "filterType": "MARKET_LOT_SIZE"
+                    },
+                    {
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "limit": 10,
@@ -9007,10 +9009,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.0500",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.9500"
+                        "multiplierDown": "0.9500",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.0500"
                     }
                 ],
                 "orderTypes": [
@@ -9056,39 +9058,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.010",
-                        "tickSize": "0.001",
-                        "maxPrice": "100000"
+                        "maxPrice": "100000",
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.001"
                     },
                     {
                         "minQty": "0.1",
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "1000000",
-                        "stepSize": "0.1"
-                    },
-                    {
                         "stepSize": "0.1",
+                        "maxQty": "1000000",
+                        "filterType": "LOT_SIZE"
+                    },
+                    {
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.1",
-                        "maxQty": "10000"
+                        "stepSize": "0.1",
+                        "maxQty": "10000",
+                        "minQty": "0.1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
+                        "multiplierDecimal": "4",
                         "multiplierDown": "0.9000",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1000"
                     }
                 ],
@@ -9135,16 +9137,16 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0010",
+                        "filterType": "PRICE_FILTER",
                         "maxPrice": "100000",
                         "tickSize": "0.0001",
-                        "filterType": "PRICE_FILTER"
+                        "minPrice": "0.0010"
                     },
                     {
+                        "maxQty": "5000000",
                         "filterType": "LOT_SIZE",
-                        "minQty": "0.1",
                         "stepSize": "0.1",
-                        "maxQty": "5000000"
+                        "minQty": "0.1"
                     },
                     {
                         "minQty": "0.1",
@@ -9153,21 +9155,21 @@ export class ConstantsService {
                         "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.0500",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.9500",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.0500",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -9214,40 +9216,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.00001",
-                        "minPrice": "0.00050",
                         "maxPrice": "20000",
-                        "filterType": "PRICE_FILTER"
+                        "minPrice": "0.00050"
                     },
                     {
                         "minQty": "1",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1",
-                        "maxQty": "10000000"
+                        "maxQty": "10000000",
+                        "stepSize": "1"
                     },
                     {
                         "stepSize": "1",
-                        "maxQty": "2000000",
+                        "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1"
+                        "maxQty": "2000000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1000",
+                        "multiplierDown": "0.9000",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.9000"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -9294,15 +9296,15 @@ export class ConstantsService {
                 "filters": [
                     {
                         "tickSize": "0.0001",
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0010",
-                        "maxPrice": "100000"
+                        "maxPrice": "100000",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "stepSize": "1",
-                        "filterType": "LOT_SIZE",
                         "maxQty": "1000000",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "1"
                     },
                     {
                         "minQty": "1",
@@ -9311,8 +9313,8 @@ export class ConstantsService {
                         "stepSize": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -9323,8 +9325,8 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1000",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000",
                         "multiplierDecimal": "4"
                     }
@@ -9378,20 +9380,20 @@ export class ConstantsService {
                         "maxPrice": "100000"
                     },
                     {
-                        "minQty": "0.1",
-                        "stepSize": "0.1",
+                        "maxQty": "1000000",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "1000000"
-                    },
-                    {
                         "minQty": "0.1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "10000",
                         "stepSize": "0.1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "stepSize": "0.1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "10000",
+                        "minQty": "0.1"
+                    },
+                    {
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "limit": 10,
@@ -9402,9 +9404,9 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -9451,39 +9453,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.001",
-                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.010",
                         "maxPrice": "100000",
-                        "minPrice": "0.010"
+                        "tickSize": "0.001",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "minQty": "0.1",
                         "filterType": "LOT_SIZE",
+                        "stepSize": "0.1",
                         "maxQty": "1000000",
-                        "stepSize": "0.1"
+                        "minQty": "0.1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "0.1",
                         "minQty": "0.1",
                         "maxQty": "10000",
-                        "stepSize": "0.1"
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
+                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1000",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.9000"
                     }
                 ],
@@ -9531,20 +9533,20 @@ export class ConstantsService {
                 "filters": [
                     {
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.00010",
                         "tickSize": "0.00001",
+                        "minPrice": "0.00010",
                         "maxPrice": "2000"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "10000000",
                         "minQty": "1",
+                        "maxQty": "10000000",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "1"
                     },
                     {
-                        "maxQty": "3000000",
-                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "3000000",
                         "stepSize": "1"
                     },
                     {
@@ -9560,10 +9562,10 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1000",
-                        "multiplierDown": "0.9000",
-                        "multiplierDecimal": "4"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.9000"
                     }
                 ],
                 "orderTypes": [
@@ -9609,22 +9611,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "10000",
+                        "tickSize": "0.00001",
                         "minPrice": "0.00010",
-                        "filterType": "PRICE_FILTER",
-                        "tickSize": "0.00001"
-                    },
-                    {
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "1",
-                        "maxQty": "10000000",
-                        "minQty": "1"
+                        "maxPrice": "10000",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "minQty": "1",
+                        "maxQty": "10000000",
                         "stepSize": "1",
-                        "maxQty": "500000",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "LOT_SIZE"
+                    },
+                    {
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
+                        "stepSize": "1",
+                        "maxQty": "500000"
                     },
                     {
                         "limit": 200,
@@ -9639,10 +9641,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000",
+                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4"
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -9688,40 +9690,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.00010",
                         "maxPrice": "10000",
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.00001",
-                        "filterType": "PRICE_FILTER"
+                        "minPrice": "0.00010"
                     },
                     {
                         "filterType": "LOT_SIZE",
-                        "maxQty": "10000000",
+                        "stepSize": "1",
                         "minQty": "1",
-                        "stepSize": "1"
+                        "maxQty": "10000000"
                     },
                     {
-                        "maxQty": "500000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "maxQty": "500000",
+                        "minQty": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1000",
-                        "multiplierDown": "0.9000",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.9000"
                     }
                 ],
                 "orderTypes": [
@@ -9767,40 +9769,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "100000",
-                        "minPrice": "0.010",
-                        "tickSize": "0.001"
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.001",
+                        "minPrice": "0.010"
                     },
                     {
-                        "filterType": "LOT_SIZE",
+                        "maxQty": "1000000",
                         "minQty": "0.1",
                         "stepSize": "0.1",
-                        "maxQty": "1000000"
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "stepSize": "0.1",
-                        "maxQty": "150000",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "stepSize": "0.1",
+                        "maxQty": "150000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1000",
-                        "multiplierDown": "0.9000"
+                        "multiplierDown": "0.9000",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -9846,30 +9848,30 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "100000",
-                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0010",
                         "tickSize": "0.0001",
-                        "minPrice": "0.0010"
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "100000"
                     },
                     {
-                        "minQty": "1",
                         "maxQty": "1000000",
+                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1"
+                        "minQty": "1"
                     },
                     {
                         "stepSize": "1",
-                        "maxQty": "40000",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "maxQty": "40000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
@@ -9877,9 +9879,9 @@ export class ConstantsService {
                     },
                     {
                         "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500"
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -9926,25 +9928,25 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.0010",
+                        "maxPrice": "10000",
                         "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0001",
-                        "maxPrice": "10000"
+                        "tickSize": "0.0001"
                     },
                     {
-                        "minQty": "0.1",
-                        "stepSize": "0.1",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "1000000"
+                        "maxQty": "1000000",
+                        "minQty": "0.1",
+                        "stepSize": "0.1"
                     },
                     {
+                        "stepSize": "0.1",
                         "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1",
-                        "stepSize": "0.1",
-                        "maxQty": "50000"
+                        "maxQty": "200000"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -9955,10 +9957,10 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8000",
+                        "multiplierDecimal": "4",
                         "multiplierUp": "1.2000",
-                        "multiplierDecimal": "4"
+                        "multiplierDown": "0.8000",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -10004,40 +10006,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.00001",
                         "minPrice": "0.00010",
+                        "maxPrice": "10000",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "10000"
+                        "tickSize": "0.00001"
                     },
                     {
                         "stepSize": "1",
                         "maxQty": "10000000",
-                        "minQty": "1",
-                        "filterType": "LOT_SIZE"
-                    },
-                    {
-                        "maxQty": "900000",
-                        "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE",
+                        "filterType": "LOT_SIZE",
                         "minQty": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1",
+                        "maxQty": "900000",
+                        "minQty": "1"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
+                    },
+                    {
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1000",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.9000"
+                        "multiplierDown": "0.9000",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -10083,22 +10085,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "100000",
-                        "minPrice": "0.0010",
                         "tickSize": "0.0001",
-                        "filterType": "PRICE_FILTER"
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "100000",
+                        "minPrice": "0.0010"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "minQty": "1",
                         "maxQty": "1000000",
-                        "stepSize": "1"
+                        "minQty": "1",
+                        "stepSize": "1",
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1",
                         "maxQty": "100000",
-                        "stepSize": "1"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -10113,8 +10115,8 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.9000",
+                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1000"
                     }
@@ -10162,22 +10164,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "tickSize": "0.00001",
                         "minPrice": "0.00010",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "10000",
-                        "tickSize": "0.00001"
+                        "maxPrice": "10000"
                     },
                     {
                         "minQty": "1",
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "10000000",
-                        "stepSize": "1"
-                    },
-                    {
-                        "maxQty": "100000",
                         "stepSize": "1",
-                        "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "maxQty": "10000000",
+                        "filterType": "LOT_SIZE"
+                    },
+                    {
+                        "maxQty": "500000",
+                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -10192,10 +10194,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.9000",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1000",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1000"
+                        "multiplierDown": "0.9000"
                     }
                 ],
                 "orderTypes": [
@@ -10242,15 +10244,15 @@ export class ConstantsService {
                 "filters": [
                     {
                         "maxPrice": "100000",
-                        "minPrice": "0.0010",
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0001",
-                        "filterType": "PRICE_FILTER"
+                        "minPrice": "0.0010"
                     },
                     {
-                        "minQty": "0.1",
-                        "stepSize": "0.1",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "1000000"
+                        "minQty": "0.1",
+                        "maxQty": "1000000",
+                        "stepSize": "0.1"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
@@ -10263,18 +10265,18 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.0500",
-                        "multiplierDown": "0.9500"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.9500",
+                        "multiplierUp": "1.0500"
                     }
                 ],
                 "orderTypes": [
@@ -10320,30 +10322,30 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.000010",
-                        "maxPrice": "100",
                         "filterType": "PRICE_FILTER",
+                        "maxPrice": "100",
+                        "minPrice": "0.000010",
                         "tickSize": "0.000001"
                     },
                     {
+                        "stepSize": "1",
                         "minQty": "1",
-                        "maxQty": "50000000",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1"
+                        "maxQty": "50000000"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1",
                         "maxQty": "5000000",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
@@ -10352,8 +10354,8 @@ export class ConstantsService {
                     {
                         "multiplierUp": "1.1000",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.9000",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.9000"
                     }
                 ],
                 "orderTypes": [
@@ -10399,40 +10401,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "100000",
+                        "minPrice": "0.0010",
                         "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0001",
-                        "minPrice": "0.0010"
+                        "maxPrice": "100000",
+                        "tickSize": "0.0001"
                     },
                     {
-                        "maxQty": "5000000",
-                        "filterType": "LOT_SIZE",
                         "minQty": "0.1",
-                        "stepSize": "0.1"
+                        "maxQty": "5000000",
+                        "stepSize": "0.1",
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "maxQty": "620000",
+                        "stepSize": "0.1",
                         "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1",
-                        "stepSize": "0.1"
+                        "maxQty": "620000"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000",
-                        "filterType": "PERCENT_PRICE"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -10478,40 +10480,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0001000",
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "200",
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0001000",
                         "minPrice": "0.0001000"
                     },
                     {
-                        "minQty": "0.1",
-                        "filterType": "LOT_SIZE",
+                        "stepSize": "0.1",
                         "maxQty": "10000000",
-                        "stepSize": "0.1"
+                        "minQty": "0.1",
+                        "filterType": "LOT_SIZE"
                     },
                     {
                         "stepSize": "0.1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1",
-                        "maxQty": "100000",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "maxQty": "100000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1000",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.9000",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -10559,38 +10561,38 @@ export class ConstantsService {
                     {
                         "filterType": "PRICE_FILTER",
                         "tickSize": "0.001000",
-                        "minPrice": "0.001000",
-                        "maxPrice": "2000"
+                        "maxPrice": "2000",
+                        "minPrice": "0.001000"
                     },
                     {
                         "filterType": "LOT_SIZE",
-                        "maxQty": "1000000",
                         "minQty": "0.1",
-                        "stepSize": "0.1"
+                        "stepSize": "0.1",
+                        "maxQty": "1000000"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1",
-                        "stepSize": "0.1",
-                        "maxQty": "25000"
+                        "maxQty": "25000",
+                        "stepSize": "0.1"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "multiplierDown": "0.9000",
                         "multiplierUp": "1.1000",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.9000"
                     }
                 ],
                 "orderTypes": [
@@ -10635,20 +10637,20 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.0001000",
-                        "tickSize": "0.0001000",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "200"
+                        "maxPrice": "200",
+                        "tickSize": "0.0001000"
                     },
                     {
-                        "stepSize": "1",
+                        "maxQty": "10000000",
                         "minQty": "1",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "10000000"
+                        "stepSize": "1"
                     },
                     {
                         "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "190000",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1"
                     },
                     {
@@ -10660,14 +10662,14 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
                         "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -10714,39 +10716,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.0000010",
-                        "maxPrice": "100",
                         "tickSize": "0.0000001",
-                        "filterType": "PRICE_FILTER"
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "100"
                     },
                     {
-                        "maxQty": "500000000",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "maxQty": "500000000",
+                        "stepSize": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1",
                         "minQty": "1",
-                        "maxQty": "33840000"
+                        "maxQty": "33840000",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDown": "0.9000",
-                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1000",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1000"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.9000"
                     }
                 ],
                 "orderTypes": [
@@ -10792,40 +10794,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0000100",
                         "maxPrice": "200",
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001000"
                     },
                     {
-                        "stepSize": "1",
-                        "minQty": "1",
                         "maxQty": "10000000",
-                        "filterType": "LOT_SIZE"
-                    },
-                    {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "2000000",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "1",
                         "minQty": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1",
+                        "maxQty": "2000000"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "multiplierDown": "0.9000",
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
+                    },
+                    {
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1000"
+                        "multiplierUp": "1.1000",
+                        "multiplierDown": "0.9000",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -10871,22 +10873,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0001000",
                         "maxPrice": "200",
                         "minPrice": "0.0001000",
-                        "filterType": "PRICE_FILTER"
-                    },
-                    {
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "1000000",
-                        "stepSize": "1",
-                        "minQty": "1"
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0001000"
                     },
                     {
                         "minQty": "1",
+                        "maxQty": "1000000",
+                        "stepSize": "1",
+                        "filterType": "LOT_SIZE"
+                    },
+                    {
+                        "stepSize": "1",
                         "maxQty": "300000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1"
+                        "minQty": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -10901,9 +10903,9 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDown": "0.9000",
                         "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1000",
+                        "multiplierDown": "0.9000",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -10950,40 +10952,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "tickSize": "0.000100",
                         "minPrice": "0.001000",
-                        "maxPrice": "2000"
+                        "maxPrice": "2000",
+                        "tickSize": "0.000100",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "filterType": "LOT_SIZE",
-                        "minQty": "1",
                         "maxQty": "100000",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "minQty": "1"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "30000",
                         "minQty": "1",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "maxQty": "30000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
+                        "multiplierDown": "0.9000",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1000",
-                        "multiplierDown": "0.9000"
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -11029,22 +11031,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.001000",
                         "maxPrice": "2000",
+                        "minPrice": "0.001000",
                         "filterType": "PRICE_FILTER",
                         "tickSize": "0.001000"
                     },
                     {
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1",
+                        "maxQty": "100000",
                         "minQty": "1",
-                        "maxQty": "100000"
+                        "stepSize": "1"
                     },
                     {
-                        "maxQty": "18000",
                         "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
                         "stepSize": "1",
-                        "minQty": "1"
+                        "maxQty": "18000"
                     },
                     {
                         "limit": 200,
@@ -11059,10 +11061,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500"
+                        "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -11108,26 +11110,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.001000",
                         "maxPrice": "2000",
+                        "minPrice": "0.001000",
                         "tickSize": "0.001000",
                         "filterType": "PRICE_FILTER"
                     },
                     {
                         "maxQty": "100000",
                         "minQty": "1",
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "filterType": "LOT_SIZE"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1",
                         "stepSize": "1",
-                        "maxQty": "10000"
+                        "maxQty": "10000",
+                        "minQty": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "limit": 10,
@@ -11138,10 +11140,10 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDown": "0.9000",
                         "multiplierUp": "1.1000",
+                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4"
+                        "multiplierDown": "0.9000"
                     }
                 ],
                 "orderTypes": [
@@ -11187,26 +11189,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.00010",
                         "minPrice": "0.00100",
+                        "tickSize": "0.00010",
                         "maxPrice": "20000",
                         "filterType": "PRICE_FILTER"
                     },
                     {
+                        "stepSize": "0.1",
                         "filterType": "LOT_SIZE",
                         "minQty": "0.1",
-                        "stepSize": "0.1",
                         "maxQty": "1000000"
                     },
                     {
-                        "stepSize": "0.1",
                         "minQty": "0.1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "20000",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "stepSize": "0.1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -11266,21 +11268,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.010000",
-                        "tickSize": "0.010000",
-                        "maxPrice": "2000"
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "2000",
+                        "tickSize": "0.010000"
                     },
                     {
-                        "stepSize": "0.1",
-                        "minQty": "0.1",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "1000000"
+                        "maxQty": "1000000",
+                        "minQty": "0.1",
+                        "stepSize": "0.1"
                     },
                     {
                         "maxQty": "1000",
-                        "stepSize": "0.1",
                         "minQty": "0.1",
+                        "stepSize": "0.1",
                         "filterType": "MARKET_LOT_SIZE"
                     },
                     {
@@ -11292,13 +11294,13 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
+                        "multiplierDown": "0.9000",
                         "multiplierUp": "1.1000",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.9000",
                         "filterType": "PERCENT_PRICE"
                     }
                 ],
@@ -11345,26 +11347,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0001000",
                         "filterType": "PRICE_FILTER",
                         "tickSize": "0.0001000",
+                        "minPrice": "0.0001000",
                         "maxPrice": "200"
                     },
                     {
-                        "stepSize": "1",
                         "maxQty": "10000000",
+                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
                         "minQty": "1"
                     },
                     {
-                        "minQty": "1",
                         "maxQty": "250000",
                         "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -11376,9 +11378,9 @@ export class ConstantsService {
                     },
                     {
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.9000",
                         "multiplierUp": "1.1000",
-                        "multiplierDown": "0.9000"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -11424,26 +11426,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "maxPrice": "2000",
                         "minPrice": "0.001000",
-                        "tickSize": "0.000100"
+                        "tickSize": "0.000100",
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "2000"
                     },
                     {
+                        "minQty": "0.1",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "1000000",
                         "stepSize": "0.1",
-                        "minQty": "0.1"
+                        "maxQty": "1000000"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1",
-                        "maxQty": "30000",
-                        "stepSize": "0.1"
+                        "stepSize": "0.1",
+                        "maxQty": "30000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -11454,10 +11456,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
+                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -11503,10 +11505,10 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.001000",
                         "maxPrice": "2000",
-                        "tickSize": "0.000100"
+                        "tickSize": "0.000100",
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.001000"
                     },
                     {
                         "filterType": "LOT_SIZE",
@@ -11516,27 +11518,27 @@ export class ConstantsService {
                     },
                     {
                         "stepSize": "0.1",
-                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "95000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -11582,39 +11584,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.000100",
-                        "maxPrice": "2000",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.000100"
+                        "tickSize": "0.000100",
+                        "minPrice": "0.000100",
+                        "maxPrice": "2000"
                     },
                     {
                         "stepSize": "0.1",
                         "filterType": "LOT_SIZE",
-                        "minQty": "0.1",
-                        "maxQty": "1000000"
-                    },
-                    {
-                        "maxQty": "300000",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "0.1",
+                        "maxQty": "1000000",
                         "minQty": "0.1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "stepSize": "0.1",
+                        "minQty": "0.1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "300000"
+                    },
+                    {
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "limit": 10,
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500"
                     }
                 ],
@@ -11661,22 +11663,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0000100",
                         "minPrice": "0.0000100",
-                        "maxPrice": "200"
+                        "maxPrice": "200",
+                        "tickSize": "0.0000100",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "maxQty": "10000000",
-                        "stepSize": "1",
+                        "minQty": "1",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1"
+                        "stepSize": "1"
                     },
                     {
                         "maxQty": "1000000",
+                        "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1",
-                        "stepSize": "1"
+                        "minQty": "1"
                     },
                     {
                         "limit": 200,
@@ -11740,40 +11742,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.000100",
                         "minPrice": "0.001000",
+                        "tickSize": "0.000100",
                         "maxPrice": "2000",
                         "filterType": "PRICE_FILTER"
                     },
                     {
+                        "minQty": "0.1",
                         "maxQty": "1000000",
                         "filterType": "LOT_SIZE",
-                        "minQty": "0.1",
                         "stepSize": "0.1"
                     },
                     {
-                        "stepSize": "0.1",
-                        "maxQty": "54000",
+                        "minQty": "0.1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.1"
+                        "maxQty": "54000",
+                        "stepSize": "0.1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
+                        "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -11819,40 +11821,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0001000",
+                        "minPrice": "0.0001000",
                         "maxPrice": "200",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0001000"
+                        "tickSize": "0.0001000"
                     },
                     {
                         "stepSize": "1",
-                        "filterType": "LOT_SIZE",
                         "maxQty": "10000000",
+                        "filterType": "LOT_SIZE",
                         "minQty": "1"
                     },
                     {
-                        "minQty": "1",
                         "maxQty": "62500",
                         "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "minQty": "1"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.8000",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.2000",
-                        "multiplierDecimal": "4"
+                        "multiplierDown": "0.8000",
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.2000"
                     }
                 ],
                 "orderTypes": [
@@ -11904,34 +11906,34 @@ export class ConstantsService {
                         "tickSize": "0.0000010"
                     },
                     {
-                        "minQty": "1",
                         "stepSize": "1",
+                        "maxQty": "10000000",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "10000000"
-                    },
-                    {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "600000",
-                        "stepSize": "1",
                         "minQty": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
+                        "maxQty": "600000",
+                        "stepSize": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "multiplierUp": "1.1500",
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
+                    },
+                    {
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -11977,40 +11979,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
                         "minPrice": "0.0001000",
-                        "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0001000"
+                        "tickSize": "0.0001000",
+                        "maxPrice": "200",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "maxQty": "10000000",
                         "minQty": "1",
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "filterType": "LOT_SIZE"
                     },
                     {
                         "minQty": "1",
+                        "maxQty": "50000",
                         "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "50000"
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -12056,26 +12058,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0001000",
                         "maxPrice": "200",
-                        "tickSize": "0.0001000"
+                        "minPrice": "0.0001000",
+                        "tickSize": "0.0001000",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1",
                         "minQty": "1",
-                        "maxQty": "10000000"
+                        "maxQty": "10000000",
+                        "stepSize": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1",
                         "maxQty": "23800",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -12086,8 +12088,8 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE"
                     }
@@ -12135,39 +12137,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "2000",
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.001000",
                         "minPrice": "0.010000",
-                        "filterType": "PRICE_FILTER"
+                        "maxPrice": "2000"
                     },
                     {
-                        "maxQty": "100000",
                         "filterType": "LOT_SIZE",
+                        "maxQty": "100000",
+                        "stepSize": "0.01",
+                        "minQty": "0.01"
+                    },
+                    {
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.01",
+                        "maxQty": "3000",
                         "stepSize": "0.01"
                     },
                     {
-                        "stepSize": "0.01",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.01",
-                        "maxQty": "3000"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
-                    },
-                    {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE"
                     }
                 ],
@@ -12214,40 +12216,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
+                        "tickSize": "0.0000100",
                         "minPrice": "0.0001000",
                         "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0000100"
+                        "maxPrice": "200"
                     },
                     {
-                        "stepSize": "1",
+                        "filterType": "LOT_SIZE",
                         "maxQty": "10000000",
                         "minQty": "1",
-                        "filterType": "LOT_SIZE"
+                        "stepSize": "1"
                     },
                     {
-                        "minQty": "1",
                         "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "500000"
+                        "maxQty": "500000",
+                        "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -12294,21 +12296,21 @@ export class ConstantsService {
                 "filters": [
                     {
                         "maxPrice": "200",
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0001000",
-                        "minPrice": "0.0001000",
-                        "filterType": "PRICE_FILTER"
+                        "minPrice": "0.0001000"
                     },
                     {
-                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "10000000",
-                        "minQty": "1"
+                        "stepSize": "1",
+                        "minQty": "1",
+                        "maxQty": "10000000"
                     },
                     {
-                        "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
                         "maxQty": "100000",
-                        "minQty": "1"
+                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "limit": 200,
@@ -12319,14 +12321,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
+                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -12350,9 +12352,9 @@ export class ConstantsService {
                 "symbol": "BNXUSDT",
                 "pair": "BNXUSDT",
                 "contractType": "PERPETUAL",
-                "deliveryDate": 4133404800000,
+                "deliveryDate": 1742202000000,
                 "onboardDate": 1677049200000,
-                "status": "TRADING",
+                "status": "SETTLING",
                 "maintMarginPercent": "2.5000",
                 "requiredMarginPercent": "5.0000",
                 "baseAsset": "BNX",
@@ -12372,10 +12374,10 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "2000",
+                        "minPrice": "0.001000",
                         "filterType": "PRICE_FILTER",
-                        "tickSize": "0.000100",
-                        "minPrice": "0.001000"
+                        "maxPrice": "2000",
+                        "tickSize": "0.000100"
                     },
                     {
                         "maxQty": "1000000",
@@ -12384,9 +12386,9 @@ export class ConstantsService {
                         "filterType": "LOT_SIZE"
                     },
                     {
-                        "maxQty": "320000",
-                        "minQty": "0.1",
                         "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "50000",
+                        "minQty": "0.1",
                         "stepSize": "0.1"
                     },
                     {
@@ -12402,10 +12404,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -12453,38 +12455,38 @@ export class ConstantsService {
                     {
                         "filterType": "PRICE_FILTER",
                         "minPrice": "0.0000100",
-                        "maxPrice": "200",
-                        "tickSize": "0.0000010"
+                        "tickSize": "0.0000010",
+                        "maxPrice": "200"
                     },
                     {
-                        "maxQty": "10000000",
                         "filterType": "LOT_SIZE",
                         "minQty": "1",
+                        "maxQty": "10000000",
                         "stepSize": "1"
                     },
                     {
-                        "maxQty": "4900000",
-                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "maxQty": "4900000",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.8500",
                         "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500"
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -12531,14 +12533,14 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.010000",
-                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "2000",
                         "tickSize": "0.001000",
-                        "maxPrice": "2000"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
+                        "minQty": "0.01",
                         "filterType": "LOT_SIZE",
                         "maxQty": "100000",
-                        "minQty": "0.01",
                         "stepSize": "0.01"
                     },
                     {
@@ -12548,8 +12550,8 @@ export class ConstantsService {
                         "minQty": "0.01"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -12560,10 +12562,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -12609,40 +12611,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0000010",
-                        "tickSize": "0.0000010",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "100"
+                        "minPrice": "0.0000010",
+                        "maxPrice": "100",
+                        "tickSize": "0.0000010"
                     },
                     {
-                        "maxQty": "10000000",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1",
-                        "stepSize": "1"
+                        "maxQty": "10000000",
+                        "stepSize": "1",
+                        "minQty": "1"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1",
                         "minQty": "1",
-                        "maxQty": "5580000"
+                        "maxQty": "10000000",
+                        "stepSize": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -12688,39 +12690,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.000100",
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.000100",
-                        "maxPrice": "2000",
-                        "filterType": "PRICE_FILTER"
+                        "minPrice": "0.000100",
+                        "maxPrice": "2000"
                     },
                     {
-                        "minQty": "0.1",
-                        "stepSize": "0.1",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "1000000"
+                        "minQty": "0.1",
+                        "maxQty": "1000000",
+                        "stepSize": "0.1"
                     },
                     {
-                        "stepSize": "0.1",
+                        "maxQty": "100000",
                         "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1",
-                        "maxQty": "34800"
+                        "stepSize": "0.1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -12768,20 +12770,20 @@ export class ConstantsService {
                 "filters": [
                     {
                         "maxPrice": "200",
-                        "tickSize": "0.0000100",
+                        "minPrice": "0.0000100",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0000100"
+                        "tickSize": "0.0000100"
                     },
                     {
-                        "maxQty": "10000000",
                         "filterType": "LOT_SIZE",
+                        "maxQty": "10000000",
                         "stepSize": "1",
                         "minQty": "1"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1",
                         "maxQty": "1000000",
+                        "minQty": "1",
                         "stepSize": "1"
                     },
                     {
@@ -12789,18 +12791,18 @@ export class ConstantsService {
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -12846,21 +12848,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "2000",
-                        "tickSize": "0.000100",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.000100"
-                    },
-                    {
-                        "stepSize": "0.1",
-                        "maxQty": "1000000",
-                        "filterType": "LOT_SIZE",
-                        "minQty": "0.1"
+                        "minPrice": "0.000100",
+                        "maxPrice": "2000",
+                        "tickSize": "0.000100"
                     },
                     {
                         "minQty": "0.1",
-                        "filterType": "MARKET_LOT_SIZE",
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "1000000",
+                        "stepSize": "0.1"
+                    },
+                    {
                         "stepSize": "0.1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "0.1",
                         "maxQty": "67000"
                     },
                     {
@@ -12876,10 +12878,10 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -12926,21 +12928,21 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.0000100",
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0000010",
-                        "maxPrice": "200",
-                        "filterType": "PRICE_FILTER"
+                        "maxPrice": "200"
                     },
                     {
                         "filterType": "LOT_SIZE",
+                        "stepSize": "1",
                         "minQty": "1",
-                        "maxQty": "10000000",
-                        "stepSize": "1"
+                        "maxQty": "10000000"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "50000",
-                        "minQty": "1",
-                        "stepSize": "1"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1",
+                        "minQty": "1"
                     },
                     {
                         "limit": 200,
@@ -12951,14 +12953,14 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "multiplierUp": "1.0500",
+                        "multiplierDown": "0.9500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.9500"
+                        "multiplierUp": "1.0500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -13004,40 +13006,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "minPrice": "0.0001000",
                         "tickSize": "0.0000100",
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "200",
-                        "minPrice": "0.0001000"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "filterType": "LOT_SIZE",
-                        "minQty": "1",
                         "maxQty": "10000000",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "minQty": "1"
                     },
                     {
                         "stepSize": "1",
-                        "maxQty": "200000",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "maxQty": "200000"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500"
+                        "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -13083,16 +13085,16 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "2000",
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.000100",
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "2000",
                         "tickSize": "0.000100"
                     },
                     {
                         "minQty": "0.1",
-                        "filterType": "LOT_SIZE",
                         "maxQty": "1000000",
-                        "stepSize": "0.1"
+                        "stepSize": "0.1",
+                        "filterType": "LOT_SIZE"
                     },
                     {
                         "stepSize": "0.1",
@@ -13101,8 +13103,8 @@ export class ConstantsService {
                         "minQty": "0.1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -13113,10 +13115,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -13162,38 +13164,38 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
-                        "tickSize": "0.0000100",
+                        "minPrice": "0.0001000",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0001000"
+                        "maxPrice": "200",
+                        "tickSize": "0.0000100"
                     },
                     {
                         "minQty": "1",
                         "maxQty": "10000000",
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "50000",
                         "minQty": "1",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "300000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500"
                     }
@@ -13242,21 +13244,21 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.0000100",
-                        "tickSize": "0.0000010",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "100"
+                        "maxPrice": "100",
+                        "tickSize": "0.0000010"
                     },
                     {
+                        "filterType": "LOT_SIZE",
                         "minQty": "1",
                         "stepSize": "1",
-                        "filterType": "LOT_SIZE",
                         "maxQty": "10000000"
                     },
                     {
+                        "stepSize": "1",
                         "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "1325000",
-                        "stepSize": "1"
+                        "maxQty": "9000000",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -13271,10 +13273,10 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500"
+                        "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -13320,22 +13322,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0000100",
                         "filterType": "PRICE_FILTER",
                         "tickSize": "0.0000010",
+                        "minPrice": "0.0000100",
                         "maxPrice": "100"
                     },
                     {
                         "maxQty": "10000000",
-                        "minQty": "1",
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "1"
-                    },
-                    {
                         "stepSize": "1",
                         "minQty": "1",
+                        "filterType": "LOT_SIZE"
+                    },
+                    {
+                        "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "2000000"
+                        "maxQty": "2000000",
+                        "stepSize": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -13346,14 +13348,14 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500"
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -13399,40 +13401,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0000001",
-                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0000010",
                         "maxPrice": "100",
-                        "minPrice": "0.0000010"
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0000001"
                     },
                     {
-                        "maxQty": "100000000",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "maxQty": "100000000",
+                        "minQty": "1"
                     },
                     {
-                        "maxQty": "20000000",
-                        "minQty": "1",
                         "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
+                        "maxQty": "20000000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
                         "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500"
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -13478,40 +13480,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0001000",
                         "tickSize": "0.0000100",
-                        "maxPrice": "200"
+                        "minPrice": "0.0001000",
+                        "maxPrice": "200",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "maxQty": "10000000",
                         "stepSize": "1",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "150000",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "stepSize": "1",
+                        "maxQty": "2000000"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
                         "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500"
+                        "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -13557,22 +13559,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0000100",
-                        "maxPrice": "200",
                         "filterType": "PRICE_FILTER",
+                        "maxPrice": "200",
+                        "tickSize": "0.0000100",
                         "minPrice": "0.0001000"
                     },
                     {
-                        "minQty": "1",
                         "filterType": "LOT_SIZE",
                         "maxQty": "10000000",
+                        "minQty": "1",
                         "stepSize": "1"
                     },
                     {
-                        "stepSize": "1",
-                        "maxQty": "50000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1"
+                        "maxQty": "700000",
+                        "minQty": "1",
+                        "stepSize": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -13583,14 +13585,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
+                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500"
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -13636,26 +13638,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.001000",
-                        "minPrice": "0.001000",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "2000"
-                    },
-                    {
-                        "maxQty": "1000000",
-                        "stepSize": "0.1",
-                        "filterType": "LOT_SIZE",
-                        "minQty": "0.1"
+                        "tickSize": "0.001000",
+                        "maxPrice": "2000",
+                        "minPrice": "0.001000"
                     },
                     {
                         "minQty": "0.1",
-                        "maxQty": "11000",
-                        "stepSize": "0.1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "1000000",
+                        "stepSize": "0.1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "stepSize": "0.1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "0.1",
+                        "maxQty": "11000"
+                    },
+                    {
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -13666,10 +13668,10 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -13715,40 +13717,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "200",
                         "minPrice": "0.000010",
                         "tickSize": "0.000010",
-                        "maxPrice": "200"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "stepSize": "0.01",
                         "maxQty": "10000",
-                        "filterType": "LOT_SIZE",
-                        "minQty": "0.01"
+                        "minQty": "0.01",
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "stepSize": "0.01",
+                        "maxQty": "25",
                         "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.01",
-                        "maxQty": "25"
+                        "stepSize": "0.01"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "notional": "0.001",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "0.001"
                     },
                     {
                         "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.9000",
                         "multiplierUp": "1.1000",
-                        "multiplierDecimal": "4",
-                        "multiplierDown": "0.9000"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -13794,21 +13796,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0000100",
+                        "minPrice": "0.0001000",
                         "filterType": "PRICE_FILTER",
                         "maxPrice": "200",
-                        "minPrice": "0.0001000"
+                        "tickSize": "0.0000100"
                     },
                     {
-                        "minQty": "1",
                         "stepSize": "1",
                         "maxQty": "10000000",
-                        "filterType": "LOT_SIZE"
+                        "filterType": "LOT_SIZE",
+                        "minQty": "1"
                     },
                     {
+                        "minQty": "1",
                         "maxQty": "300000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1",
                         "stepSize": "1"
                     },
                     {
@@ -13820,14 +13822,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4"
+                        "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -13873,39 +13875,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0001000",
                         "tickSize": "0.0001000",
                         "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0001000",
                         "maxPrice": "200"
                     },
                     {
                         "filterType": "LOT_SIZE",
+                        "minQty": "1",
                         "maxQty": "10000000",
-                        "stepSize": "1",
-                        "minQty": "1"
+                        "stepSize": "1"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
                         "maxQty": "200000",
-                        "stepSize": "1",
-                        "minQty": "1"
+                        "stepSize": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500"
                     }
                 ],
@@ -13952,26 +13954,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0000100",
                         "filterType": "PRICE_FILTER",
                         "tickSize": "0.0000100",
-                        "maxPrice": "200"
+                        "maxPrice": "200",
+                        "minPrice": "0.0000100"
                     },
                     {
                         "minQty": "1",
-                        "filterType": "LOT_SIZE",
                         "maxQty": "10000000",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
                         "maxQty": "800000",
                         "stepSize": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "limit": 10,
@@ -13982,10 +13984,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -14037,34 +14039,34 @@ export class ConstantsService {
                         "maxPrice": "2000"
                     },
                     {
-                        "maxQty": "10000000",
                         "minQty": "0.1",
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "0.1"
-                    },
-                    {
                         "stepSize": "0.1",
-                        "minQty": "0.1",
-                        "maxQty": "600000",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "10000000"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "minQty": "0.1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "0.1",
+                        "maxQty": "600000"
+                    },
+                    {
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "limit": 10,
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
+                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4"
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -14110,40 +14112,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0000001",
                         "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0000001",
-                        "maxPrice": "200"
+                        "minPrice": "0.0000001",
+                        "maxPrice": "200",
+                        "tickSize": "0.0000001"
                     },
                     {
-                        "minQty": "1",
                         "filterType": "LOT_SIZE",
+                        "minQty": "1",
                         "maxQty": "800000000",
                         "stepSize": "1"
                     },
                     {
-                        "maxQty": "100000000",
-                        "stepSize": "1",
+                        "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1"
+                        "maxQty": "100000000",
+                        "stepSize": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -14189,38 +14191,38 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0000100",
                         "maxPrice": "200",
-                        "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0000100"
-                    },
-                    {
-                        "maxQty": "10000000",
-                        "minQty": "1",
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "1"
+                        "tickSize": "0.0000100",
+                        "minPrice": "0.0000100",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "stepSize": "1",
+                        "maxQty": "10000000",
+                        "filterType": "LOT_SIZE",
+                        "minQty": "1"
+                    },
+                    {
                         "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
-                        "maxQty": "638000"
+                        "maxQty": "638000",
+                        "stepSize": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
                         "multiplierDecimal": "4"
                     }
@@ -14268,22 +14270,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.001000",
-                        "tickSize": "0.001000",
+                        "maxPrice": "2000",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "2000"
+                        "tickSize": "0.001000",
+                        "minPrice": "0.001000"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "maxQty": "10000000",
-                        "minQty": "1",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "filterType": "LOT_SIZE",
+                        "minQty": "1"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1",
                         "stepSize": "1",
-                        "maxQty": "50000"
+                        "maxQty": "50000",
+                        "minQty": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -14298,10 +14300,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
+                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -14353,15 +14355,15 @@ export class ConstantsService {
                         "filterType": "PRICE_FILTER"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "maxQty": "10000000",
                         "minQty": "1",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "1"
                     },
                     {
+                        "stepSize": "1",
                         "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1",
                         "maxQty": "30000"
                     },
                     {
@@ -14373,14 +14375,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -14427,39 +14429,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "filterType": "PRICE_FILTER",
+                        "maxPrice": "200",
                         "tickSize": "0.0000001",
-                        "minPrice": "0.0000010",
-                        "maxPrice": "200"
+                        "minPrice": "0.0000010"
                     },
                     {
                         "minQty": "1",
-                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "80000000"
+                        "maxQty": "80000000",
+                        "stepSize": "1"
                     },
                     {
                         "minQty": "1",
                         "maxQty": "11000000",
-                        "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8000",
+                        "multiplierUp": "1.2000",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.2000"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8000"
                     }
                 ],
                 "orderTypes": [
@@ -14505,40 +14507,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.000100",
-                        "maxPrice": "2000",
                         "minPrice": "0.000100",
-                        "filterType": "PRICE_FILTER"
+                        "maxPrice": "2000"
                     },
                     {
+                        "minQty": "0.1",
                         "maxQty": "5000000",
-                        "filterType": "LOT_SIZE",
+                        "stepSize": "0.1",
+                        "filterType": "LOT_SIZE"
+                    },
+                    {
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "82000",
                         "stepSize": "0.1",
                         "minQty": "0.1"
                     },
                     {
-                        "stepSize": "0.1",
-                        "minQty": "0.1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "82000"
-                    },
-                    {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500"
+                        "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -14584,22 +14586,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "2000",
                         "tickSize": "0.001000",
                         "minPrice": "0.010000",
-                        "maxPrice": "2000"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "1000000",
-                        "stepSize": "0.1",
-                        "minQty": "0.1"
-                    },
-                    {
-                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1",
-                        "maxQty": "3000",
-                        "stepSize": "0.1"
+                        "stepSize": "0.1",
+                        "maxQty": "1000000",
+                        "filterType": "LOT_SIZE"
+                    },
+                    {
+                        "minQty": "0.1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "0.1",
+                        "maxQty": "3000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -14614,10 +14616,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -14664,39 +14666,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "tickSize": "0.0000100",
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001000",
-                        "maxPrice": "200"
+                        "maxPrice": "200",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "minQty": "1",
-                        "maxQty": "5000000",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "minQty": "1",
+                        "maxQty": "5000000"
                     },
                     {
-                        "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1",
-                        "maxQty": "120000"
+                        "maxQty": "800000",
+                        "minQty": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "limit": 10,
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500"
+                        "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -14742,38 +14744,38 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0000100",
-                        "maxPrice": "200",
+                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0000100",
-                        "filterType": "PRICE_FILTER"
+                        "maxPrice": "200",
+                        "tickSize": "0.0000100"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "minQty": "1",
                         "stepSize": "1",
-                        "maxQty": "50000000"
+                        "maxQty": "50000000",
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "stepSize": "1",
                         "minQty": "1",
                         "maxQty": "1300000",
+                        "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
                         "multiplierDecimal": "4"
                     }
@@ -14821,39 +14823,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0000010",
-                        "maxPrice": "200",
-                        "tickSize": "0.0000001"
+                        "tickSize": "0.0000001",
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "200"
                     },
                     {
+                        "minQty": "1",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1",
                         "maxQty": "500000000",
-                        "minQty": "1"
+                        "stepSize": "1"
                     },
                     {
-                        "stepSize": "1",
+                        "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "6000000",
-                        "minQty": "1"
+                        "stepSize": "1",
+                        "maxQty": "6000000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500"
                     }
                 ],
@@ -14900,26 +14902,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0001000",
                         "minPrice": "0.0001000",
                         "maxPrice": "200",
+                        "tickSize": "0.0001000",
                         "filterType": "PRICE_FILTER"
                     },
                     {
-                        "stepSize": "1",
-                        "filterType": "LOT_SIZE",
                         "maxQty": "1250000",
-                        "minQty": "1"
-                    },
-                    {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1",
+                        "filterType": "LOT_SIZE",
                         "minQty": "1",
-                        "maxQty": "10000"
+                        "stepSize": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "maxQty": "40000",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
+                        "stepSize": "1"
+                    },
+                    {
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -14930,9 +14932,9 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500"
                     }
                 ],
@@ -14979,40 +14981,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
+                        "tickSize": "0.0001000",
                         "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001000",
-                        "tickSize": "0.0001000"
+                        "maxPrice": "200"
                     },
                     {
-                        "minQty": "1",
                         "maxQty": "3000000",
                         "stepSize": "1",
+                        "minQty": "1",
                         "filterType": "LOT_SIZE"
                     },
                     {
                         "maxQty": "100000",
-                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "stepSize": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -15058,39 +15060,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
-                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0001000",
                         "minPrice": "0.0001000",
-                        "tickSize": "0.0001000"
+                        "maxPrice": "200",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "filterType": "LOT_SIZE",
-                        "minQty": "1",
                         "maxQty": "5000000",
+                        "minQty": "1",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1",
                         "minQty": "1",
-                        "maxQty": "100000"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "200000",
+                        "stepSize": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500",
                         "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500"
                     }
                 ],
@@ -15138,39 +15140,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.0001000",
-                        "tickSize": "0.0001000",
+                        "maxPrice": "200",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "200"
+                        "tickSize": "0.0001000"
                     },
                     {
                         "minQty": "1",
-                        "filterType": "LOT_SIZE",
                         "maxQty": "5000000",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "1"
                     },
                     {
-                        "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "30000",
-                        "stepSize": "1"
+                        "minQty": "1",
+                        "stepSize": "1",
+                        "maxQty": "30000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500"
+                        "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -15216,40 +15218,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0001000",
                         "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0001000",
                         "maxPrice": "200",
                         "tickSize": "0.0001000"
                     },
                     {
+                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
                         "minQty": "1",
-                        "maxQty": "3000000",
-                        "stepSize": "1"
+                        "maxQty": "3000000"
                     },
                     {
-                        "stepSize": "1",
                         "maxQty": "500000",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -15295,40 +15297,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0000010",
                         "maxPrice": "200",
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0001000"
+                        "tickSize": "0.0000010",
+                        "minPrice": "0.0001000",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "minQty": "1",
                         "filterType": "LOT_SIZE",
                         "maxQty": "10000000",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "minQty": "1"
                     },
                     {
+                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "220000",
-                        "stepSize": "1",
                         "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "stepSize": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500"
+                        "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -15374,26 +15376,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0000100",
+                        "filterType": "PRICE_FILTER",
                         "maxPrice": "200",
                         "minPrice": "0.0001000",
-                        "filterType": "PRICE_FILTER"
+                        "tickSize": "0.0000100"
                     },
                     {
-                        "minQty": "1",
-                        "filterType": "LOT_SIZE",
                         "maxQty": "10000000",
+                        "filterType": "LOT_SIZE",
+                        "minQty": "1",
                         "stepSize": "1"
                     },
                     {
-                        "maxQty": "97000",
                         "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "maxQty": "97000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -15404,10 +15406,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.2000",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.8000",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierUp": "1.2000",
+                        "multiplierDown": "0.8000"
                     }
                 ],
                 "orderTypes": [
@@ -15453,26 +15455,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "tickSize": "0.0000100",
                         "filterType": "PRICE_FILTER",
                         "maxPrice": "200",
-                        "minPrice": "0.0000100",
-                        "tickSize": "0.0000100"
+                        "minPrice": "0.0000100"
                     },
                     {
+                        "maxQty": "100000000",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1",
-                        "stepSize": "1",
-                        "maxQty": "100000000"
-                    },
-                    {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "600000",
                         "minQty": "1",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "maxQty": "600000",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1",
+                        "minQty": "1"
+                    },
+                    {
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "limit": 10,
@@ -15484,9 +15486,9 @@ export class ConstantsService {
                     },
                     {
                         "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500"
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -15532,40 +15534,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0001000",
+                        "minPrice": "0.0001000",
                         "maxPrice": "200",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0001000"
+                        "tickSize": "0.0001000"
                     },
                     {
                         "minQty": "1",
                         "filterType": "LOT_SIZE",
+                        "maxQty": "10000000",
+                        "stepSize": "1"
+                    },
+                    {
                         "stepSize": "1",
-                        "maxQty": "10000000"
+                        "maxQty": "300000",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1"
                     },
                     {
-                        "minQty": "1",
-                        "maxQty": "200000",
-                        "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
-                    },
-                    {
-                        "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -15611,38 +15613,38 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.001000",
-                        "minPrice": "0.001000",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "2000"
+                        "maxPrice": "2000",
+                        "tickSize": "0.001000",
+                        "minPrice": "0.001000"
                     },
                     {
-                        "minQty": "0.1",
-                        "filterType": "LOT_SIZE",
                         "stepSize": "0.1",
-                        "maxQty": "10000000"
+                        "minQty": "0.1",
+                        "maxQty": "10000000",
+                        "filterType": "LOT_SIZE"
                     },
                     {
+                        "maxQty": "40000",
                         "minQty": "0.1",
-                        "maxQty": "10000",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "0.1"
+                        "stepSize": "0.1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE"
                     }
@@ -15690,40 +15692,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0001000",
                         "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001000",
-                        "maxPrice": "200"
+                        "maxPrice": "200",
+                        "tickSize": "0.0001000"
                     },
                     {
-                        "minQty": "1",
                         "maxQty": "10000000",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1"
-                    },
-                    {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "25000",
                         "stepSize": "1",
                         "minQty": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
+                        "maxQty": "100000"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
+                    },
+                    {
+                        "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500"
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -15769,40 +15771,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0001000",
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001000",
-                        "maxPrice": "200"
+                        "maxPrice": "200",
+                        "tickSize": "0.0001000",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "minQty": "1",
                         "filterType": "LOT_SIZE",
+                        "minQty": "1",
                         "maxQty": "10000000",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "150000",
+                        "stepSize": "1",
                         "minQty": "1",
-                        "stepSize": "1"
+                        "maxQty": "150000",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -15848,40 +15850,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "200",
+                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001000",
                         "tickSize": "0.0000100"
                     },
                     {
+                        "filterType": "LOT_SIZE",
                         "minQty": "1",
                         "stepSize": "1",
-                        "maxQty": "10000000",
-                        "filterType": "LOT_SIZE"
+                        "maxQty": "10000000"
                     },
                     {
-                        "maxQty": "200000",
                         "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
                         "stepSize": "1",
-                        "minQty": "1"
+                        "maxQty": "200000"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500"
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -15929,28 +15931,28 @@ export class ConstantsService {
                     {
                         "minPrice": "0.0001000",
                         "tickSize": "0.0001000",
-                        "maxPrice": "200",
-                        "filterType": "PRICE_FILTER"
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "200"
                     },
                     {
-                        "maxQty": "10000000",
                         "minQty": "1",
+                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1"
+                        "maxQty": "10000000"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1",
+                        "maxQty": "200000",
                         "stepSize": "1",
-                        "maxQty": "200000"
+                        "minQty": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
@@ -15958,8 +15960,8 @@ export class ConstantsService {
                     },
                     {
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -16006,40 +16008,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0001000",
                         "tickSize": "0.0001000",
-                        "maxPrice": "200",
-                        "minPrice": "0.0001000"
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "200"
                     },
                     {
                         "filterType": "LOT_SIZE",
                         "stepSize": "1",
-                        "minQty": "1",
-                        "maxQty": "10000000"
+                        "maxQty": "10000000",
+                        "minQty": "1"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "1000000",
                         "minQty": "1",
+                        "maxQty": "1000000",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500"
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -16086,39 +16088,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.0001000",
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "200",
-                        "tickSize": "0.0000100"
+                        "tickSize": "0.0000100",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "minQty": "1",
-                        "maxQty": "10000000",
                         "filterType": "LOT_SIZE",
+                        "maxQty": "10000000",
                         "stepSize": "1"
                     },
                     {
-                        "stepSize": "1",
+                        "maxQty": "800000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1",
-                        "maxQty": "800000"
+                        "stepSize": "1",
+                        "minQty": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -16164,22 +16166,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0000100",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0001000",
-                        "maxPrice": "200"
+                        "maxPrice": "200",
+                        "tickSize": "0.0000100",
+                        "minPrice": "0.0001000"
                     },
                     {
-                        "maxQty": "5000000",
+                        "stepSize": "1",
+                        "filterType": "LOT_SIZE",
+                        "minQty": "1",
+                        "maxQty": "5000000"
+                    },
+                    {
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
                         "stepSize": "1",
-                        "filterType": "LOT_SIZE"
-                    },
-                    {
-                        "maxQty": "900000",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1",
-                        "minQty": "1"
+                        "maxQty": "900000"
                     },
                     {
                         "limit": 200,
@@ -16190,14 +16192,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4"
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -16243,8 +16245,8 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.001000",
                         "tickSize": "0.001000",
+                        "minPrice": "0.001000",
                         "filterType": "PRICE_FILTER",
                         "maxPrice": "2000"
                     },
@@ -16255,28 +16257,28 @@ export class ConstantsService {
                         "maxQty": "1000000"
                     },
                     {
-                        "maxQty": "18000",
-                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "0.1",
                         "minQty": "0.1",
-                        "stepSize": "0.1"
+                        "maxQty": "18000",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
+                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500"
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -16322,34 +16324,34 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
-                        "tickSize": "0.0000010",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0000100"
+                        "minPrice": "0.0000100",
+                        "tickSize": "0.0000010",
+                        "maxPrice": "200"
                     },
                     {
+                        "minQty": "1",
                         "maxQty": "10000000",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1",
-                        "minQty": "1"
+                        "stepSize": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "1500000",
+                        "stepSize": "1",
                         "minQty": "1",
-                        "stepSize": "1",
-                        "maxQty": "1500000"
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "filterType": "PERCENT_PRICE",
@@ -16407,24 +16409,24 @@ export class ConstantsService {
                         "tickSize": "0.0000100"
                     },
                     {
+                        "maxQty": "10000000",
                         "filterType": "LOT_SIZE",
                         "stepSize": "1",
-                        "minQty": "1",
-                        "maxQty": "10000000"
+                        "minQty": "1"
                     },
                     {
+                        "minQty": "1",
                         "stepSize": "1",
-                        "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "1100000"
+                        "maxQty": "1100000",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
@@ -16432,8 +16434,8 @@ export class ConstantsService {
                     },
                     {
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500"
                     }
                 ],
@@ -16480,40 +16482,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0000100",
                         "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0000100",
                         "maxPrice": "200",
                         "tickSize": "0.0000100"
                     },
                     {
+                        "filterType": "LOT_SIZE",
                         "minQty": "1",
                         "maxQty": "10000000",
-                        "stepSize": "1",
-                        "filterType": "LOT_SIZE"
+                        "stepSize": "1"
                     },
                     {
                         "stepSize": "1",
                         "maxQty": "1500000",
-                        "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -16559,40 +16561,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "20000",
-                        "tickSize": "0.01000",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.01000"
+                        "tickSize": "0.01000",
+                        "minPrice": "0.01000",
+                        "maxPrice": "20000"
                     },
                     {
-                        "minQty": "0.1",
-                        "maxQty": "100000",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "0.1"
+                        "maxQty": "100000",
+                        "stepSize": "0.1",
+                        "minQty": "0.1"
                     },
                     {
                         "minQty": "0.1",
+                        "maxQty": "1000",
                         "stepSize": "0.1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "1000"
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -16639,25 +16641,25 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.0000100",
-                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0000100",
-                        "maxPrice": "200"
+                        "maxPrice": "200",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "minQty": "1",
+                        "maxQty": "10000000",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1",
-                        "maxQty": "10000000"
-                    },
-                    {
-                        "maxQty": "540000",
-                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
+                        "maxQty": "540000",
+                        "stepSize": "1"
+                    },
+                    {
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -16668,10 +16670,10 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -16717,30 +16719,30 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0000100",
                         "minPrice": "0.0001000",
-                        "maxPrice": "200",
-                        "filterType": "PRICE_FILTER"
+                        "tickSize": "0.0000100",
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "200"
                     },
                     {
-                        "stepSize": "1",
                         "minQty": "1",
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "10000000"
+                        "stepSize": "1",
+                        "maxQty": "10000000",
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
+                        "maxQty": "200000",
                         "stepSize": "1",
-                        "maxQty": "200000"
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
@@ -16749,8 +16751,8 @@ export class ConstantsService {
                     {
                         "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -16798,20 +16800,20 @@ export class ConstantsService {
                     {
                         "filterType": "PRICE_FILTER",
                         "minPrice": "0.001000",
-                        "tickSize": "0.001000",
-                        "maxPrice": "2000"
+                        "maxPrice": "2000",
+                        "tickSize": "0.001000"
                     },
                     {
                         "stepSize": "0.1",
+                        "maxQty": "1000000",
                         "filterType": "LOT_SIZE",
-                        "minQty": "0.1",
-                        "maxQty": "1000000"
+                        "minQty": "0.1"
                     },
                     {
                         "maxQty": "20000",
-                        "stepSize": "0.1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.1"
+                        "minQty": "0.1",
+                        "stepSize": "0.1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -16826,10 +16828,10 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.2000",
                         "multiplierDown": "0.8000",
-                        "multiplierUp": "1.2000"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -16875,26 +16877,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "minPrice": "0.0001000",
                         "maxPrice": "200",
-                        "tickSize": "0.0001000",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0001000"
+                        "tickSize": "0.0001000"
                     },
                     {
-                        "maxQty": "10000000",
                         "minQty": "1",
+                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
+                        "maxQty": "10000000"
+                    },
+                    {
+                        "minQty": "1",
+                        "maxQty": "100000",
+                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1"
                     },
                     {
-                        "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1",
-                        "maxQty": "100000"
-                    },
-                    {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -16906,9 +16908,9 @@ export class ConstantsService {
                     },
                     {
                         "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -16954,38 +16956,38 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
-                        "tickSize": "0.0000010",
                         "minPrice": "0.0000010",
-                        "filterType": "PRICE_FILTER"
+                        "tickSize": "0.0000010",
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "200"
+                    },
+                    {
+                        "stepSize": "1",
+                        "maxQty": "10000000",
+                        "minQty": "1",
+                        "filterType": "LOT_SIZE"
                     },
                     {
                         "maxQty": "10000000",
                         "stepSize": "1",
-                        "filterType": "LOT_SIZE",
-                        "minQty": "1"
-                    },
-                    {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "10000000",
                         "minQty": "1",
-                        "stepSize": "1"
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
                         "multiplierDown": "0.8500"
                     }
@@ -17033,40 +17035,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "maxPrice": "200",
                         "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001000",
-                        "maxPrice": "200",
                         "tickSize": "0.0001000"
                     },
                     {
-                        "maxQty": "1000000",
                         "minQty": "1",
+                        "maxQty": "1000000",
                         "stepSize": "1",
                         "filterType": "LOT_SIZE"
                     },
                     {
-                        "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "25000",
                         "minQty": "1",
-                        "maxQty": "25000"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500"
+                        "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -17112,40 +17114,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "maxPrice": "200",
                         "minPrice": "0.0000100",
-                        "tickSize": "0.0000100"
+                        "tickSize": "0.0000100",
+                        "maxPrice": "200",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "minQty": "1",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "1",
                         "maxQty": "10000000",
-                        "filterType": "LOT_SIZE"
+                        "minQty": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
                         "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "1700000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -17192,39 +17194,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.0001000",
-                        "tickSize": "0.0001000",
                         "maxPrice": "200",
+                        "tickSize": "0.0001000",
                         "filterType": "PRICE_FILTER"
                     },
                     {
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1",
                         "maxQty": "1000000",
+                        "stepSize": "1",
                         "minQty": "1"
                     },
                     {
                         "minQty": "1",
-                        "maxQty": "20000",
                         "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "20000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500"
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -17271,38 +17273,38 @@ export class ConstantsService {
                 "filters": [
                     {
                         "tickSize": "0.0000010",
+                        "minPrice": "0.0000010",
                         "maxPrice": "200",
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0000010"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "maxQty": "50000000",
                         "filterType": "LOT_SIZE",
+                        "maxQty": "50000000",
+                        "stepSize": "1",
+                        "minQty": "1"
+                    },
+                    {
+                        "maxQty": "10000000",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1",
-                        "minQty": "1",
-                        "maxQty": "10000000"
-                    },
-                    {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "limit": 10,
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
+                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500"
                     }
                 ],
@@ -17349,10 +17351,10 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "tickSize": "0.000100",
                         "minPrice": "0.000100",
                         "maxPrice": "200",
-                        "filterType": "PRICE_FILTER",
-                        "tickSize": "0.000100"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "minQty": "1",
@@ -17361,18 +17363,18 @@ export class ConstantsService {
                         "maxQty": "1000000"
                     },
                     {
-                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "30000",
                         "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "stepSize": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
@@ -17380,8 +17382,8 @@ export class ConstantsService {
                     },
                     {
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500"
                     }
                 ],
@@ -17428,20 +17430,20 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
+                        "tickSize": "0.0000100",
                         "filterType": "PRICE_FILTER",
                         "minPrice": "0.0000100",
-                        "tickSize": "0.0000100"
+                        "maxPrice": "200"
                     },
                     {
-                        "stepSize": "1",
-                        "maxQty": "10000000",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "maxQty": "10000000",
+                        "stepSize": "1"
                     },
                     {
+                        "maxQty": "3000000",
                         "stepSize": "1",
-                        "maxQty": "500000",
                         "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1"
                     },
@@ -17450,17 +17452,17 @@ export class ConstantsService {
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -17507,21 +17509,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.001000",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "2000",
-                        "minPrice": "0.001000"
+                        "tickSize": "0.001000",
+                        "minPrice": "0.001000",
+                        "maxPrice": "2000"
                     },
                     {
-                        "stepSize": "0.1",
-                        "filterType": "LOT_SIZE",
                         "maxQty": "100000",
-                        "minQty": "0.1"
+                        "filterType": "LOT_SIZE",
+                        "minQty": "0.1",
+                        "stepSize": "0.1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "0.1",
                         "minQty": "0.1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "5000"
                     },
                     {
@@ -17538,9 +17540,9 @@ export class ConstantsService {
                     },
                     {
                         "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -17592,34 +17594,34 @@ export class ConstantsService {
                         "tickSize": "0.000010"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "stepSize": "1",
-                        "maxQty": "2000000",
-                        "minQty": "1"
+                        "filterType": "LOT_SIZE",
+                        "minQty": "1",
+                        "maxQty": "2000000"
                     },
                     {
-                        "minQty": "1",
-                        "maxQty": "480000",
                         "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "480000",
+                        "minQty": "1",
                         "stepSize": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "limit": 10,
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -17665,40 +17667,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.001000",
                         "maxPrice": "200",
-                        "tickSize": "0.000100"
+                        "minPrice": "0.001000",
+                        "tickSize": "0.000100",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "maxQty": "1000000",
-                        "minQty": "1",
-                        "stepSize": "1",
-                        "filterType": "LOT_SIZE"
-                    },
-                    {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "21000",
+                        "filterType": "LOT_SIZE",
                         "minQty": "1",
                         "stepSize": "1"
+                    },
+                    {
+                        "maxQty": "21000",
+                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -17744,40 +17746,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.00100",
                         "minPrice": "0.01000",
+                        "maxPrice": "2000",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "2000"
+                        "tickSize": "0.00100"
                     },
                     {
-                        "minQty": "0.1",
-                        "stepSize": "0.1",
+                        "filterType": "LOT_SIZE",
                         "maxQty": "10000",
-                        "filterType": "LOT_SIZE"
+                        "stepSize": "0.1",
+                        "minQty": "0.1"
                     },
                     {
                         "minQty": "0.1",
-                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "1000",
                         "stepSize": "0.1",
-                        "maxQty": "1000"
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -17823,40 +17825,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.000100",
-                        "tickSize": "0.000100"
+                        "maxPrice": "200",
+                        "tickSize": "0.000100",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "1",
-                        "maxQty": "1000000",
-                        "minQty": "1"
-                    },
-                    {
-                        "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
-                        "maxQty": "100000"
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "1000000",
+                        "stepSize": "1"
+                    },
+                    {
+                        "stepSize": "1",
+                        "maxQty": "100000",
+                        "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500"
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -17902,40 +17904,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0000100",
                         "maxPrice": "200",
+                        "minPrice": "0.0000100",
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0000100"
                     },
                     {
-                        "minQty": "1",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1",
-                        "maxQty": "8000000"
-                    },
-                    {
-                        "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
-                        "maxQty": "1000000"
+                        "maxQty": "8000000",
+                        "stepSize": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "1000000",
+                        "stepSize": "1"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
+                    },
+                    {
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500"
+                        "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -17981,21 +17983,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0000010",
                         "tickSize": "0.0000010",
-                        "maxPrice": "200"
+                        "maxPrice": "200",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "maxQty": "10000000",
                         "stepSize": "1",
                         "minQty": "1",
+                        "maxQty": "10000000",
                         "filterType": "LOT_SIZE"
                     },
                     {
                         "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "3000000"
                     },
                     {
@@ -18011,10 +18013,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -18060,26 +18062,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0000010",
                         "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0000010",
                         "maxPrice": "200",
-                        "minPrice": "0.0000010"
+                        "tickSize": "0.0000010"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "maxQty": "40000000",
-                        "minQty": "1",
-                        "stepSize": "1"
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "1",
+                        "minQty": "1"
                     },
                     {
-                        "minQty": "1",
                         "maxQty": "6000000",
+                        "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1"
+                        "minQty": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -18090,9 +18092,9 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
+                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500"
                     }
                 ],
@@ -18145,34 +18147,34 @@ export class ConstantsService {
                         "minPrice": "0.0001000"
                     },
                     {
-                        "maxQty": "400000",
-                        "filterType": "LOT_SIZE",
                         "stepSize": "1",
-                        "minQty": "1"
+                        "filterType": "LOT_SIZE",
+                        "minQty": "1",
+                        "maxQty": "400000"
                     },
                     {
                         "maxQty": "300000",
+                        "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1",
-                        "stepSize": "1"
+                        "minQty": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500"
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -18220,38 +18222,38 @@ export class ConstantsService {
                     {
                         "tickSize": "0.0001000",
                         "maxPrice": "200",
-                        "minPrice": "0.0001000",
-                        "filterType": "PRICE_FILTER"
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0001000"
                     },
                     {
-                        "maxQty": "250000",
-                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1"
-                    },
-                    {
-                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
-                        "maxQty": "80000",
+                        "maxQty": "250000",
                         "stepSize": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "minQty": "1",
+                        "maxQty": "80000",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1"
+                    },
+                    {
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -18297,40 +18299,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0000100",
-                        "tickSize": "0.0000010"
+                        "tickSize": "0.0000010",
+                        "maxPrice": "200",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "1",
                         "maxQty": "10000000",
-                        "minQty": "1"
+                        "stepSize": "1",
+                        "minQty": "1",
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "maxQty": "1000000",
                         "minQty": "1",
+                        "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1"
+                        "maxQty": "5000000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -18376,40 +18378,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "minPrice": "0.0001000",
                         "maxPrice": "200",
                         "tickSize": "0.0000100",
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0001000"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "filterType": "LOT_SIZE",
+                        "minQty": "1",
                         "maxQty": "1000000",
                         "stepSize": "1",
-                        "minQty": "1"
+                        "filterType": "LOT_SIZE"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
-                        "stepSize": "1",
-                        "maxQty": "130000"
+                        "maxQty": "130000",
+                        "stepSize": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -18455,26 +18457,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.000100",
                         "filterType": "PRICE_FILTER",
                         "maxPrice": "2000",
-                        "minPrice": "0.001000"
+                        "minPrice": "0.001000",
+                        "tickSize": "0.000100"
                     },
                     {
                         "filterType": "LOT_SIZE",
-                        "maxQty": "50000",
                         "minQty": "1",
+                        "maxQty": "50000",
                         "stepSize": "1"
                     },
                     {
-                        "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1",
-                        "maxQty": "23000"
+                        "maxQty": "23000",
+                        "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "limit": 10,
@@ -18485,10 +18487,10 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -18534,22 +18536,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.000100",
+                        "minPrice": "0.000100",
                         "maxPrice": "200",
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.000100"
+                        "tickSize": "0.000100",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "maxQty": "1000000",
                         "minQty": "1",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "1",
-                        "filterType": "LOT_SIZE"
+                        "maxQty": "1000000"
                     },
                     {
-                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "20000",
                         "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "stepSize": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -18560,14 +18562,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
+                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4"
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -18613,10 +18615,10 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "200",
+                        "tickSize": "0.0000001",
                         "minPrice": "0.0000010",
-                        "tickSize": "0.0000001"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "minQty": "1",
@@ -18625,27 +18627,27 @@ export class ConstantsService {
                         "maxQty": "1000000000"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1",
                         "minQty": "1",
-                        "maxQty": "400000000"
+                        "stepSize": "1",
+                        "maxQty": "400000000",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
                         "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500"
                     }
                 ],
@@ -18692,40 +18694,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.010000",
+                        "tickSize": "0.001000",
                         "maxPrice": "2000",
-                        "tickSize": "0.001000"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "minQty": "0.01",
-                        "maxQty": "100000",
                         "filterType": "LOT_SIZE",
+                        "maxQty": "100000",
                         "stepSize": "0.01"
                     },
                     {
-                        "minQty": "0.01",
-                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "5000",
-                        "stepSize": "0.01"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "0.01",
+                        "minQty": "0.01"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "limit": 10,
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "multiplierUp": "1.2000",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8000"
+                        "multiplierUp": "1.2000",
+                        "multiplierDown": "0.8000",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -18771,40 +18773,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0000100",
                         "tickSize": "0.0000100",
-                        "maxPrice": "200",
-                        "filterType": "PRICE_FILTER"
+                        "maxPrice": "200"
                     },
                     {
-                        "maxQty": "1000000",
                         "filterType": "LOT_SIZE",
                         "stepSize": "1",
+                        "maxQty": "1000000",
                         "minQty": "1"
                     },
                     {
-                        "maxQty": "3000000",
-                        "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "minQty": "1",
+                        "maxQty": "3000000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500"
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -18850,22 +18852,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.000100",
                         "minPrice": "0.000100",
+                        "filterType": "PRICE_FILTER",
                         "maxPrice": "2000",
-                        "filterType": "PRICE_FILTER"
+                        "tickSize": "0.000100"
                     },
                     {
                         "minQty": "0.01",
-                        "maxQty": "100000",
                         "filterType": "LOT_SIZE",
+                        "maxQty": "100000",
                         "stepSize": "0.01"
                     },
                     {
                         "stepSize": "0.01",
                         "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.01",
-                        "maxQty": "15000"
+                        "maxQty": "70000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -18876,14 +18878,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -18929,40 +18931,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "5000",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.001000",
-                        "tickSize": "0.001000"
+                        "maxPrice": "5000",
+                        "tickSize": "0.001000",
+                        "minPrice": "0.001000"
                     },
                     {
                         "minQty": "0.01",
                         "stepSize": "0.01",
-                        "maxQty": "100000",
-                        "filterType": "LOT_SIZE"
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "100000"
                     },
                     {
-                        "minQty": "0.01",
+                        "maxQty": "9000",
                         "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "0.01",
-                        "maxQty": "9000"
+                        "minQty": "0.01"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -19009,39 +19011,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "maxPrice": "1000",
+                        "tickSize": "0.0001000",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0001000",
-                        "tickSize": "0.0001000"
+                        "minPrice": "0.0001000"
                     },
                     {
-                        "minQty": "0.1",
-                        "maxQty": "1000000",
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "0.1"
-                    },
-                    {
-                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "0.1",
+                        "filterType": "LOT_SIZE",
+                        "minQty": "0.1",
+                        "maxQty": "1000000"
+                    },
+                    {
                         "maxQty": "150000",
+                        "stepSize": "0.1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4"
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -19087,21 +19089,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.1",
                         "tickSize": "0.1",
+                        "minPrice": "0.1",
                         "maxPrice": "500000",
                         "filterType": "PRICE_FILTER"
                     },
                     {
+                        "stepSize": "0.001",
                         "maxQty": "800",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "0.001",
                         "minQty": "0.001"
                     },
                     {
                         "stepSize": "0.001",
-                        "minQty": "0.001",
                         "maxQty": "25",
+                        "minQty": "0.001",
                         "filterType": "MARKET_LOT_SIZE"
                     },
                     {
@@ -19109,18 +19111,18 @@ export class ConstantsService {
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "100"
                     },
                     {
-                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.0500",
                         "multiplierDown": "0.9500",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.0500"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -19166,22 +19168,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.01",
+                        "tickSize": "0.01",
                         "filterType": "PRICE_FILTER",
                         "maxPrice": "100000",
-                        "tickSize": "0.01"
+                        "minPrice": "0.01"
                     },
                     {
-                        "minQty": "0.001",
-                        "maxQty": "8000",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "0.001"
-                    },
-                    {
                         "minQty": "0.001",
                         "stepSize": "0.001",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "400"
+                        "maxQty": "8000"
+                    },
+                    {
+                        "stepSize": "0.001",
+                        "minQty": "0.001",
+                        "maxQty": "400",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -19192,14 +19194,14 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "20",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "20"
                     },
                     {
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.9500",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.0500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierUp": "1.0500"
                     }
                 ],
                 "orderTypes": [
@@ -19245,39 +19247,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.010",
                         "filterType": "PRICE_FILTER",
+                        "minPrice": "0.010",
                         "maxPrice": "100000",
                         "tickSize": "0.010"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "80000",
-                        "stepSize": "0.01",
-                        "minQty": "0.01"
-                    },
-                    {
                         "minQty": "0.01",
-                        "stepSize": "0.01",
+                        "maxQty": "80000",
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "0.01"
+                    },
+                    {
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "400"
+                        "maxQty": "400",
+                        "minQty": "0.01",
+                        "stepSize": "0.01"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
+                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.0500",
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.9500"
                     }
                 ],
@@ -19324,40 +19326,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.1000",
+                        "filterType": "PRICE_FILTER",
                         "maxPrice": "100000",
                         "tickSize": "0.0100",
-                        "filterType": "PRICE_FILTER"
+                        "minPrice": "0.1000"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "800000",
                         "minQty": "0.01",
+                        "stepSize": "0.01",
+                        "maxQty": "800000",
+                        "filterType": "LOT_SIZE"
+                    },
+                    {
+                        "maxQty": "1000",
+                        "minQty": "0.01",
+                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "0.01"
                     },
                     {
-                        "stepSize": "0.01",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "1000",
-                        "minQty": "0.01"
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
-                    },
-                    {
+                        "multiplierUp": "1.0500",
                         "multiplierDown": "0.9500",
-                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.0500"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -19403,22 +19405,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0001",
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001",
-                        "maxPrice": "100000"
+                        "maxPrice": "100000",
+                        "tickSize": "0.0001",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "stepSize": "0.1",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "8000000",
-                        "minQty": "0.1"
+                        "minQty": "0.1",
+                        "maxQty": "8000000"
                     },
                     {
-                        "maxQty": "400000",
-                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "0.1",
                         "stepSize": "0.1",
-                        "minQty": "0.1"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "400000"
                     },
                     {
                         "limit": 200,
@@ -19429,14 +19431,14 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.0500",
+                        "multiplierDown": "0.9500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.9500"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -19481,39 +19483,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "tickSize": "0.000010",
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "200",
-                        "minPrice": "0.000010"
-                    },
-                    {
-                        "filterType": "LOT_SIZE",
-                        "minQty": "1",
-                        "maxQty": "1000000",
-                        "stepSize": "1"
+                        "minPrice": "0.000010",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "stepSize": "1",
+                        "maxQty": "1000000",
+                        "filterType": "LOT_SIZE",
+                        "minQty": "1"
+                    },
+                    {
                         "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1",
                         "minQty": "1",
                         "maxQty": "70000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500"
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -19559,20 +19561,20 @@ export class ConstantsService {
                     {
                         "maxPrice": "200",
                         "minPrice": "0.0001000",
-                        "tickSize": "0.0000100",
-                        "filterType": "PRICE_FILTER"
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0000100"
                     },
                     {
-                        "stepSize": "1",
-                        "filterType": "LOT_SIZE",
                         "minQty": "1",
-                        "maxQty": "1000000"
+                        "maxQty": "1000000",
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "1"
                     },
                     {
-                        "stepSize": "1",
-                        "maxQty": "110000",
+                        "maxQty": "600000",
+                        "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1"
+                        "stepSize": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -19583,14 +19585,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4"
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -19636,40 +19638,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.000010",
-                        "tickSize": "0.000010",
+                        "filterType": "PRICE_FILTER",
                         "maxPrice": "200",
-                        "filterType": "PRICE_FILTER"
+                        "tickSize": "0.000010",
+                        "minPrice": "0.000010"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "1",
+                        "minQty": "1",
                         "maxQty": "50000000",
-                        "minQty": "1"
+                        "stepSize": "1",
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "maxQty": "400000",
+                        "minQty": "1",
                         "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1"
+                        "maxQty": "400000"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1000",
-                        "multiplierDown": "0.9000"
+                        "multiplierDown": "0.9000",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -19715,39 +19717,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0001000",
+                        "filterType": "PRICE_FILTER",
                         "maxPrice": "1000",
                         "tickSize": "0.0001000",
-                        "filterType": "PRICE_FILTER"
+                        "minPrice": "0.0001000"
                     },
                     {
+                        "stepSize": "0.1",
                         "filterType": "LOT_SIZE",
                         "minQty": "0.1",
-                        "stepSize": "0.1",
                         "maxQty": "1000000"
                     },
                     {
+                        "maxQty": "200000",
                         "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1",
-                        "maxQty": "200000",
                         "stepSize": "0.1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "limit": 10,
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
                         "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500",
                         "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE"
                     }
                 ],
@@ -19794,39 +19796,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "1000",
+                        "minPrice": "0.0001000",
                         "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0001000",
-                        "minPrice": "0.0001000"
+                        "maxPrice": "1000",
+                        "tickSize": "0.0001000"
                     },
                     {
-                        "maxQty": "1000000",
-                        "minQty": "0.1",
                         "stepSize": "0.1",
-                        "filterType": "LOT_SIZE"
+                        "maxQty": "1000000",
+                        "filterType": "LOT_SIZE",
+                        "minQty": "0.1"
                     },
                     {
-                        "minQty": "0.1",
-                        "maxQty": "20000",
+                        "maxQty": "150000",
                         "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "0.1",
                         "stepSize": "0.1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500"
                     }
                 ],
@@ -19873,22 +19875,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0001000",
                         "minPrice": "0.0001000",
-                        "filterType": "PRICE_FILTER"
+                        "maxPrice": "200"
                     },
                     {
+                        "maxQty": "5000000",
+                        "stepSize": "0.1",
                         "minQty": "0.1",
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "0.1",
-                        "maxQty": "5000000"
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "maxQty": "250000",
                         "stepSize": "0.1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.1"
+                        "maxQty": "250000",
+                        "minQty": "0.1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "limit": 200,
@@ -19899,14 +19901,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -19958,34 +19960,34 @@ export class ConstantsService {
                         "filterType": "PRICE_FILTER"
                     },
                     {
+                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
                         "minQty": "1",
-                        "maxQty": "1000000",
+                        "maxQty": "1000000"
+                    },
+                    {
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
+                        "maxQty": "90000",
                         "stepSize": "1"
                     },
                     {
-                        "minQty": "1",
-                        "stepSize": "1",
-                        "maxQty": "20000",
-                        "filterType": "MARKET_LOT_SIZE"
-                    },
-                    {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500"
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -20031,38 +20033,38 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0000100",
+                        "tickSize": "0.0000100",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "200",
-                        "tickSize": "0.0000100"
+                        "minPrice": "0.0000100",
+                        "maxPrice": "200"
                     },
                     {
-                        "stepSize": "1",
-                        "minQty": "1",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "10000000"
+                        "maxQty": "10000000",
+                        "stepSize": "1",
+                        "minQty": "1"
                     },
                     {
+                        "maxQty": "1000000",
                         "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "1000000",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500"
                     }
@@ -20112,38 +20114,38 @@ export class ConstantsService {
                     {
                         "tickSize": "0.0001000",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0001000",
-                        "maxPrice": "200"
+                        "maxPrice": "200",
+                        "minPrice": "0.0001000"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "maxQty": "1000000",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "1",
                         "minQty": "1"
                     },
                     {
+                        "maxQty": "70000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "50000",
-                        "stepSize": "1",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "stepSize": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4"
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -20189,40 +20191,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
-                        "tickSize": "0.000100",
+                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.000100",
-                        "filterType": "PRICE_FILTER"
+                        "tickSize": "0.000100",
+                        "maxPrice": "200"
                     },
                     {
+                        "minQty": "1",
                         "filterType": "LOT_SIZE",
                         "maxQty": "1000000",
-                        "minQty": "1",
                         "stepSize": "1"
                     },
                     {
-                        "maxQty": "80000",
-                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "maxQty": "80000",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
+                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -20268,10 +20270,10 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.001000",
                         "tickSize": "0.000100",
-                        "maxPrice": "200"
+                        "minPrice": "0.001000",
+                        "maxPrice": "200",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "minQty": "0.1",
@@ -20280,26 +20282,26 @@ export class ConstantsService {
                         "filterType": "LOT_SIZE"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "0.1",
-                        "maxQty": "10000"
+                        "maxQty": "60000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
                         "multiplierDown": "0.8500"
                     }
@@ -20348,21 +20350,21 @@ export class ConstantsService {
                 "filters": [
                     {
                         "filterType": "PRICE_FILTER",
+                        "tickSize": "0.000100",
                         "minPrice": "0.001000",
-                        "maxPrice": "2000",
-                        "tickSize": "0.000100"
+                        "maxPrice": "2000"
                     },
                     {
-                        "maxQty": "1000000",
-                        "stepSize": "0.1",
+                        "minQty": "0.1",
                         "filterType": "LOT_SIZE",
-                        "minQty": "0.1"
+                        "maxQty": "1000000",
+                        "stepSize": "0.1"
                     },
                     {
-                        "stepSize": "0.1",
-                        "maxQty": "30000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.1"
+                        "minQty": "0.1",
+                        "stepSize": "0.1",
+                        "maxQty": "200000"
                     },
                     {
                         "limit": 200,
@@ -20378,8 +20380,8 @@ export class ConstantsService {
                     },
                     {
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500"
                     }
                 ],
@@ -20426,39 +20428,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.000100",
-                        "maxPrice": "20000",
+                        "tickSize": "0.000010",
                         "filterType": "PRICE_FILTER",
-                        "tickSize": "0.000010"
+                        "minPrice": "0.000100",
+                        "maxPrice": "20000"
                     },
                     {
-                        "stepSize": "0.1",
-                        "minQty": "0.1",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "10000000"
+                        "minQty": "0.1",
+                        "maxQty": "10000000",
+                        "stepSize": "0.1"
                     },
                     {
-                        "maxQty": "60000",
-                        "stepSize": "0.1",
                         "minQty": "0.1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "60000",
+                        "stepSize": "0.1"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500"
                     }
                 ],
@@ -20506,39 +20508,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.0000100",
-                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "200",
                         "tickSize": "0.0000100",
-                        "maxPrice": "200"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "stepSize": "0.1",
-                        "maxQty": "10000000",
                         "filterType": "LOT_SIZE",
-                        "minQty": "0.1"
-                    },
-                    {
-                        "maxQty": "150000",
+                        "maxQty": "10000000",
                         "stepSize": "0.1",
-                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "maxQty": "10000",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "0.1",
+                        "stepSize": "0.1"
+                    },
+                    {
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "limit": 10,
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
+                        "multiplierDown": "0.8500",
                         "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500"
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -20585,25 +20587,25 @@ export class ConstantsService {
                 "filters": [
                     {
                         "tickSize": "0.001",
+                        "maxPrice": "2000",
                         "minPrice": "0.001",
-                        "filterType": "PRICE_FILTER",
-                        "maxPrice": "2000"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "minQty": "0.01",
-                        "maxQty": "100000",
-                        "stepSize": "0.01"
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "0.01",
+                        "maxQty": "100000"
                     },
                     {
                         "maxQty": "4000",
-                        "minQty": "0.01",
                         "stepSize": "0.01",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "0.01"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -20615,9 +20617,9 @@ export class ConstantsService {
                     },
                     {
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1000",
                         "multiplierDown": "0.9000",
-                        "filterType": "PERCENT_PRICE"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1000"
                     }
                 ],
                 "orderTypes": [
@@ -20663,26 +20665,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001000",
                         "maxPrice": "200",
-                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0000100"
                     },
                     {
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1",
-                        "maxQty": "1000000",
-                        "minQty": "1"
-                    },
-                    {
                         "minQty": "1",
-                        "maxQty": "800000",
-                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "1000000",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "800000",
+                        "stepSize": "1",
+                        "minQty": "1"
+                    },
+                    {
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "limit": 10,
@@ -20693,10 +20695,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.8500",
                         "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -20744,38 +20746,38 @@ export class ConstantsService {
                     {
                         "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001000",
-                        "tickSize": "0.0001000",
-                        "maxPrice": "2000"
+                        "maxPrice": "2000",
+                        "tickSize": "0.0001000"
                     },
                     {
                         "minQty": "0.1",
-                        "maxQty": "1000000",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "0.1",
-                        "filterType": "LOT_SIZE"
+                        "maxQty": "1000000"
                     },
                     {
                         "minQty": "0.1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "30000",
-                        "stepSize": "0.1"
+                        "stepSize": "0.1",
+                        "maxQty": "300000",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -20819,22 +20821,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0001000",
-                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "2000",
                         "minPrice": "0.0001000",
-                        "maxPrice": "2000"
+                        "tickSize": "0.0001000",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
+                        "stepSize": "0.1",
                         "maxQty": "1000000",
                         "filterType": "LOT_SIZE",
-                        "minQty": "0.1",
-                        "stepSize": "0.1"
+                        "minQty": "0.1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "0.1",
                         "minQty": "0.1",
-                        "maxQty": "13000"
+                        "maxQty": "13000",
+                        "stepSize": "0.1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "limit": 200,
@@ -20845,13 +20847,13 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
+                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500"
                     }
                 ],
@@ -20899,21 +20901,21 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.001000",
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "2000",
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.001000"
                     },
                     {
-                        "minQty": "0.1",
                         "stepSize": "0.1",
+                        "minQty": "0.1",
                         "maxQty": "100000",
                         "filterType": "LOT_SIZE"
                     },
                     {
-                        "minQty": "0.1",
                         "stepSize": "0.1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "1500"
+                        "maxQty": "1500",
+                        "minQty": "0.1"
                     },
                     {
                         "limit": 200,
@@ -20924,14 +20926,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -20975,16 +20977,16 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0000100",
                         "maxPrice": "200",
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001000"
                     },
                     {
-                        "minQty": "1",
-                        "maxQty": "3500000",
+                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1"
+                        "minQty": "1",
+                        "maxQty": "1000000"
                     },
                     {
                         "minQty": "1",
@@ -21001,14 +21003,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -21054,38 +21056,38 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0001000",
-                        "tickSize": "0.0001000",
                         "maxPrice": "2000",
-                        "filterType": "PRICE_FILTER"
+                        "minPrice": "0.0001000",
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0001000"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "minQty": "0.1",
                         "maxQty": "1000000",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "0.1"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "0.1",
                         "stepSize": "0.1",
-                        "maxQty": "400000",
-                        "minQty": "0.1"
+                        "maxQty": "400000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE"
                     }
@@ -21132,39 +21134,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0001000",
+                        "tickSize": "0.0001000",
                         "maxPrice": "2000",
-                        "tickSize": "0.0001000"
+                        "minPrice": "0.0001000"
                     },
                     {
-                        "stepSize": "0.1",
+                        "filterType": "LOT_SIZE",
                         "minQty": "0.1",
-                        "maxQty": "1000000",
-                        "filterType": "LOT_SIZE"
-                    },
-                    {
-                        "maxQty": "39000",
                         "stepSize": "0.1",
+                        "maxQty": "1000000"
+                    },
+                    {
+                        "minQty": "0.1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.1"
+                        "stepSize": "0.1",
+                        "maxQty": "39000"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -21216,16 +21218,16 @@ export class ConstantsService {
                         "maxPrice": "2000"
                     },
                     {
-                        "minQty": "0.1",
                         "maxQty": "1000000",
+                        "minQty": "0.1",
                         "filterType": "LOT_SIZE",
                         "stepSize": "0.1"
                     },
                     {
+                        "minQty": "0.1",
                         "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "57000",
-                        "stepSize": "0.1",
-                        "minQty": "0.1"
+                        "stepSize": "0.1"
                     },
                     {
                         "limit": 200,
@@ -21236,14 +21238,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500"
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -21289,22 +21291,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "maxPrice": "200",
                         "filterType": "PRICE_FILTER",
                         "minPrice": "0.0000100",
-                        "maxPrice": "200",
                         "tickSize": "0.0000100"
                     },
                     {
-                        "minQty": "1",
-                        "maxQty": "100000000",
                         "stepSize": "1",
-                        "filterType": "LOT_SIZE"
+                        "minQty": "1",
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "100000000"
                     },
                     {
-                        "stepSize": "1",
-                        "maxQty": "3000000",
                         "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "maxQty": "3000000",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1"
                     },
                     {
                         "limit": 200,
@@ -21315,14 +21317,14 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
                         "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -21368,21 +21370,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "minPrice": "0.0000001",
                         "filterType": "PRICE_FILTER",
                         "maxPrice": "200",
-                        "tickSize": "0.0000001",
-                        "minPrice": "0.0000001"
+                        "tickSize": "0.0000001"
                     },
                     {
                         "minQty": "1",
+                        "maxQty": "800000000",
                         "stepSize": "1",
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "800000000"
+                        "filterType": "LOT_SIZE"
                     },
                     {
+                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1",
                         "maxQty": "6000000",
-                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1"
                     },
                     {
@@ -21398,10 +21400,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -21447,22 +21449,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0100",
                         "tickSize": "0.0100",
                         "maxPrice": "2000",
-                        "filterType": "PRICE_FILTER"
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0100"
                     },
                     {
-                        "minQty": "0.01",
-                        "maxQty": "100000",
                         "stepSize": "0.01",
-                        "filterType": "LOT_SIZE"
+                        "minQty": "0.01",
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "100000"
                     },
                     {
+                        "stepSize": "0.01",
                         "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "0.01",
-                        "minQty": "0.01",
-                        "maxQty": "2000"
+                        "maxQty": "2000",
+                        "minQty": "0.01"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -21477,10 +21479,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -21524,40 +21526,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0001000",
                         "maxPrice": "2000",
+                        "tickSize": "0.0001000",
                         "filterType": "PRICE_FILTER",
                         "minPrice": "0.0100000"
                     },
                     {
-                        "maxQty": "1000000",
                         "filterType": "LOT_SIZE",
+                        "stepSize": "0.1",
                         "minQty": "0.1",
+                        "maxQty": "1000000"
+                    },
+                    {
+                        "minQty": "0.1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "400000",
                         "stepSize": "0.1"
                     },
                     {
-                        "maxQty": "400000",
-                        "stepSize": "0.1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.1"
-                    },
-                    {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
+                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -21603,30 +21605,30 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0000100",
-                        "minPrice": "0.0001000",
                         "maxPrice": "200",
-                        "filterType": "PRICE_FILTER"
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0000100",
+                        "minPrice": "0.0001000"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "1000000",
                         "minQty": "0.1",
-                        "stepSize": "0.1"
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "0.1",
+                        "maxQty": "1000000"
                     },
                     {
                         "stepSize": "0.1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "20000",
-                        "minQty": "0.1"
+                        "minQty": "0.1",
+                        "maxQty": "20000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
@@ -21634,9 +21636,9 @@ export class ConstantsService {
                     },
                     {
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500"
+                        "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -21686,34 +21688,34 @@ export class ConstantsService {
                         "filterType": "PRICE_FILTER"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "minQty": "1",
+                        "filterType": "LOT_SIZE",
                         "maxQty": "10000000",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "300000",
+                        "stepSize": "1",
+                        "maxQty": "2000000",
                         "minQty": "1",
-                        "stepSize": "1"
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
+                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -21758,39 +21760,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.0000010",
-                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0000010",
+                        "filterType": "PRICE_FILTER",
                         "maxPrice": "200"
                     },
                     {
-                        "filterType": "LOT_SIZE",
+                        "minQty": "1",
                         "maxQty": "200000000",
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "1"
+                    },
+                    {
+                        "maxQty": "30000000",
+                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1",
                         "minQty": "1"
                     },
                     {
-                        "stepSize": "1",
-                        "minQty": "1",
-                        "maxQty": "30000000",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
-                    },
-                    {
-                        "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4"
+                        "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -21836,34 +21838,34 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0010000",
                         "maxPrice": "2000",
+                        "tickSize": "0.0001000",
                         "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0001000"
+                        "minPrice": "0.0010000"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "0.1",
                         "maxQty": "1000000",
+                        "stepSize": "0.1",
+                        "filterType": "LOT_SIZE",
                         "minQty": "0.1"
                     },
                     {
-                        "maxQty": "100000",
-                        "minQty": "0.1",
+                        "stepSize": "0.1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "0.1"
+                        "maxQty": "100000",
+                        "minQty": "0.1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
                         "filterType": "PERCENT_PRICE",
@@ -21916,39 +21918,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.001000",
                         "maxPrice": "2000",
-                        "tickSize": "0.001000"
+                        "tickSize": "0.001000",
+                        "minPrice": "0.001000"
                     },
                     {
                         "maxQty": "100000",
+                        "minQty": "0.01",
                         "stepSize": "0.01",
-                        "filterType": "LOT_SIZE",
-                        "minQty": "0.01"
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "maxQty": "2000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "0.01",
-                        "minQty": "0.01"
+                        "maxQty": "2000",
+                        "minQty": "0.01",
+                        "stepSize": "0.01"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
                         "multiplierDown": "0.9000",
-                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1000",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -21994,38 +21996,38 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "maxPrice": "2000",
                         "minPrice": "0.0000010",
+                        "maxPrice": "2000",
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0000010"
                     },
                     {
                         "maxQty": "800000000",
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "1",
-                        "minQty": "1"
-                    },
-                    {
-                        "stepSize": "1",
                         "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "3000000"
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "stepSize": "1",
+                        "maxQty": "3000000",
+                        "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
+                    },
+                    {
                         "multiplierUp": "1.1000",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.9000",
                         "multiplierDecimal": "4"
                     }
@@ -22073,20 +22075,20 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0010000",
                         "tickSize": "0.0001000",
-                        "maxPrice": "200"
+                        "maxPrice": "200",
+                        "minPrice": "0.0010000",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "minQty": "1",
-                        "maxQty": "1000000",
                         "filterType": "LOT_SIZE",
+                        "maxQty": "1000000",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
                         "maxQty": "300000"
                     },
@@ -22103,10 +22105,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500"
+                        "multiplierUp": "1.1500",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -22159,32 +22161,32 @@ export class ConstantsService {
                     },
                     {
                         "minQty": "0.1",
-                        "stepSize": "0.1",
                         "filterType": "LOT_SIZE",
+                        "stepSize": "0.1",
                         "maxQty": "1000000"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1",
                         "maxQty": "200000",
-                        "stepSize": "0.1"
+                        "stepSize": "0.1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -22231,34 +22233,34 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "1000",
-                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0001000",
-                        "minPrice": "0.0001000"
+                        "minPrice": "0.0001000",
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "1000"
                     },
                     {
-                        "filterType": "LOT_SIZE",
+                        "minQty": "0.1",
                         "stepSize": "0.1",
-                        "maxQty": "1000000",
-                        "minQty": "0.1"
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "1000000"
                     },
                     {
                         "stepSize": "0.1",
                         "minQty": "0.1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "5000"
+                        "maxQty": "70000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "multiplierDecimal": "4",
@@ -22310,40 +22312,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.01",
                         "filterType": "PRICE_FILTER",
                         "minPrice": "0.01",
+                        "tickSize": "0.01",
                         "maxPrice": "100000"
                     },
                     {
+                        "stepSize": "0.001",
                         "maxQty": "10000",
-                        "filterType": "LOT_SIZE",
                         "minQty": "0.001",
-                        "stepSize": "0.001"
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "200",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.001",
                         "stepSize": "0.001"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "limit": 10,
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
+                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.0500",
-                        "multiplierDown": "0.9500",
-                        "multiplierDecimal": "4"
+                        "multiplierDown": "0.9500"
                     }
                 ],
                 "orderTypes": [
@@ -22389,30 +22391,30 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0010000",
-                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0001000",
-                        "maxPrice": "2000"
+                        "maxPrice": "2000",
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0010000"
+                    },
+                    {
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "0.1",
+                        "maxQty": "1000000",
+                        "minQty": "0.1"
                     },
                     {
                         "stepSize": "0.1",
-                        "filterType": "LOT_SIZE",
+                        "maxQty": "200000",
                         "minQty": "0.1",
-                        "maxQty": "1000000"
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "maxQty": "30000",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.1",
-                        "stepSize": "0.1"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
-                    },
-                    {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
@@ -22420,8 +22422,8 @@ export class ConstantsService {
                     },
                     {
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -22468,40 +22470,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "2000",
+                        "minPrice": "0.0001000",
                         "tickSize": "0.0001000",
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0001000"
+                        "maxPrice": "2000",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "stepSize": "0.1",
                         "minQty": "0.1",
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "1000000"
+                        "stepSize": "0.1",
+                        "maxQty": "1000000",
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "maxQty": "70000",
                         "stepSize": "0.1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.1"
+                        "minQty": "0.1",
+                        "maxQty": "70000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "limit": 10,
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500"
+                        "multiplierUp": "1.1500",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -22548,39 +22550,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "maxPrice": "100000",
-                        "tickSize": "0.01",
+                        "minPrice": "0.01",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.01"
+                        "tickSize": "0.01"
                     },
                     {
-                        "stepSize": "0.001",
                         "filterType": "LOT_SIZE",
+                        "maxQty": "10000",
                         "minQty": "0.001",
-                        "maxQty": "10000"
+                        "stepSize": "0.001"
                     },
                     {
-                        "stepSize": "0.001",
-                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "700",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "0.001",
                         "minQty": "0.001"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.0500",
                         "multiplierDown": "0.9500",
-                        "multiplierDecimal": "4"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.0500"
                     }
                 ],
                 "orderTypes": [
@@ -22626,40 +22628,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0010",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0010",
-                        "maxPrice": "2000"
+                        "maxPrice": "2000",
+                        "tickSize": "0.0010",
+                        "minPrice": "0.0010"
                     },
                     {
-                        "maxQty": "10000000",
-                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
+                        "minQty": "1",
+                        "maxQty": "10000000",
+                        "stepSize": "1"
+                    },
+                    {
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "20000",
+                        "stepSize": "1",
                         "minQty": "1"
                     },
                     {
-                        "minQty": "1",
-                        "maxQty": "20000",
-                        "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE"
-                    },
-                    {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.9000",
-                        "multiplierUp": "1.1000"
+                        "multiplierUp": "1.1000",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -22705,40 +22707,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.01",
-                        "maxPrice": "100000",
-                        "tickSize": "0.01"
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.01",
+                        "maxPrice": "100000"
                     },
                     {
-                        "minQty": "0.001",
                         "filterType": "LOT_SIZE",
+                        "stepSize": "0.001",
                         "maxQty": "300",
-                        "stepSize": "0.001"
+                        "minQty": "0.001"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "180",
+                        "stepSize": "0.001",
                         "minQty": "0.001",
-                        "stepSize": "0.001"
+                        "maxQty": "180",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4"
+                        "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -22784,22 +22786,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0100",
-                        "maxPrice": "100000",
-                        "tickSize": "0.0010"
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0010",
+                        "maxPrice": "100000"
                     },
                     {
                         "minQty": "0.01",
-                        "filterType": "LOT_SIZE",
                         "stepSize": "0.01",
+                        "filterType": "LOT_SIZE",
                         "maxQty": "100000"
                     },
                     {
                         "minQty": "0.01",
                         "maxQty": "10000",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "0.01"
+                        "stepSize": "0.01",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "limit": 200,
@@ -22814,10 +22816,10 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500"
+                        "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -22864,38 +22866,38 @@ export class ConstantsService {
                 "filters": [
                     {
                         "maxPrice": "20000",
-                        "tickSize": "0.000100",
+                        "minPrice": "0.000100",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.000100"
+                        "tickSize": "0.000100"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "1000000",
                         "minQty": "0.1",
+                        "maxQty": "1000000",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "0.1"
                     },
                     {
-                        "stepSize": "0.1",
-                        "maxQty": "60000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.1"
+                        "minQty": "0.1",
+                        "stepSize": "0.1",
+                        "maxQty": "60000"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -22942,22 +22944,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.001",
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "100000",
-                        "tickSize": "0.001"
+                        "minPrice": "0.001",
+                        "tickSize": "0.001",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "maxQty": "100000",
+                        "filterType": "LOT_SIZE",
                         "minQty": "0.01",
                         "stepSize": "0.01"
                     },
                     {
                         "minQty": "0.01",
+                        "stepSize": "0.01",
                         "maxQty": "4000",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "0.01"
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "limit": 200,
@@ -22968,8 +22970,8 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
                         "multiplierUp": "1.0500",
@@ -23021,38 +23023,38 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "maxPrice": "100000",
                         "tickSize": "0.0010000",
-                        "minPrice": "0.0010000",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "100000"
+                        "minPrice": "0.0010000"
                     },
                     {
-                        "maxQty": "10000000",
+                        "stepSize": "0.1",
                         "minQty": "0.1",
                         "filterType": "LOT_SIZE",
+                        "maxQty": "10000000"
+                    },
+                    {
+                        "maxQty": "10000",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "0.1",
                         "stepSize": "0.1"
                     },
                     {
-                        "minQty": "0.1",
-                        "stepSize": "0.1",
-                        "maxQty": "10000",
-                        "filterType": "MARKET_LOT_SIZE"
-                    },
-                    {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.9000",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1000",
                         "multiplierDecimal": "4"
                     }
@@ -23100,40 +23102,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "minPrice": "0.0001000",
                         "tickSize": "0.0001000",
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "200",
-                        "minPrice": "0.0001000"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "minQty": "1",
-                        "filterType": "LOT_SIZE",
                         "maxQty": "1000000",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "1"
                     },
                     {
-                        "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1",
                         "maxQty": "8000",
-                        "stepSize": "1"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -23179,22 +23181,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0000010",
                         "maxPrice": "200",
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0000010",
-                        "filterType": "PRICE_FILTER"
+                        "minPrice": "0.0000010"
                     },
                     {
-                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1",
-                        "maxQty": "200000000"
+                        "maxQty": "200000000",
+                        "stepSize": "1",
+                        "minQty": "1"
                     },
                     {
                         "minQty": "1",
+                        "maxQty": "30000000",
                         "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "30000000"
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "limit": 200,
@@ -23205,14 +23207,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierUp": "1.1500",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -23259,29 +23261,29 @@ export class ConstantsService {
                 "filters": [
                     {
                         "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0000100",
+                        "maxPrice": "200",
                         "minPrice": "0.0001000",
-                        "maxPrice": "200"
+                        "tickSize": "0.0000100"
                     },
                     {
-                        "maxQty": "10000000",
                         "minQty": "1",
+                        "maxQty": "50000000",
                         "filterType": "LOT_SIZE",
                         "stepSize": "1"
                     },
                     {
-                        "minQty": "1",
-                        "maxQty": "200000",
+                        "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1"
+                        "minQty": "1",
+                        "maxQty": "10000000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
@@ -23289,9 +23291,9 @@ export class ConstantsService {
                     },
                     {
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500"
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -23337,26 +23339,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001000",
                         "tickSize": "0.0001000",
+                        "filterType": "PRICE_FILTER",
                         "maxPrice": "200"
                     },
                     {
-                        "minQty": "1",
                         "maxQty": "1000000",
                         "filterType": "LOT_SIZE",
+                        "minQty": "1",
                         "stepSize": "1"
                     },
                     {
-                        "maxQty": "90000",
-                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "maxQty": "90000",
+                        "stepSize": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -23367,9 +23369,9 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
+                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500"
                     }
                 ],
@@ -23417,20 +23419,20 @@ export class ConstantsService {
                 "filters": [
                     {
                         "tickSize": "0.0001000",
+                        "maxPrice": "2000",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0001000",
-                        "maxPrice": "2000"
+                        "minPrice": "0.0001000"
                     },
                     {
-                        "minQty": "0.1",
                         "maxQty": "1000000",
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "0.1"
+                        "stepSize": "0.1",
+                        "minQty": "0.1",
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "stepSize": "0.1",
-                        "maxQty": "15000",
                         "minQty": "0.1",
+                        "maxQty": "70000",
+                        "stepSize": "0.1",
                         "filterType": "MARKET_LOT_SIZE"
                     },
                     {
@@ -23447,9 +23449,9 @@ export class ConstantsService {
                     },
                     {
                         "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500"
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -23495,22 +23497,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0000010",
-                        "maxPrice": "200",
                         "tickSize": "0.0000010",
+                        "maxPrice": "200",
+                        "minPrice": "0.0000010",
                         "filterType": "PRICE_FILTER"
                     },
                     {
                         "maxQty": "10000000",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "minQty": "1"
                     },
                     {
-                        "maxQty": "2000000",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
                         "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "maxQty": "2000000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -23521,14 +23523,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500"
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -23574,30 +23576,30 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0000100",
-                        "maxPrice": "200",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0001000"
+                        "maxPrice": "200",
+                        "minPrice": "0.0001000",
+                        "tickSize": "0.0000100"
                     },
                     {
-                        "minQty": "1",
-                        "maxQty": "1000000",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1"
+                        "maxQty": "1000000",
+                        "stepSize": "1",
+                        "minQty": "1"
                     },
                     {
-                        "minQty": "1",
                         "maxQty": "500000",
                         "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
@@ -23653,10 +23655,10 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "tickSize": "0.0000010",
                         "maxPrice": "200",
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0000010",
-                        "tickSize": "0.0000010"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "filterType": "LOT_SIZE",
@@ -23665,28 +23667,28 @@ export class ConstantsService {
                         "maxQty": "30000000"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "20000000",
                         "minQty": "1",
-                        "stepSize": "1"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1",
+                        "maxQty": "20000000"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -23733,20 +23735,20 @@ export class ConstantsService {
                 "filters": [
                     {
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0000010",
+                        "maxPrice": "200",
                         "tickSize": "0.0000001",
-                        "maxPrice": "200"
+                        "minPrice": "0.0000010"
                     },
                     {
-                        "stepSize": "1",
-                        "filterType": "LOT_SIZE",
                         "minQty": "1",
-                        "maxQty": "50000000"
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "50000000",
+                        "stepSize": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1",
                         "maxQty": "50000000",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1"
                     },
                     {
@@ -23754,18 +23756,18 @@ export class ConstantsService {
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -23811,40 +23813,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "2000",
-                        "minPrice": "0.0010000",
+                        "tickSize": "0.0001000",
                         "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0001000"
+                        "maxPrice": "2000",
+                        "minPrice": "0.0010000"
                     },
                     {
-                        "stepSize": "0.1",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "1000000",
-                        "minQty": "0.1"
+                        "stepSize": "0.1",
+                        "minQty": "0.1",
+                        "maxQty": "1000000"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "100000",
                         "minQty": "0.1",
-                        "stepSize": "0.1",
-                        "maxQty": "100000"
+                        "stepSize": "0.1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -23890,26 +23892,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0000100",
-                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0001000",
                         "maxPrice": "200",
-                        "minPrice": "0.0001000"
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0000100"
                     },
                     {
                         "filterType": "LOT_SIZE",
-                        "minQty": "1",
                         "maxQty": "1000000",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "minQty": "1"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "2000000",
                         "minQty": "1",
+                        "maxQty": "2000000",
                         "stepSize": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -23920,8 +23922,8 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500"
                     }
@@ -23969,40 +23971,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0000010",
-                        "maxPrice": "200",
                         "tickSize": "0.0000010",
-                        "filterType": "PRICE_FILTER"
-                    },
-                    {
-                        "maxQty": "50000000",
-                        "filterType": "LOT_SIZE",
-                        "minQty": "1",
-                        "stepSize": "1"
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0000010",
+                        "maxPrice": "200"
                     },
                     {
                         "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "50000000",
                         "minQty": "1",
-                        "maxQty": "10000000"
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1",
+                        "maxQty": "10000000",
+                        "minQty": "1"
+                    },
+                    {
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "limit": 10,
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4"
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -24048,30 +24050,30 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0001000",
+                        "maxPrice": "200",
                         "minPrice": "0.0001000",
-                        "filterType": "PRICE_FILTER",
-                        "maxPrice": "200"
+                        "tickSize": "0.0001000",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "maxQty": "1000000",
                         "minQty": "1",
+                        "maxQty": "1000000",
                         "filterType": "LOT_SIZE",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1",
                         "maxQty": "500000",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
@@ -24129,20 +24131,20 @@ export class ConstantsService {
                     {
                         "maxPrice": "2000",
                         "minPrice": "0.0010000",
-                        "tickSize": "0.0001000",
-                        "filterType": "PRICE_FILTER"
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0001000"
                     },
                     {
-                        "maxQty": "1000000",
                         "filterType": "LOT_SIZE",
                         "stepSize": "0.1",
-                        "minQty": "0.1"
+                        "minQty": "0.1",
+                        "maxQty": "1000000"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1",
-                        "maxQty": "60000",
-                        "stepSize": "0.1"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "0.1",
+                        "maxQty": "60000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -24153,14 +24155,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
+                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4"
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -24206,40 +24208,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
                         "minPrice": "0.0001000",
                         "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0001000"
+                        "tickSize": "0.0001000",
+                        "maxPrice": "200"
                     },
                     {
-                        "maxQty": "3000000",
                         "stepSize": "0.1",
+                        "maxQty": "3000000",
                         "filterType": "LOT_SIZE",
                         "minQty": "0.1"
                     },
                     {
                         "minQty": "0.1",
-                        "stepSize": "0.1",
                         "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "0.1",
                         "maxQty": "100000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
+                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1000",
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.9000",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -24285,40 +24287,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "maxPrice": "2000",
+                        "tickSize": "0.0010000",
                         "minPrice": "0.0010000",
-                        "tickSize": "0.0010000"
+                        "maxPrice": "2000",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "filterType": "LOT_SIZE",
+                        "maxQty": "1000000",
+                        "minQty": "0.1",
+                        "stepSize": "0.1"
+                    },
+                    {
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1",
                         "stepSize": "0.1",
-                        "maxQty": "1000000"
+                        "maxQty": "40000"
                     },
                     {
-                        "stepSize": "0.1",
-                        "maxQty": "40000",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.1"
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
-                    },
-                    {
-                        "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -24364,22 +24366,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0010000",
                         "maxPrice": "2000",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0010000"
+                        "minPrice": "0.0010000",
+                        "tickSize": "0.0010000"
                     },
                     {
+                        "stepSize": "0.1",
+                        "minQty": "0.1",
                         "maxQty": "100000",
-                        "stepSize": "0.1",
-                        "filterType": "LOT_SIZE",
-                        "minQty": "0.1"
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "0.1",
+                        "minQty": "0.1",
                         "maxQty": "4000",
-                        "minQty": "0.1"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "0.1"
                     },
                     {
                         "limit": 200,
@@ -24394,10 +24396,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500"
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -24444,29 +24446,29 @@ export class ConstantsService {
                 "filters": [
                     {
                         "tickSize": "0.0000100",
-                        "minPrice": "0.0001000",
                         "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0001000",
                         "maxPrice": "200"
                     },
                     {
-                        "minQty": "1",
                         "maxQty": "10000000",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "minQty": "1"
                     },
                     {
-                        "minQty": "1",
-                        "maxQty": "1000000",
                         "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
+                        "maxQty": "2000000",
                         "stepSize": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "notional": "5",
@@ -24474,9 +24476,9 @@ export class ConstantsService {
                     },
                     {
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500"
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -24522,26 +24524,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0000100",
+                        "minPrice": "0.0000100",
                         "maxPrice": "200",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0000100"
+                        "tickSize": "0.0000100"
                     },
                     {
-                        "minQty": "1",
+                        "maxQty": "10000000",
                         "stepSize": "1",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "10000000"
-                    },
-                    {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1",
-                        "maxQty": "3000000",
                         "minQty": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "maxQty": "3000000",
+                        "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1"
+                    },
+                    {
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "limit": 10,
@@ -24552,10 +24554,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -24601,40 +24603,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0001000",
                         "minPrice": "0.0001000",
-                        "maxPrice": "200",
-                        "tickSize": "0.0001000"
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "200"
                     },
                     {
+                        "stepSize": "1",
                         "maxQty": "1000000",
-                        "minQty": "1",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1"
+                        "minQty": "1"
                     },
                     {
                         "maxQty": "200000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "minQty": "1"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -24680,38 +24682,38 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
-                        "tickSize": "0.0000100",
+                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001000",
-                        "filterType": "PRICE_FILTER"
+                        "maxPrice": "200",
+                        "tickSize": "0.0000100"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "stepSize": "1",
+                        "filterType": "LOT_SIZE",
                         "maxQty": "10000000",
                         "minQty": "1"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "800000",
                         "minQty": "1",
+                        "maxQty": "800000",
                         "stepSize": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
                         "multiplierDecimal": "4"
                     }
@@ -24759,38 +24761,38 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0001000",
+                        "minPrice": "0.0001000",
                         "maxPrice": "200",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0001000"
+                        "tickSize": "0.0001000"
                     },
                     {
-                        "maxQty": "10000000",
+                        "stepSize": "1",
+                        "minQty": "1",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1",
-                        "stepSize": "1"
+                        "maxQty": "10000000"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "600000",
-                        "minQty": "1",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500"
                     }
@@ -24844,28 +24846,28 @@ export class ConstantsService {
                         "tickSize": "0.0000100"
                     },
                     {
-                        "maxQty": "10000000",
                         "minQty": "1",
                         "filterType": "LOT_SIZE",
+                        "maxQty": "10000000",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "1000000",
                         "minQty": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "filterType": "PERCENT_PRICE",
@@ -24917,21 +24919,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "minPrice": "0.0000100",
                         "filterType": "PRICE_FILTER",
                         "tickSize": "0.0000100",
-                        "minPrice": "0.0000100",
                         "maxPrice": "200"
                     },
                     {
+                        "minQty": "1",
                         "filterType": "LOT_SIZE",
                         "stepSize": "1",
-                        "minQty": "1",
                         "maxQty": "10000000"
                     },
                     {
+                        "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1",
-                        "minQty": "1",
                         "maxQty": "600000"
                     },
                     {
@@ -24939,17 +24941,17 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500"
                     }
                 ],
@@ -24997,25 +24999,25 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.0001000",
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "200",
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0001000"
                     },
                     {
                         "maxQty": "2000000",
                         "stepSize": "1",
-                        "minQty": "1",
-                        "filterType": "LOT_SIZE"
-                    },
-                    {
-                        "stepSize": "1",
-                        "maxQty": "200000",
-                        "filterType": "MARKET_LOT_SIZE",
+                        "filterType": "LOT_SIZE",
                         "minQty": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
+                        "stepSize": "1",
+                        "maxQty": "200000"
+                    },
+                    {
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "limit": 10,
@@ -25026,10 +25028,10 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
+                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -25075,10 +25077,10 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0000010",
-                        "tickSize": "0.0000010",
+                        "maxPrice": "200",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "200"
+                        "minPrice": "0.0000010",
+                        "tickSize": "0.0000010"
                     },
                     {
                         "filterType": "LOT_SIZE",
@@ -25087,10 +25089,10 @@ export class ConstantsService {
                         "minQty": "1"
                     },
                     {
-                        "minQty": "1",
-                        "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "5000000"
+                        "stepSize": "1",
+                        "maxQty": "5000000",
+                        "minQty": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -25105,10 +25107,10 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -25154,26 +25156,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
                         "minPrice": "0.0000100",
                         "filterType": "PRICE_FILTER",
+                        "maxPrice": "200",
                         "tickSize": "0.0000100"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "minQty": "1",
-                        "stepSize": "1",
-                        "maxQty": "50000000"
+                        "maxQty": "50000000",
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "1"
                     },
                     {
+                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "3000000",
                         "minQty": "1",
-                        "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "stepSize": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -25184,10 +25186,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4"
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -25233,40 +25235,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0001000",
-                        "minPrice": "0.0001000",
+                        "filterType": "PRICE_FILTER",
                         "maxPrice": "200",
-                        "filterType": "PRICE_FILTER"
-                    },
-                    {
-                        "minQty": "1",
-                        "maxQty": "2000000",
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "1"
+                        "minPrice": "0.0001000",
+                        "tickSize": "0.0001000"
                     },
                     {
                         "stepSize": "1",
-                        "maxQty": "300000",
+                        "filterType": "LOT_SIZE",
                         "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "maxQty": "2000000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
+                        "maxQty": "100000"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "multiplierDown": "0.8500",
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
+                    },
+                    {
                         "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500"
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -25314,37 +25316,37 @@ export class ConstantsService {
                     {
                         "minPrice": "0.0000001",
                         "maxPrice": "200",
-                        "tickSize": "0.0000001",
-                        "filterType": "PRICE_FILTER"
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0000001"
                     },
                     {
                         "maxQty": "500000000",
-                        "filterType": "LOT_SIZE",
                         "minQty": "1",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "1"
                     },
                     {
-                        "maxQty": "300000000",
-                        "stepSize": "1",
                         "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "300000000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -25391,22 +25393,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0001000",
                         "maxPrice": "200",
+                        "minPrice": "0.0001000",
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0001000"
                     },
                     {
-                        "stepSize": "1",
-                        "maxQty": "10000000",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "maxQty": "10000000",
+                        "stepSize": "1"
                     },
                     {
                         "maxQty": "1000000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "minQty": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -25417,14 +25419,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
+                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500"
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -25470,21 +25472,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0001000",
-                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0001000",
-                        "maxPrice": "200"
+                        "maxPrice": "200",
+                        "minPrice": "0.0001000",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "maxQty": "10000000",
                         "filterType": "LOT_SIZE",
                         "stepSize": "1",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "maxQty": "10000000"
                     },
                     {
-                        "maxQty": "1000000",
                         "stepSize": "1",
                         "minQty": "1",
+                        "maxQty": "1000000",
                         "filterType": "MARKET_LOT_SIZE"
                     },
                     {
@@ -25492,18 +25494,18 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -25555,20 +25557,20 @@ export class ConstantsService {
                         "maxPrice": "200"
                     },
                     {
-                        "minQty": "1",
-                        "maxQty": "2000000",
                         "filterType": "LOT_SIZE",
+                        "minQty": "1",
+                        "stepSize": "1",
+                        "maxQty": "2000000"
+                    },
+                    {
+                        "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "100000",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1",
-                        "stepSize": "1",
-                        "maxQty": "100000"
-                    },
-                    {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -25579,9 +25581,9 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE"
                     }
                 ],
@@ -25628,16 +25630,16 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0000100",
-                        "minPrice": "0.0000100",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "200"
+                        "minPrice": "0.0000100",
+                        "maxPrice": "200",
+                        "tickSize": "0.0000100"
                     },
                     {
+                        "minQty": "1",
                         "filterType": "LOT_SIZE",
                         "maxQty": "10000000",
-                        "stepSize": "1",
-                        "minQty": "1"
+                        "stepSize": "1"
                     },
                     {
                         "minQty": "1",
@@ -25646,22 +25648,22 @@ export class ConstantsService {
                         "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
+                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500"
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -25707,22 +25709,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0000100",
-                        "minPrice": "0.0000100",
-                        "maxPrice": "200"
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "200",
+                        "minPrice": "0.0000100"
                     },
                     {
+                        "stepSize": "1",
                         "maxQty": "30000000",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1",
-                        "stepSize": "1"
+                        "minQty": "1"
                     },
                     {
                         "stepSize": "1",
                         "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "500000"
+                        "maxQty": "2000000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -25733,14 +25735,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -25787,38 +25789,38 @@ export class ConstantsService {
                 "filters": [
                     {
                         "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0001000",
                         "maxPrice": "200",
-                        "tickSize": "0.0000100",
-                        "minPrice": "0.0001000"
+                        "tickSize": "0.0000100"
+                    },
+                    {
+                        "stepSize": "1",
+                        "filterType": "LOT_SIZE",
+                        "minQty": "1",
+                        "maxQty": "10000000"
                     },
                     {
                         "minQty": "1",
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "10000000",
+                        "maxQty": "1000000",
+                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1"
                     },
                     {
-                        "maxQty": "1000000",
-                        "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1"
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
-                    },
-                    {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -25865,40 +25867,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0100000",
                         "maxPrice": "2000",
-                        "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0010000"
+                        "minPrice": "0.0100000",
+                        "tickSize": "0.0010000",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "maxQty": "100000",
-                        "minQty": "0.1",
+                        "stepSize": "0.1",
                         "filterType": "LOT_SIZE",
+                        "minQty": "0.1"
+                    },
+                    {
+                        "minQty": "0.1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "5000",
                         "stepSize": "0.1"
                     },
                     {
-                        "maxQty": "5000",
-                        "stepSize": "0.1",
-                        "minQty": "0.1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
-                    },
-                    {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500"
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -25944,39 +25946,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0001000",
                         "maxPrice": "200",
-                        "tickSize": "0.0001000",
-                        "filterType": "PRICE_FILTER"
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0001000",
+                        "tickSize": "0.0001000"
                     },
                     {
-                        "filterType": "LOT_SIZE",
+                        "maxQty": "4000000",
                         "minQty": "1",
-                        "maxQty": "10000000",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "1"
                     },
                     {
-                        "minQty": "1",
-                        "stepSize": "1",
+                        "maxQty": "700000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "700000"
+                        "stepSize": "1",
+                        "minQty": "1"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500"
                     }
                 ],
@@ -26023,39 +26025,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "minPrice": "0.0001000",
                         "tickSize": "0.0000100",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0001000",
                         "maxPrice": "200"
                     },
                     {
+                        "stepSize": "1",
                         "minQty": "1",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1",
                         "maxQty": "3000000"
                     },
                     {
-                        "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
-                        "maxQty": "1000000"
+                        "maxQty": "1000000",
+                        "stepSize": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -26102,39 +26104,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "200",
+                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001000",
                         "tickSize": "0.0001000"
                     },
                     {
                         "filterType": "LOT_SIZE",
-                        "minQty": "1",
-                        "stepSize": "1",
-                        "maxQty": "3000000"
-                    },
-                    {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "500000",
+                        "maxQty": "3000000",
                         "stepSize": "1",
                         "minQty": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "minQty": "1",
+                        "stepSize": "1",
+                        "maxQty": "500000",
+                        "filterType": "MARKET_LOT_SIZE"
+                    },
+                    {
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500",
                         "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE"
                     }
                 ],
@@ -26181,39 +26183,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "minPrice": "0.0000001",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "200",
                         "tickSize": "0.0000001",
-                        "minPrice": "0.0000001"
+                        "maxPrice": "200"
                     },
                     {
-                        "stepSize": "1",
-                        "minQty": "1",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "600000000"
+                        "stepSize": "1",
+                        "maxQty": "600000000",
+                        "minQty": "1"
                     },
                     {
                         "maxQty": "60000000",
-                        "stepSize": "1",
                         "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
                         "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE"
                     }
                 ],
@@ -26260,40 +26262,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.00000010",
                         "maxPrice": "200",
-                        "tickSize": "0.00000010",
-                        "minPrice": "0.00000010"
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.00000010"
                     },
                     {
-                        "stepSize": "1",
-                        "filterType": "LOT_SIZE",
                         "maxQty": "3000000000",
-                        "minQty": "1"
-                    },
-                    {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1",
+                        "filterType": "LOT_SIZE",
                         "minQty": "1",
-                        "maxQty": "300000000"
+                        "stepSize": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "maxQty": "300000000",
+                        "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
+                    },
+                    {
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -26339,22 +26341,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0001000",
-                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0001000",
                         "maxPrice": "200",
-                        "tickSize": "0.0001000"
+                        "minPrice": "0.0001000",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "minQty": "1",
+                        "filterType": "LOT_SIZE",
                         "maxQty": "2000000",
                         "stepSize": "1"
                     },
                     {
-                        "maxQty": "100000",
-                        "minQty": "1",
+                        "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1"
+                        "minQty": "1",
+                        "maxQty": "100000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -26418,22 +26420,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0001000",
-                        "tickSize": "0.0000100",
+                        "filterType": "PRICE_FILTER",
                         "maxPrice": "200",
-                        "filterType": "PRICE_FILTER"
+                        "minPrice": "0.0001000",
+                        "tickSize": "0.0000100"
                     },
                     {
-                        "stepSize": "1",
-                        "minQty": "1",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "4000000"
+                        "stepSize": "1",
+                        "maxQty": "4000000",
+                        "minQty": "1"
                     },
                     {
-                        "stepSize": "1",
                         "minQty": "1",
                         "maxQty": "400000",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1"
                     },
                     {
                         "limit": 200,
@@ -26448,10 +26450,10 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500"
+                        "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -26497,20 +26499,20 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
-                        "tickSize": "0.0000100",
                         "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0000100",
+                        "maxPrice": "200",
                         "minPrice": "0.0000100"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "minQty": "1",
                         "maxQty": "20000000",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
                         "stepSize": "1",
                         "maxQty": "1000000"
                     },
@@ -26523,14 +26525,14 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4"
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -26577,20 +26579,20 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.0001000",
-                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0001000",
-                        "maxPrice": "200"
+                        "maxPrice": "200",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "maxQty": "1000000",
-                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "stepSize": "1",
+                        "maxQty": "1000000"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "400000",
                         "stepSize": "1",
+                        "maxQty": "400000",
                         "minQty": "1"
                     },
                     {
@@ -26598,8 +26600,8 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "notional": "5",
@@ -26655,40 +26657,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0010000",
                         "maxPrice": "200",
-                        "tickSize": "0.0001000",
-                        "filterType": "PRICE_FILTER"
+                        "tickSize": "0.0001000"
                     },
                     {
-                        "minQty": "1",
                         "maxQty": "1000000",
+                        "minQty": "1",
                         "stepSize": "1",
                         "filterType": "LOT_SIZE"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1",
                         "stepSize": "1",
-                        "maxQty": "50000"
+                        "maxQty": "50000",
+                        "minQty": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
+                        "multiplierDown": "0.8500",
                         "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500"
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -26734,34 +26736,34 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0001000",
                         "maxPrice": "200",
-                        "minPrice": "0.0001000"
+                        "minPrice": "0.0001000",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "maxQty": "4000000",
-                        "stepSize": "1",
                         "minQty": "1",
-                        "filterType": "LOT_SIZE"
-                    },
-                    {
-                        "minQty": "1",
-                        "maxQty": "200000",
-                        "filterType": "MARKET_LOT_SIZE",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "stepSize": "1",
+                        "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "200000"
+                    },
+                    {
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "limit": 10,
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "multiplierDecimal": "4",
@@ -26813,26 +26815,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "200",
-                        "tickSize": "0.0000010",
-                        "minPrice": "0.0000010"
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0000010",
+                        "tickSize": "0.0000010"
                     },
                     {
-                        "maxQty": "100000000",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1",
-                        "stepSize": "1"
-                    },
-                    {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "30000000",
+                        "maxQty": "100000000",
                         "stepSize": "1",
                         "minQty": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
+                        "maxQty": "30000000"
+                    },
+                    {
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -26844,9 +26846,9 @@ export class ConstantsService {
                     },
                     {
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500"
+                        "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -26890,39 +26892,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "576.3",
+                        "maxPrice": "1000000",
                         "filterType": "PRICE_FILTER",
-                        "tickSize": "0.1",
-                        "maxPrice": "1000000"
+                        "minPrice": "576.3",
+                        "tickSize": "0.1"
                     },
                     {
-                        "maxQty": "500",
-                        "filterType": "LOT_SIZE",
                         "minQty": "0.001",
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "500",
                         "stepSize": "0.001"
                     },
                     {
-                        "maxQty": "1",
+                        "minQty": "0.001",
                         "stepSize": "0.001",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.001"
+                        "maxQty": "1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.9500",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.0500",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.9500",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -26969,28 +26971,28 @@ export class ConstantsService {
                     {
                         "minPrice": "41.10",
                         "filterType": "PRICE_FILTER",
-                        "tickSize": "0.01",
-                        "maxPrice": "100000"
+                        "maxPrice": "100000",
+                        "tickSize": "0.01"
                     },
                     {
-                        "maxQty": "10000",
                         "stepSize": "0.001",
                         "filterType": "LOT_SIZE",
+                        "maxQty": "10000",
                         "minQty": "0.001"
                     },
                     {
                         "minQty": "0.001",
-                        "stepSize": "0.001",
+                        "maxQty": "10",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "10"
+                        "stepSize": "0.001"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
@@ -26998,9 +27000,9 @@ export class ConstantsService {
                     },
                     {
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.0500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.9500"
+                        "multiplierDown": "0.9500",
+                        "multiplierUp": "1.0500"
                     }
                 ],
                 "orderTypes": [
@@ -27050,34 +27052,34 @@ export class ConstantsService {
                         "maxPrice": "200"
                     },
                     {
+                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1",
                         "maxQty": "20000000",
-                        "stepSize": "1"
+                        "minQty": "1"
                     },
                     {
-                        "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "2000000",
                         "minQty": "1",
-                        "maxQty": "100000"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -27121,40 +27123,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
                         "tickSize": "0.0000010",
-                        "minPrice": "0.0000010",
-                        "filterType": "PRICE_FILTER"
+                        "maxPrice": "200",
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0000010"
                     },
                     {
-                        "stepSize": "1",
-                        "maxQty": "600000000",
+                        "minQty": "1",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1"
+                        "stepSize": "1",
+                        "maxQty": "600000000"
                     },
                     {
+                        "minQty": "1",
                         "maxQty": "6000000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1",
                         "stepSize": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500"
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -27199,15 +27201,15 @@ export class ConstantsService {
                 "filters": [
                     {
                         "tickSize": "0.0001000",
-                        "minPrice": "0.0010000",
+                        "filterType": "PRICE_FILTER",
                         "maxPrice": "2000",
-                        "filterType": "PRICE_FILTER"
+                        "minPrice": "0.0010000"
                     },
                     {
-                        "filterType": "LOT_SIZE",
+                        "stepSize": "0.1",
                         "minQty": "0.1",
                         "maxQty": "100000",
-                        "stepSize": "0.1"
+                        "filterType": "LOT_SIZE"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
@@ -27216,21 +27218,21 @@ export class ConstantsService {
                         "minQty": "0.1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "limit": 10,
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
+                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500"
                     }
                 ],
@@ -27275,22 +27277,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0001000",
+                        "maxPrice": "200",
                         "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001000",
-                        "maxPrice": "200"
+                        "tickSize": "0.0001000"
                     },
                     {
-                        "maxQty": "1000000",
-                        "minQty": "1",
                         "filterType": "LOT_SIZE",
+                        "minQty": "1",
+                        "maxQty": "1000000",
                         "stepSize": "1"
                     },
                     {
-                        "maxQty": "200000",
+                        "minQty": "1",
                         "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1"
+                        "maxQty": "200000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -27301,13 +27303,13 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -27352,21 +27354,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
                         "tickSize": "0.0000100",
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0000100"
+                        "minPrice": "0.0000100",
+                        "maxPrice": "200",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "stepSize": "1",
                         "maxQty": "40000000",
-                        "filterType": "LOT_SIZE",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "filterType": "LOT_SIZE"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1",
                         "stepSize": "1",
+                        "minQty": "1",
                         "maxQty": "6000000"
                     },
                     {
@@ -27374,8 +27376,8 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
@@ -27429,39 +27431,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
                         "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0001000",
-                        "minPrice": "0.0010000"
+                        "maxPrice": "200",
+                        "minPrice": "0.0010000",
+                        "tickSize": "0.0001000"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "minQty": "1",
-                        "maxQty": "1000000",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "1000000"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1",
                         "stepSize": "1",
-                        "maxQty": "200000"
+                        "maxQty": "200000",
+                        "minQty": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE"
                     }
                 ],
@@ -27507,20 +27509,20 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.0001000",
-                        "maxPrice": "200",
+                        "tickSize": "0.0001000",
                         "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0001000"
+                        "maxPrice": "200"
                     },
                     {
-                        "stepSize": "1",
-                        "filterType": "LOT_SIZE",
                         "maxQty": "1000000",
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "1",
                         "minQty": "1"
                     },
                     {
+                        "stepSize": "1",
                         "maxQty": "500000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1",
                         "minQty": "1"
                     },
                     {
@@ -27528,17 +27530,17 @@ export class ConstantsService {
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500"
                     }
                 ],
@@ -27583,22 +27585,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "maxPrice": "200",
                         "filterType": "PRICE_FILTER",
                         "minPrice": "0.0000100",
-                        "maxPrice": "200",
                         "tickSize": "0.0000100"
                     },
                     {
                         "maxQty": "8000000",
-                        "minQty": "1",
                         "filterType": "LOT_SIZE",
+                        "minQty": "1",
                         "stepSize": "1"
                     },
                     {
-                        "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "500000",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -27613,10 +27615,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -27660,10 +27662,10 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0001000",
+                        "maxPrice": "200",
                         "tickSize": "0.0001000",
-                        "maxPrice": "200"
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0001000"
                     },
                     {
                         "minQty": "1",
@@ -27673,27 +27675,27 @@ export class ConstantsService {
                     },
                     {
                         "stepSize": "1",
+                        "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "100000",
-                        "minQty": "1"
+                        "maxQty": "100000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -27737,40 +27739,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0010000",
                         "maxPrice": "2000",
-                        "minPrice": "0.0010000"
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0010000",
+                        "tickSize": "0.0010000"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "stepSize": "0.1",
+                        "filterType": "LOT_SIZE",
                         "minQty": "0.1",
                         "maxQty": "200000"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "20000",
+                        "minQty": "0.1",
                         "stepSize": "0.1",
-                        "minQty": "0.1"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "20000"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500"
+                        "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -27814,40 +27816,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "tickSize": "0.0000010",
                         "filterType": "PRICE_FILTER",
                         "minPrice": "0.0000010",
-                        "maxPrice": "200",
-                        "tickSize": "0.0000010"
+                        "maxPrice": "200"
                     },
                     {
-                        "maxQty": "300000000",
                         "stepSize": "1",
                         "filterType": "LOT_SIZE",
+                        "maxQty": "300000000",
                         "minQty": "1"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "2000000",
                         "stepSize": "1",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "maxQty": "70000000"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
+                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -27891,22 +27893,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0000100",
                         "tickSize": "0.0000100",
-                        "maxPrice": "200"
+                        "maxPrice": "200",
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0000100"
                     },
                     {
+                        "stepSize": "1",
                         "maxQty": "2000000",
-                        "minQty": "1",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1"
+                        "minQty": "1"
                     },
                     {
-                        "minQty": "1",
-                        "maxQty": "200000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1"
+                        "minQty": "1",
+                        "stepSize": "1",
+                        "maxQty": "200000"
                     },
                     {
                         "limit": 200,
@@ -27921,10 +27923,10 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -27962,27 +27964,27 @@ export class ConstantsService {
                 "quotePrecision": 8,
                 "underlyingType": "COIN",
                 "underlyingSubType": [],
-                "triggerProtect": "0.1500",
+                "triggerProtect": "0.2000",
                 "liquidationFee": "0.015000",
-                "marketTakeBound": "0.15",
+                "marketTakeBound": "0.20",
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "200",
-                        "tickSize": "0.0001000",
-                        "minPrice": "0.0001000"
+                        "minPrice": "0.0001000",
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0001000"
                     },
                     {
-                        "minQty": "1",
                         "stepSize": "1",
-                        "maxQty": "3000000",
-                        "filterType": "LOT_SIZE"
+                        "filterType": "LOT_SIZE",
+                        "minQty": "1",
+                        "maxQty": "3000000"
                     },
                     {
-                        "minQty": "1",
                         "maxQty": "60000",
                         "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
                         "stepSize": "1"
                     },
                     {
@@ -27999,9 +28001,9 @@ export class ConstantsService {
                     },
                     {
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500"
+                        "multiplierUp": "1.2000",
+                        "multiplierDown": "0.8000",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -28046,19 +28048,19 @@ export class ConstantsService {
                 "filters": [
                     {
                         "maxPrice": "200",
+                        "tickSize": "0.0000100",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0000100",
-                        "tickSize": "0.0000100"
+                        "minPrice": "0.0000100"
                     },
                     {
-                        "maxQty": "3000000",
-                        "minQty": "1",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "minQty": "1",
+                        "maxQty": "3000000"
                     },
                     {
-                        "minQty": "1",
                         "stepSize": "1",
+                        "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "400000"
                     },
@@ -28071,14 +28073,14 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500"
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -28122,21 +28124,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "2000",
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001000",
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "2000",
                         "tickSize": "0.0001000"
                     },
                     {
-                        "stepSize": "0.1",
                         "maxQty": "200000",
                         "filterType": "LOT_SIZE",
+                        "stepSize": "0.1",
                         "minQty": "0.1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "0.1",
-                        "maxQty": "20000",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "100000",
                         "minQty": "0.1"
                     },
                     {
@@ -28144,18 +28146,18 @@ export class ConstantsService {
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
+                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4"
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -28199,34 +28201,34 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0001000",
                         "filterType": "PRICE_FILTER",
                         "tickSize": "0.0001000",
+                        "minPrice": "0.0001000",
                         "maxPrice": "2000"
                     },
                     {
-                        "stepSize": "0.1",
-                        "filterType": "LOT_SIZE",
                         "minQty": "0.1",
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "0.1",
                         "maxQty": "200000"
                     },
                     {
+                        "minQty": "0.1",
                         "stepSize": "0.1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.1",
                         "maxQty": "10000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "limit": 10,
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
                         "multiplierUp": "1.1500",
@@ -28276,40 +28278,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
                         "minPrice": "0.0001000",
+                        "maxPrice": "200",
                         "tickSize": "0.0001000",
                         "filterType": "PRICE_FILTER"
                     },
                     {
-                        "minQty": "1",
-                        "filterType": "LOT_SIZE",
                         "stepSize": "1",
-                        "maxQty": "1000000"
+                        "minQty": "1",
+                        "maxQty": "1000000",
+                        "filterType": "LOT_SIZE"
                     },
                     {
                         "maxQty": "50000",
-                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500"
+                        "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -28353,40 +28355,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0000100",
                         "minPrice": "0.0000100",
                         "maxPrice": "200",
-                        "filterType": "PRICE_FILTER"
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0000100"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "6000000",
                         "stepSize": "1",
-                        "minQty": "1"
+                        "filterType": "LOT_SIZE",
+                        "minQty": "1",
+                        "maxQty": "6000000"
                     },
                     {
                         "minQty": "1",
-                        "maxQty": "600000",
                         "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "4000000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500"
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -28430,22 +28432,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0000100",
-                        "maxPrice": "200",
                         "tickSize": "0.0000100",
-                        "filterType": "PRICE_FILTER"
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0000100",
+                        "maxPrice": "200"
                     },
                     {
+                        "stepSize": "1",
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "3000000",
+                        "minQty": "1"
+                    },
+                    {
+                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1",
                         "minQty": "1",
-                        "maxQty": "3000000",
-                        "filterType": "LOT_SIZE"
-                    },
-                    {
-                        "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "300000",
-                        "minQty": "1"
+                        "maxQty": "300000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -28460,10 +28462,10 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500"
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -28507,22 +28509,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0000100",
-                        "minPrice": "0.0000100",
+                        "filterType": "PRICE_FILTER",
                         "maxPrice": "200",
-                        "filterType": "PRICE_FILTER"
+                        "minPrice": "0.0000100",
+                        "tickSize": "0.0000100"
                     },
                     {
+                        "maxQty": "3000000",
                         "filterType": "LOT_SIZE",
                         "minQty": "1",
-                        "maxQty": "3000000",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
                         "stepSize": "1",
                         "maxQty": "400000",
-                        "minQty": "1"
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "limit": 200,
@@ -28537,10 +28539,10 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -28584,40 +28586,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0000100",
                         "minPrice": "0.0000100",
-                        "maxPrice": "200"
+                        "maxPrice": "200",
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0000100"
                     },
                     {
                         "maxQty": "50000000",
-                        "minQty": "1",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1"
-                    },
-                    {
-                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1",
-                        "maxQty": "10000000",
                         "minQty": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
+                        "maxQty": "10000000",
+                        "stepSize": "1"
+                    },
+                    {
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "limit": 10,
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -28661,39 +28663,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0000100",
                         "maxPrice": "200",
-                        "minPrice": "0.0000100"
+                        "tickSize": "0.0000100",
+                        "minPrice": "0.0000100",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "minQty": "1",
+                        "stepSize": "1",
                         "maxQty": "3000000",
-                        "stepSize": "1"
+                        "filterType": "LOT_SIZE",
+                        "minQty": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1",
                         "maxQty": "400000",
-                        "stepSize": "1"
+                        "minQty": "1",
+                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
+                        "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE"
                     }
                 ],
@@ -28738,40 +28740,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
-                        "tickSize": "0.0000010",
+                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0000010",
-                        "filterType": "PRICE_FILTER"
+                        "tickSize": "0.0000010",
+                        "maxPrice": "200"
                     },
                     {
-                        "maxQty": "40000000",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "1",
                         "minQty": "1",
-                        "filterType": "LOT_SIZE"
+                        "maxQty": "40000000"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1",
                         "minQty": "1",
-                        "maxQty": "3000000",
-                        "stepSize": "1"
+                        "maxQty": "10000000",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500"
+                        "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -28809,27 +28811,27 @@ export class ConstantsService {
                 "quotePrecision": 8,
                 "underlyingType": "COIN",
                 "underlyingSubType": [],
-                "triggerProtect": "0.3000",
+                "triggerProtect": "0.1500",
                 "liquidationFee": "0.015000",
-                "marketTakeBound": "0.30",
+                "marketTakeBound": "0.15",
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001000",
                         "maxPrice": "200",
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0001000"
                     },
                     {
-                        "maxQty": "3000000",
+                        "stepSize": "1",
                         "minQty": "1",
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "1"
+                        "maxQty": "3000000",
+                        "filterType": "LOT_SIZE"
                     },
                     {
+                        "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "500000",
-                        "minQty": "1",
                         "stepSize": "1"
                     },
                     {
@@ -28837,18 +28839,18 @@ export class ConstantsService {
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
+                        "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.7000",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.3000"
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -28893,21 +28895,21 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.0010000",
-                        "tickSize": "0.0010000",
+                        "maxPrice": "2000",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "2000"
+                        "tickSize": "0.0010000"
                     },
                     {
                         "minQty": "0.1",
-                        "maxQty": "300000",
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "0.1"
-                    },
-                    {
                         "stepSize": "0.1",
+                        "maxQty": "300000",
+                        "filterType": "LOT_SIZE"
+                    },
+                    {
+                        "maxQty": "40000",
                         "minQty": "0.1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "10000"
+                        "stepSize": "0.1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -28918,14 +28920,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -28969,22 +28971,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0001000",
                         "filterType": "PRICE_FILTER",
                         "maxPrice": "200",
-                        "tickSize": "0.0001000"
+                        "tickSize": "0.0001000",
+                        "minPrice": "0.0001000"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "minQty": "1",
                         "maxQty": "3000000",
+                        "minQty": "1",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "1"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1",
                         "minQty": "1",
-                        "maxQty": "250000",
-                        "stepSize": "1"
+                        "maxQty": "250000"
                     },
                     {
                         "limit": 200,
@@ -28999,10 +29001,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500"
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -29047,21 +29049,21 @@ export class ConstantsService {
                 "filters": [
                     {
                         "tickSize": "0.0001000",
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001000",
+                        "filterType": "PRICE_FILTER",
                         "maxPrice": "200"
                     },
                     {
+                        "minQty": "1",
                         "maxQty": "3000000",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1",
-                        "minQty": "1"
+                        "stepSize": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
                         "maxQty": "150000",
-                        "stepSize": "1"
+                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -29076,10 +29078,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500"
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -29125,28 +29127,28 @@ export class ConstantsService {
                     {
                         "tickSize": "0.0000001",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0000010",
-                        "maxPrice": "200"
+                        "maxPrice": "200",
+                        "minPrice": "0.0000010"
                     },
                     {
                         "maxQty": "1000000000",
-                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "stepSize": "1"
                     },
                     {
-                        "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "50000000",
-                        "minQty": "1"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
+                        "stepSize": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
@@ -29154,9 +29156,9 @@ export class ConstantsService {
                     },
                     {
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500"
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -29200,40 +29202,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0000010",
+                        "tickSize": "0.0000001",
                         "maxPrice": "200",
-                        "tickSize": "0.0000001"
+                        "minPrice": "0.0000010",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
+                        "maxQty": "4000000000",
                         "filterType": "LOT_SIZE",
                         "minQty": "1",
-                        "maxQty": "4000000000",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1",
-                        "maxQty": "100000000"
+                        "maxQty": "900000000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
+                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -29278,25 +29280,25 @@ export class ConstantsService {
                 "filters": [
                     {
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "200",
                         "tickSize": "0.0001000",
-                        "minPrice": "0.0001000"
+                        "minPrice": "0.0001000",
+                        "maxPrice": "200"
                     },
                     {
-                        "maxQty": "700000",
-                        "stepSize": "0.1",
+                        "filterType": "LOT_SIZE",
                         "minQty": "0.1",
-                        "filterType": "LOT_SIZE"
+                        "stepSize": "0.1",
+                        "maxQty": "700000"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1",
-                        "maxQty": "10000",
+                        "maxQty": "100000",
                         "stepSize": "0.1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "limit": 10,
@@ -29308,8 +29310,8 @@ export class ConstantsService {
                     },
                     {
                         "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -29354,22 +29356,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0001000",
-                        "tickSize": "0.0001000",
                         "maxPrice": "200",
-                        "filterType": "PRICE_FILTER"
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0001000",
+                        "tickSize": "0.0001000"
                     },
                     {
-                        "minQty": "0.1",
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "800000",
-                        "stepSize": "0.1"
-                    },
-                    {
-                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "0.1",
                         "minQty": "0.1",
-                        "maxQty": "10000"
+                        "maxQty": "800000",
+                        "filterType": "LOT_SIZE"
+                    },
+                    {
+                        "minQty": "0.1",
+                        "maxQty": "10000",
+                        "stepSize": "0.1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -29380,14 +29382,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500"
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -29432,20 +29434,20 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.0001000",
-                        "tickSize": "0.0001000",
+                        "maxPrice": "200",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "200"
+                        "tickSize": "0.0001000"
                     },
                     {
-                        "maxQty": "2000000",
+                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "maxQty": "2000000"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "2000000",
                         "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1"
                     },
                     {
@@ -29461,10 +29463,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -29508,22 +29510,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
                         "minPrice": "0.0001000",
-                        "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0001000"
+                        "maxPrice": "200",
+                        "tickSize": "0.0001000",
+                        "filterType": "PRICE_FILTER"
+                    },
+                    {
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "3000000",
+                        "minQty": "1",
+                        "stepSize": "1"
                     },
                     {
                         "minQty": "1",
                         "stepSize": "1",
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "3000000"
-                    },
-                    {
-                        "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "200000",
-                        "stepSize": "1"
+                        "maxQty": "200000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -29534,14 +29536,14 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -29585,40 +29587,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "tickSize": "0.0001000",
                         "minPrice": "0.0001000",
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "200",
-                        "tickSize": "0.0001000"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "stepSize": "0.1",
-                        "maxQty": "600000",
+                        "minQty": "0.1",
                         "filterType": "LOT_SIZE",
-                        "minQty": "0.1"
+                        "stepSize": "0.1",
+                        "maxQty": "600000"
                     },
                     {
+                        "maxQty": "50000",
                         "stepSize": "0.1",
                         "minQty": "0.1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "50000"
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -29662,21 +29664,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
-                        "tickSize": "0.0001000",
                         "minPrice": "0.0001000",
-                        "filterType": "PRICE_FILTER"
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "200",
+                        "tickSize": "0.0001000"
                     },
                     {
-                        "minQty": "0.1",
-                        "maxQty": "800000",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "0.1",
-                        "filterType": "LOT_SIZE"
+                        "maxQty": "800000",
+                        "minQty": "0.1"
                     },
                     {
-                        "minQty": "0.1",
-                        "maxQty": "50000",
+                        "maxQty": "200000",
                         "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "0.1",
                         "stepSize": "0.1"
                     },
                     {
@@ -29684,17 +29686,17 @@ export class ConstantsService {
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500"
                     }
                 ],
@@ -29746,13 +29748,13 @@ export class ConstantsService {
                     },
                     {
                         "stepSize": "0.1",
-                        "filterType": "LOT_SIZE",
                         "maxQty": "200000",
+                        "filterType": "LOT_SIZE",
                         "minQty": "0.1"
                     },
                     {
-                        "stepSize": "0.1",
                         "minQty": "0.1",
+                        "stepSize": "0.1",
                         "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "10000"
                     },
@@ -29761,16 +29763,16 @@ export class ConstantsService {
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500"
                     }
@@ -29817,20 +29819,20 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.0001000",
-                        "tickSize": "0.0001000",
+                        "filterType": "PRICE_FILTER",
                         "maxPrice": "200",
-                        "filterType": "PRICE_FILTER"
+                        "tickSize": "0.0001000"
                     },
                     {
-                        "minQty": "1",
                         "maxQty": "1500000",
                         "filterType": "LOT_SIZE",
+                        "minQty": "1",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1",
                         "maxQty": "100000",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1"
                     },
                     {
@@ -29838,18 +29840,18 @@ export class ConstantsService {
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -29894,38 +29896,38 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.0001000",
-                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "2000",
                         "tickSize": "0.0001000",
-                        "maxPrice": "2000"
+                        "filterType": "PRICE_FILTER"
+                    },
+                    {
+                        "filterType": "LOT_SIZE",
+                        "minQty": "0.1",
+                        "stepSize": "0.1",
+                        "maxQty": "200000"
                     },
                     {
                         "minQty": "0.1",
-                        "maxQty": "200000",
                         "stepSize": "0.1",
-                        "filterType": "LOT_SIZE"
+                        "maxQty": "10000",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "stepSize": "0.1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.1",
-                        "maxQty": "10000"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
-                    },
-                    {
-                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500"
                     }
                 ],
@@ -29970,22 +29972,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0000100",
-                        "tickSize": "0.0000100",
-                        "maxPrice": "200"
+                        "maxPrice": "200",
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0000100"
+                    },
+                    {
+                        "maxQty": "8000000",
+                        "filterType": "LOT_SIZE",
+                        "minQty": "1",
+                        "stepSize": "1"
                     },
                     {
                         "minQty": "1",
                         "stepSize": "1",
-                        "maxQty": "8000000",
-                        "filterType": "LOT_SIZE"
-                    },
-                    {
-                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "1000000",
-                        "minQty": "1",
-                        "stepSize": "1"
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "limit": 200,
@@ -29996,13 +29998,13 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -30047,21 +30049,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0001000",
                         "maxPrice": "2000",
-                        "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0001000"
+                        "minPrice": "0.0001000",
+                        "tickSize": "0.0001000",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
+                        "minQty": "0.1",
                         "maxQty": "600000",
                         "filterType": "LOT_SIZE",
-                        "minQty": "0.1",
                         "stepSize": "0.1"
                     },
                     {
+                        "stepSize": "0.1",
                         "minQty": "0.1",
                         "maxQty": "80000",
-                        "stepSize": "0.1",
                         "filterType": "MARKET_LOT_SIZE"
                     },
                     {
@@ -30077,10 +30079,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4"
+                        "multiplierUp": "1.1500",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -30130,34 +30132,34 @@ export class ConstantsService {
                         "maxPrice": "200"
                     },
                     {
-                        "stepSize": "1",
+                        "minQty": "1",
                         "filterType": "LOT_SIZE",
+                        "maxQty": "1500000",
+                        "stepSize": "1"
+                    },
+                    {
+                        "maxQty": "100000",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
-                        "maxQty": "1500000"
+                        "stepSize": "1"
                     },
                     {
-                        "maxQty": "20000",
-                        "stepSize": "1",
-                        "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
-                    },
-                    {
-                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500"
+                        "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -30207,34 +30209,34 @@ export class ConstantsService {
                         "tickSize": "0.0010000"
                     },
                     {
+                        "maxQty": "200000",
                         "stepSize": "0.1",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "200000",
                         "minQty": "0.1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.1",
+                        "stepSize": "0.1",
                         "maxQty": "40000",
-                        "stepSize": "0.1"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "0.1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
+                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -30278,22 +30280,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0001000",
                         "minPrice": "0.0001000",
-                        "maxPrice": "2000"
-                    },
-                    {
-                        "filterType": "LOT_SIZE",
-                        "minQty": "0.1",
-                        "stepSize": "0.1",
-                        "maxQty": "400000"
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "2000",
+                        "tickSize": "0.0001000"
                     },
                     {
                         "minQty": "0.1",
-                        "maxQty": "35000",
                         "stepSize": "0.1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "maxQty": "400000",
+                        "filterType": "LOT_SIZE"
+                    },
+                    {
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "0.1",
+                        "minQty": "0.1",
+                        "maxQty": "35000"
                     },
                     {
                         "limit": 200,
@@ -30308,10 +30310,10 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
+                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -30355,40 +30357,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "tickSize": "0.0001000",
                         "maxPrice": "2000",
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001000",
-                        "tickSize": "0.0001000"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "maxQty": "300000",
-                        "filterType": "LOT_SIZE",
                         "minQty": "0.1",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "0.1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.1",
+                        "stepSize": "0.1",
                         "maxQty": "30000",
-                        "stepSize": "0.1"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "0.1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
+                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4"
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -30432,22 +30434,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0000100",
                         "filterType": "PRICE_FILTER",
                         "tickSize": "0.0000100",
+                        "minPrice": "0.0000100",
                         "maxPrice": "200"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "minQty": "1",
                         "stepSize": "1",
-                        "maxQty": "3000000"
+                        "maxQty": "3000000",
+                        "filterType": "LOT_SIZE",
+                        "minQty": "1"
                     },
                     {
                         "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
-                        "maxQty": "100000"
+                        "maxQty": "900000",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -30462,10 +30464,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4"
+                        "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -30509,21 +30511,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001000",
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "200",
                         "tickSize": "0.0001000"
                     },
                     {
                         "maxQty": "5000000",
+                        "minQty": "1",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1",
-                        "minQty": "1"
+                        "stepSize": "1"
                     },
                     {
                         "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "200000",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1"
                     },
                     {
@@ -30531,8 +30533,8 @@ export class ConstantsService {
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "notional": "5",
@@ -30540,9 +30542,9 @@ export class ConstantsService {
                     },
                     {
                         "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -30586,30 +30588,30 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "20000",
-                        "tickSize": "0.001000",
-                        "minPrice": "0.001000"
+                        "minPrice": "0.001000",
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.001000"
                     },
                     {
-                        "maxQty": "400000",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "0.01",
-                        "minQty": "0.01",
-                        "filterType": "LOT_SIZE"
+                        "maxQty": "400000",
+                        "minQty": "0.01"
                     },
                     {
+                        "stepSize": "0.01",
                         "minQty": "0.01",
                         "maxQty": "4000",
-                        "stepSize": "0.01",
                         "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
@@ -30617,8 +30619,8 @@ export class ConstantsService {
                     },
                     {
                         "multiplierUp": "1.2000",
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8000",
+                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE"
                     }
                 ],
@@ -30663,40 +30665,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "200",
                         "tickSize": "0.0000010",
-                        "minPrice": "0.0000010",
-                        "maxPrice": "200"
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0000010"
                     },
                     {
-                        "maxQty": "20000000",
-                        "filterType": "LOT_SIZE",
-                        "minQty": "1",
-                        "stepSize": "1"
-                    },
-                    {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "5000000",
                         "stepSize": "1",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "maxQty": "20000000",
+                        "filterType": "LOT_SIZE"
+                    },
+                    {
+                        "maxQty": "5000000",
+                        "minQty": "1",
+                        "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500"
+                        "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -30740,26 +30742,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0010000",
                         "maxPrice": "2000",
-                        "tickSize": "0.0010000"
+                        "tickSize": "0.0010000",
+                        "minPrice": "0.0010000",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "stepSize": "0.1",
                         "maxQty": "600000",
+                        "filterType": "LOT_SIZE",
                         "minQty": "0.1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "50000",
                         "minQty": "0.1",
-                        "stepSize": "0.1"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "0.1",
+                        "maxQty": "50000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -30770,10 +30772,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
+                        "multiplierDown": "0.8500",
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500"
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -30817,21 +30819,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0001000",
                         "maxPrice": "200",
-                        "minPrice": "0.0001000"
+                        "minPrice": "0.0001000",
+                        "tickSize": "0.0001000",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "maxQty": "1000000",
                         "filterType": "LOT_SIZE",
                         "stepSize": "1",
+                        "maxQty": "1000000",
                         "minQty": "1"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "50000",
                         "minQty": "1",
+                        "maxQty": "200000",
                         "stepSize": "1"
                     },
                     {
@@ -30839,18 +30841,18 @@ export class ConstantsService {
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500"
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -30894,39 +30896,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0000100",
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0000100",
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0000100",
                         "maxPrice": "200"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "stepSize": "1",
+                        "maxQty": "4000000",
                         "minQty": "1",
-                        "maxQty": "4000000"
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "minQty": "1",
+                        "maxQty": "100000",
                         "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1",
-                        "maxQty": "100000"
+                        "minQty": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500"
                     }
                 ],
@@ -30971,39 +30973,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "tickSize": "0.0001000",
                         "minPrice": "0.0001000",
                         "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0001000",
                         "maxPrice": "2000"
                     },
                     {
-                        "maxQty": "900000",
-                        "stepSize": "0.1",
                         "minQty": "0.1",
-                        "filterType": "LOT_SIZE"
+                        "stepSize": "0.1",
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "900000"
                     },
                     {
+                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "0.1",
-                        "minQty": "0.1",
                         "maxQty": "100000",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "minQty": "0.1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
+                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -31048,30 +31050,30 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0000100",
                         "maxPrice": "200",
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0000100"
                     },
                     {
+                        "minQty": "1",
                         "maxQty": "5000000",
-                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1"
+                        "stepSize": "1"
                     },
                     {
-                        "maxQty": "300000",
                         "minQty": "1",
-                        "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "300000",
+                        "stepSize": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "notional": "5",
@@ -31079,9 +31081,9 @@ export class ConstantsService {
                     },
                     {
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -31125,21 +31127,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
-                        "minPrice": "0.0000100",
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0000100",
-                        "filterType": "PRICE_FILTER"
+                        "minPrice": "0.0000100",
+                        "maxPrice": "200"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "maxQty": "5000000",
-                        "minQty": "1",
-                        "stepSize": "1"
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "1",
+                        "minQty": "1"
                     },
                     {
-                        "maxQty": "100000",
-                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "500000",
                         "minQty": "1"
                     },
                     {
@@ -31147,18 +31149,18 @@ export class ConstantsService {
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -31202,39 +31204,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
-                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0000100",
                         "tickSize": "0.0000100",
-                        "minPrice": "0.0000100"
+                        "maxPrice": "200",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "filterType": "LOT_SIZE",
-                        "maxQty": "3000000",
                         "minQty": "1",
+                        "maxQty": "3000000",
                         "stepSize": "1"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "100000",
                         "stepSize": "1",
-                        "minQty": "1"
+                        "maxQty": "100000",
+                        "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500"
                     }
                 ],
@@ -31280,39 +31282,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.001000",
-                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.001000",
-                        "maxPrice": "20000"
+                        "maxPrice": "20000",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
+                        "minQty": "0.01",
                         "maxQty": "800000",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "0.01",
-                        "minQty": "0.01"
+                        "stepSize": "0.01"
                     },
                     {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "10000",
+                        "stepSize": "0.01",
                         "minQty": "0.01",
-                        "stepSize": "0.01"
+                        "maxQty": "10000",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "limit": 200,
                         "filterType": "MAX_NUM_ORDERS"
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -31356,40 +31358,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "1000000",
                         "minPrice": "576.3",
+                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.1"
                     },
                     {
-                        "stepSize": "0.001",
-                        "maxQty": "500",
+                        "filterType": "LOT_SIZE",
                         "minQty": "0.001",
-                        "filterType": "LOT_SIZE"
+                        "maxQty": "500",
+                        "stepSize": "0.001"
                     },
                     {
-                        "maxQty": "1",
-                        "stepSize": "0.001",
                         "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "0.001",
+                        "maxQty": "1",
                         "minQty": "0.001"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.9500",
                         "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.0500",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.9500"
                     }
                 ],
                 "orderTypes": [
@@ -31433,21 +31435,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "100000",
+                        "tickSize": "0.01",
                         "minPrice": "41.10",
-                        "tickSize": "0.01"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "0.001",
+                        "maxQty": "10000",
                         "minQty": "0.001",
-                        "maxQty": "10000"
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "0.001"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "10",
                         "stepSize": "0.001",
+                        "maxQty": "10",
                         "minQty": "0.001"
                     },
                     {
@@ -31455,8 +31457,8 @@ export class ConstantsService {
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
@@ -31464,9 +31466,9 @@ export class ConstantsService {
                     },
                     {
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.0500",
+                        "multiplierDecimal": "4",
                         "multiplierDown": "0.9500",
-                        "multiplierDecimal": "4"
+                        "multiplierUp": "1.0500"
                     }
                 ],
                 "orderTypes": [
@@ -31510,21 +31512,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0000100",
-                        "maxPrice": "200",
-                        "tickSize": "0.0000100"
+                        "tickSize": "0.0000100",
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "200"
                     },
                     {
+                        "stepSize": "1",
                         "minQty": "1",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "2000000",
-                        "stepSize": "1"
+                        "maxQty": "2000000"
                     },
                     {
-                        "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "200000",
+                        "minQty": "1",
                         "stepSize": "1"
                     },
                     {
@@ -31532,8 +31534,8 @@ export class ConstantsService {
                         "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "notional": "5",
@@ -31541,9 +31543,9 @@ export class ConstantsService {
                     },
                     {
                         "multiplierUp": "1.1500",
-                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500",
                         "multiplierDecimal": "4",
-                        "multiplierDown": "0.8500"
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -31587,38 +31589,38 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0000100",
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0000100",
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0000100",
                         "maxPrice": "200"
                     },
                     {
-                        "minQty": "1",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "5000000",
-                        "stepSize": "1"
-                    },
-                    {
+                        "stepSize": "1",
                         "minQty": "1",
-                        "maxQty": "300000",
+                        "maxQty": "5000000"
+                    },
+                    {
+                        "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1"
+                        "minQty": "1",
+                        "maxQty": "300000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "filterType": "MAX_NUM_ALGO_ORDERS",
-                        "limit": 10
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
                         "multiplierUp": "1.1500"
                     }
@@ -31665,39 +31667,39 @@ export class ConstantsService {
                 "filters": [
                     {
                         "maxPrice": "200",
-                        "minPrice": "0.0000100",
                         "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0000100",
                         "tickSize": "0.0000100"
                     },
                     {
-                        "maxQty": "3000000",
-                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1"
-                    },
-                    {
-                        "stepSize": "1",
-                        "maxQty": "300000",
+                        "maxQty": "3000000",
                         "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "stepSize": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "maxQty": "300000",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
+                        "stepSize": "1"
+                    },
+                    {
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500"
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -31741,40 +31743,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0001000",
-                        "maxPrice": "2000",
                         "minPrice": "0.0001000",
-                        "filterType": "PRICE_FILTER"
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "2000",
+                        "tickSize": "0.0001000"
                     },
                     {
+                        "maxQty": "500000",
                         "stepSize": "0.1",
                         "minQty": "0.1",
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "500000"
+                        "filterType": "LOT_SIZE"
                     },
                     {
+                        "maxQty": "200000",
                         "stepSize": "0.1",
-                        "minQty": "0.1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "200000"
+                        "minQty": "0.1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500"
+                        "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -31818,38 +31820,38 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
-                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0001000",
                         "tickSize": "0.0001000",
-                        "minPrice": "0.0001000"
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "200"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "maxQty": "2000000",
                         "minQty": "1",
+                        "filterType": "LOT_SIZE",
                         "stepSize": "1"
                     },
                     {
-                        "maxQty": "20000",
-                        "stepSize": "1",
                         "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "1000000",
+                        "stepSize": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
                         "multiplierDecimal": "4"
                     }
@@ -31895,26 +31897,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
                         "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001000",
+                        "maxPrice": "200",
                         "tickSize": "0.0001000"
                     },
                     {
-                        "maxQty": "1500000",
                         "minQty": "1",
+                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1"
+                        "maxQty": "1500000"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "400000",
                         "minQty": "1",
+                        "maxQty": "400000",
                         "stepSize": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -31926,8 +31928,8 @@ export class ConstantsService {
                     },
                     {
                         "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500"
                     }
                 ],
@@ -31973,25 +31975,25 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.0001000",
-                        "tickSize": "0.0001000",
                         "maxPrice": "200",
-                        "filterType": "PRICE_FILTER"
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0001000"
                     },
                     {
                         "maxQty": "1500000",
+                        "minQty": "1",
                         "filterType": "LOT_SIZE",
+                        "stepSize": "1"
+                    },
+                    {
+                        "maxQty": "100000",
                         "stepSize": "1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1"
                     },
                     {
-                        "stepSize": "1",
-                        "maxQty": "100000",
-                        "minQty": "1",
-                        "filterType": "MARKET_LOT_SIZE"
-                    },
-                    {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -32002,10 +32004,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500"
+                        "multiplierUp": "1.1500",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -32049,21 +32051,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0000100",
                         "tickSize": "0.0000100",
-                        "maxPrice": "200"
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "200",
+                        "minPrice": "0.0000100"
                     },
                     {
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1",
                         "minQty": "1",
-                        "maxQty": "5000000"
+                        "maxQty": "5000000",
+                        "stepSize": "1"
                     },
                     {
                         "minQty": "1",
-                        "stepSize": "1",
                         "maxQty": "500000",
+                        "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE"
                     },
                     {
@@ -32075,14 +32077,14 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
+                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
                         "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -32126,40 +32128,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0001000",
-                        "tickSize": "0.0001000"
+                        "maxPrice": "200",
+                        "tickSize": "0.0001000",
+                        "minPrice": "0.0001000"
                     },
                     {
                         "stepSize": "1",
-                        "minQty": "1",
                         "filterType": "LOT_SIZE",
+                        "minQty": "1",
                         "maxQty": "2000000"
                     },
                     {
-                        "maxQty": "150000",
+                        "minQty": "1",
                         "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1"
+                        "maxQty": "1000000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
+                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4"
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -32204,21 +32206,21 @@ export class ConstantsService {
                 "filters": [
                     {
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0001000",
                         "tickSize": "0.0001000",
+                        "minPrice": "0.0001000",
                         "maxPrice": "2000"
                     },
                     {
                         "stepSize": "0.1",
                         "minQty": "0.1",
-                        "filterType": "LOT_SIZE",
-                        "maxQty": "1000000"
+                        "maxQty": "1000000",
+                        "filterType": "LOT_SIZE"
                     },
                     {
                         "stepSize": "0.1",
-                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "100000",
-                        "minQty": "0.1"
+                        "minQty": "0.1",
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -32233,8 +32235,8 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500"
                     }
@@ -32280,40 +32282,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
-                        "tickSize": "0.0000100",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0000100"
+                        "minPrice": "0.0000100",
+                        "maxPrice": "200",
+                        "tickSize": "0.0000100"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "minQty": "1",
                         "maxQty": "6000000",
+                        "stepSize": "1",
+                        "filterType": "LOT_SIZE"
+                    },
+                    {
+                        "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "600000",
                         "stepSize": "1"
                     },
                     {
-                        "maxQty": "600000",
-                        "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1"
-                    },
-                    {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "limit": 10,
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierUp": "1.1500"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -32357,40 +32359,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0010000",
-                        "maxPrice": "2000",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.0010000"
+                        "minPrice": "0.0010000",
+                        "tickSize": "0.0010000",
+                        "maxPrice": "2000"
                     },
                     {
-                        "minQty": "0.1",
                         "stepSize": "0.1",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "100000"
+                        "maxQty": "100000",
+                        "minQty": "0.1"
                     },
                     {
-                        "maxQty": "1000",
-                        "minQty": "0.1",
+                        "maxQty": "15000",
+                        "stepSize": "0.1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "0.1"
+                        "minQty": "0.1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500"
+                        "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -32434,26 +32436,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0001000",
-                        "minPrice": "0.0001000",
                         "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0001000",
+                        "tickSize": "0.0001000",
                         "maxPrice": "200"
                     },
                     {
                         "filterType": "LOT_SIZE",
-                        "maxQty": "1000000",
                         "minQty": "1",
+                        "maxQty": "1000000",
                         "stepSize": "1"
                     },
                     {
-                        "maxQty": "50000",
-                        "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "minQty": "1",
+                        "maxQty": "150000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "limit": 10,
@@ -32464,9 +32466,9 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -32511,22 +32513,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "maxPrice": "200",
                         "tickSize": "0.0001000",
+                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001000"
                     },
                     {
                         "stepSize": "1",
-                        "maxQty": "6500000",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1"
+                        "minQty": "1",
+                        "maxQty": "6500000"
                     },
                     {
-                        "maxQty": "1000000",
                         "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
                         "stepSize": "1",
-                        "minQty": "1"
+                        "maxQty": "1000000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -32541,10 +32543,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
+                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4"
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -32589,21 +32591,21 @@ export class ConstantsService {
                 "filters": [
                     {
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "200",
                         "tickSize": "0.0000100",
-                        "minPrice": "0.0000100"
+                        "minPrice": "0.0000100",
+                        "maxPrice": "200"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "maxQty": "3000000",
+                        "filterType": "LOT_SIZE",
                         "minQty": "1",
                         "stepSize": "1"
                     },
                     {
+                        "minQty": "1",
                         "maxQty": "100000",
-                        "stepSize": "1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1"
+                        "stepSize": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -32614,14 +32616,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500"
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -32665,21 +32667,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0000100",
-                        "minPrice": "0.0000100",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "200"
+                        "minPrice": "0.0000100",
+                        "maxPrice": "200",
+                        "tickSize": "0.0000100"
                     },
                     {
+                        "minQty": "1",
                         "filterType": "LOT_SIZE",
-                        "minQty": "1",
-                        "stepSize": "1",
-                        "maxQty": "4000000"
+                        "maxQty": "4000000",
+                        "stepSize": "1"
                     },
                     {
-                        "minQty": "1",
+                        "maxQty": "1000000",
                         "stepSize": "1",
-                        "maxQty": "200000",
+                        "minQty": "1",
                         "filterType": "MARKET_LOT_SIZE"
                     },
                     {
@@ -32695,10 +32697,10 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -32743,20 +32745,20 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.001000",
-                        "tickSize": "0.001000",
+                        "maxPrice": "20000",
                         "filterType": "PRICE_FILTER",
-                        "maxPrice": "20000"
+                        "tickSize": "0.001000"
                     },
                     {
-                        "maxQty": "50000",
-                        "stepSize": "0.01",
                         "minQty": "0.01",
+                        "stepSize": "0.01",
+                        "maxQty": "50000",
                         "filterType": "LOT_SIZE"
                     },
                     {
+                        "minQty": "0.01",
                         "maxQty": "50000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "0.01",
                         "stepSize": "0.01"
                     },
                     {
@@ -32764,18 +32766,18 @@ export class ConstantsService {
                         "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -32819,21 +32821,21 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "20000",
                         "filterType": "PRICE_FILTER",
                         "minPrice": "0.001000",
+                        "maxPrice": "20000",
                         "tickSize": "0.001000"
                     },
                     {
-                        "filterType": "LOT_SIZE",
                         "stepSize": "0.01",
                         "minQty": "0.01",
-                        "maxQty": "90000"
+                        "maxQty": "90000",
+                        "filterType": "LOT_SIZE"
                     },
                     {
                         "stepSize": "0.01",
                         "minQty": "0.01",
-                        "maxQty": "40000",
+                        "maxQty": "100000",
                         "filterType": "MARKET_LOT_SIZE"
                     },
                     {
@@ -32845,14 +32847,14 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
+                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
-                        "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -32896,22 +32898,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0000010",
                         "tickSize": "0.0000010",
                         "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0000010",
                         "maxPrice": "200"
                     },
                     {
-                        "maxQty": "100000000",
-                        "stepSize": "1",
                         "minQty": "1",
-                        "filterType": "LOT_SIZE"
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "100000000",
+                        "stepSize": "1"
                     },
                     {
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
-                        "stepSize": "1",
-                        "maxQty": "5000000",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "maxQty": "20000000",
+                        "stepSize": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -32922,14 +32924,14 @@ export class ConstantsService {
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500"
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -32973,26 +32975,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "minPrice": "0.0001000",
-                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0001000",
-                        "maxPrice": "200"
+                        "maxPrice": "200",
+                        "minPrice": "0.0001000",
+                        "filterType": "PRICE_FILTER"
                     },
                     {
-                        "minQty": "1",
+                        "stepSize": "1",
                         "maxQty": "10000000",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1"
-                    },
-                    {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1",
-                        "maxQty": "1000000",
                         "minQty": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "stepSize": "1",
+                        "minQty": "1",
+                        "maxQty": "1000000",
+                        "filterType": "MARKET_LOT_SIZE"
+                    },
+                    {
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
@@ -33003,10 +33005,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500"
+                        "multiplierUp": "1.1500",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -33050,22 +33052,22 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "tickSize": "0.0000100",
+                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0000100",
                         "maxPrice": "200",
-                        "filterType": "PRICE_FILTER"
+                        "tickSize": "0.0000100"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "1",
                         "minQty": "1",
-                        "maxQty": "4000000"
+                        "maxQty": "4000000",
+                        "stepSize": "1",
+                        "filterType": "LOT_SIZE"
                     },
                     {
                         "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
                         "stepSize": "1",
-                        "maxQty": "400000",
-                        "minQty": "1"
+                        "maxQty": "400000"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -33080,10 +33082,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
-                        "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500",
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
@@ -33127,40 +33129,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0000100",
                         "maxPrice": "200",
-                        "filterType": "PRICE_FILTER",
                         "tickSize": "0.0000100"
                     },
                     {
-                        "maxQty": "8000000",
                         "minQty": "1",
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "1"
-                    },
-                    {
                         "stepSize": "1",
-                        "minQty": "1",
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "8000000"
+                    },
+                    {
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "500000"
+                        "maxQty": "2000000",
+                        "stepSize": "1",
+                        "minQty": "1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "filterType": "MIN_NOTIONAL",
                         "notional": "5"
                     },
                     {
-                        "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500"
+                        "multiplierUp": "1.1500",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -33204,40 +33206,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "20000",
                         "minPrice": "0.001000",
                         "tickSize": "0.001000",
-                        "filterType": "PRICE_FILTER"
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "20000"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "stepSize": "0.01",
                         "maxQty": "90000",
-                        "minQty": "0.01"
-                    },
-                    {
-                        "stepSize": "0.01",
+                        "filterType": "LOT_SIZE",
                         "minQty": "0.01",
-                        "maxQty": "3000",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "stepSize": "0.01"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "0.01",
+                        "maxQty": "20000",
+                        "stepSize": "0.01"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
+                    },
+                    {
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
-                        "multiplierDecimal": "4",
                         "multiplierUp": "1.1500",
-                        "multiplierDown": "0.8500"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -33281,40 +33283,40 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "maxPrice": "2000",
                         "filterType": "PRICE_FILTER",
                         "tickSize": "0.001000",
-                        "maxPrice": "2000",
                         "minPrice": "0.001000"
                     },
                     {
-                        "maxQty": "150000",
-                        "stepSize": "0.1",
                         "filterType": "LOT_SIZE",
-                        "minQty": "0.1"
-                    },
-                    {
-                        "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "10000",
                         "minQty": "0.1",
-                        "stepSize": "0.1"
+                        "stepSize": "0.1",
+                        "maxQty": "150000"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "minQty": "0.1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "0.1",
+                        "maxQty": "10000"
                     },
                     {
-                        "limit": 10,
-                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
+                    },
+                    {
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
                     },
                     {
                         "notional": "5",
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierDown": "0.8500",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE"
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4"
                     }
                 ],
                 "orderTypes": [
@@ -33358,39 +33360,39 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
-                        "tickSize": "0.0001000",
+                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.0001000",
-                        "filterType": "PRICE_FILTER"
+                        "tickSize": "0.0001000",
+                        "maxPrice": "200"
                     },
                     {
                         "filterType": "LOT_SIZE",
-                        "maxQty": "2000000",
                         "minQty": "1",
+                        "maxQty": "2000000",
                         "stepSize": "1"
                     },
                     {
-                        "maxQty": "200000",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "1",
-                        "stepSize": "1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "maxQty": "200000",
+                        "stepSize": "1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "limit": 10,
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4"
                     }
                 ],
@@ -33435,26 +33437,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "maxPrice": "200",
-                        "tickSize": "0.000100",
                         "filterType": "PRICE_FILTER",
+                        "tickSize": "0.000100",
+                        "maxPrice": "200",
                         "minPrice": "0.000100"
                     },
                     {
+                        "stepSize": "0.1",
                         "minQty": "0.1",
                         "maxQty": "800000",
-                        "stepSize": "0.1",
                         "filterType": "LOT_SIZE"
                     },
                     {
-                        "minQty": "0.1",
+                        "maxQty": "100000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "0.1",
-                        "maxQty": "100000"
+                        "minQty": "0.1",
+                        "stepSize": "0.1"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "limit": 10,
@@ -33466,9 +33468,9 @@ export class ConstantsService {
                     },
                     {
                         "multiplierDecimal": "4",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.2000",
-                        "multiplierDown": "0.8000"
+                        "multiplierDown": "0.8000",
+                        "filterType": "PERCENT_PRICE"
                     }
                 ],
                 "orderTypes": [
@@ -33513,38 +33515,38 @@ export class ConstantsService {
                 "filters": [
                     {
                         "maxPrice": "200",
-                        "tickSize": "0.000100",
+                        "minPrice": "0.000100",
                         "filterType": "PRICE_FILTER",
-                        "minPrice": "0.000100"
+                        "tickSize": "0.000100"
                     },
                     {
-                        "filterType": "LOT_SIZE",
-                        "minQty": "0.1",
+                        "maxQty": "1000000",
                         "stepSize": "0.1",
-                        "maxQty": "1000000"
+                        "minQty": "0.1",
+                        "filterType": "LOT_SIZE"
                     },
                     {
-                        "minQty": "0.1",
+                        "filterType": "MARKET_LOT_SIZE",
                         "maxQty": "100000",
                         "stepSize": "0.1",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "minQty": "0.1"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "filterType": "MIN_NOTIONAL",
-                        "notional": "5"
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
                     },
                     {
                         "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500"
                     }
                 ],
@@ -33591,8 +33593,8 @@ export class ConstantsService {
                     {
                         "maxPrice": "200",
                         "filterType": "PRICE_FILTER",
-                        "tickSize": "0.0000100",
-                        "minPrice": "0.0000100"
+                        "minPrice": "0.0000100",
+                        "tickSize": "0.0000100"
                     },
                     {
                         "filterType": "LOT_SIZE",
@@ -33601,28 +33603,28 @@ export class ConstantsService {
                         "stepSize": "1"
                     },
                     {
-                        "minQty": "1",
                         "stepSize": "1",
-                        "maxQty": "500000",
-                        "filterType": "MARKET_LOT_SIZE"
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1",
+                        "maxQty": "10000000"
                     },
                     {
-                        "filterType": "MAX_NUM_ORDERS",
-                        "limit": 200
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
                     },
                     {
                         "filterType": "MAX_NUM_ALGO_ORDERS",
                         "limit": 10
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
-                        "multiplierDown": "0.8500",
-                        "filterType": "PERCENT_PRICE",
                         "multiplierUp": "1.1500",
-                        "multiplierDecimal": "4"
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -33666,26 +33668,26 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
-                        "filterType": "PRICE_FILTER",
                         "minPrice": "0.000010",
-                        "tickSize": "0.000010",
-                        "maxPrice": "200"
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "200",
+                        "tickSize": "0.000010"
                     },
                     {
+                        "minQty": "0.1",
                         "filterType": "LOT_SIZE",
                         "maxQty": "500000",
-                        "minQty": "0.1",
                         "stepSize": "0.1"
                     },
                     {
+                        "minQty": "0.1",
                         "filterType": "MARKET_LOT_SIZE",
-                        "maxQty": "150000",
                         "stepSize": "0.1",
-                        "minQty": "0.1"
+                        "maxQty": "15000"
                     },
                     {
-                        "limit": 200,
-                        "filterType": "MAX_NUM_ORDERS"
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
                     },
                     {
                         "limit": 10,
@@ -33696,9 +33698,9 @@ export class ConstantsService {
                         "filterType": "MIN_NOTIONAL"
                     },
                     {
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
                         "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE"
                     }
                 ],
@@ -33744,21 +33746,21 @@ export class ConstantsService {
                 "filters": [
                     {
                         "minPrice": "0.0001000",
-                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0001000",
                         "maxPrice": "200",
-                        "tickSize": "0.0001000"
+                        "filterType": "PRICE_FILTER"
                     },
                     {
                         "minQty": "1",
+                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
-                        "maxQty": "7000000",
-                        "stepSize": "1"
+                        "maxQty": "7000000"
                     },
                     {
-                        "stepSize": "1",
-                        "maxQty": "800000",
                         "filterType": "MARKET_LOT_SIZE",
-                        "minQty": "1"
+                        "maxQty": "800000",
+                        "minQty": "1",
+                        "stepSize": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -33769,8 +33771,8 @@ export class ConstantsService {
                         "filterType": "MAX_NUM_ALGO_ORDERS"
                     },
                     {
-                        "notional": "5",
-                        "filterType": "MIN_NOTIONAL"
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
                     },
                     {
                         "multiplierDecimal": "4",
@@ -33826,16 +33828,16 @@ export class ConstantsService {
                         "minPrice": "0.0001000"
                     },
                     {
-                        "maxQty": "2000000",
                         "minQty": "1",
+                        "stepSize": "1",
                         "filterType": "LOT_SIZE",
-                        "stepSize": "1"
+                        "maxQty": "2000000"
                     },
                     {
+                        "stepSize": "1",
                         "minQty": "1",
                         "maxQty": "200000",
-                        "filterType": "MARKET_LOT_SIZE",
-                        "stepSize": "1"
+                        "filterType": "MARKET_LOT_SIZE"
                     },
                     {
                         "limit": 200,
@@ -33850,10 +33852,10 @@ export class ConstantsService {
                         "notional": "5"
                     },
                     {
+                        "multiplierUp": "1.1500",
                         "multiplierDecimal": "4",
                         "filterType": "PERCENT_PRICE",
-                        "multiplierDown": "0.8500",
-                        "multiplierUp": "1.1500"
+                        "multiplierDown": "0.8500"
                     }
                 ],
                 "orderTypes": [
@@ -33897,22 +33899,792 @@ export class ConstantsService {
                 "maxMoveOrderLimit": 10000,
                 "filters": [
                     {
+                        "minPrice": "0.000100",
                         "maxPrice": "200",
                         "tickSize": "0.000100",
-                        "minPrice": "0.000100",
                         "filterType": "PRICE_FILTER"
                     },
                     {
                         "filterType": "LOT_SIZE",
+                        "stepSize": "0.1",
+                        "minQty": "0.1",
+                        "maxQty": "1000000"
+                    },
+                    {
+                        "minQty": "0.1",
+                        "maxQty": "500000",
+                        "stepSize": "0.1",
+                        "filterType": "MARKET_LOT_SIZE"
+                    },
+                    {
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
+                    },
+                    {
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
+                    },
+                    {
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
+                    },
+                    {
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE"
+                    }
+                ],
+                "orderTypes": [
+                    "LIMIT",
+                    "MARKET",
+                    "STOP",
+                    "STOP_MARKET",
+                    "TAKE_PROFIT",
+                    "TAKE_PROFIT_MARKET",
+                    "TRAILING_STOP_MARKET"
+                ],
+                "timeInForce": [
+                    "GTC",
+                    "IOC",
+                    "FOK",
+                    "GTX",
+                    "GTD"
+                ]
+            },
+            {
+                "symbol": "KAITOUSDC",
+                "pair": "KAITOUSDC",
+                "contractType": "PERPETUAL",
+                "deliveryDate": 4133404800000,
+                "onboardDate": 1741168800000,
+                "status": "TRADING",
+                "maintMarginPercent": "2.5000",
+                "requiredMarginPercent": "5.0000",
+                "baseAsset": "KAITO",
+                "quoteAsset": "USDC",
+                "marginAsset": "USDC",
+                "pricePrecision": 6,
+                "quantityPrecision": 1,
+                "baseAssetPrecision": 8,
+                "quotePrecision": 8,
+                "underlyingType": "COIN",
+                "underlyingSubType": [],
+                "triggerProtect": "0.1500",
+                "liquidationFee": "0.015000",
+                "marketTakeBound": "0.15",
+                "maxMoveOrderLimit": 10000,
+                "filters": [
+                    {
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "200",
+                        "minPrice": "0.000100",
+                        "tickSize": "0.000100"
+                    },
+                    {
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "0.1",
+                        "maxQty": "500000",
+                        "minQty": "0.1"
+                    },
+                    {
+                        "minQty": "0.1",
+                        "stepSize": "0.1",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "10000"
+                    },
+                    {
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
+                    },
+                    {
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
+                    },
+                    {
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
+                    },
+                    {
+                        "multiplierUp": "1.1500",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4"
+                    }
+                ],
+                "orderTypes": [
+                    "LIMIT",
+                    "MARKET",
+                    "STOP",
+                    "STOP_MARKET",
+                    "TAKE_PROFIT",
+                    "TAKE_PROFIT_MARKET",
+                    "TRAILING_STOP_MARKET"
+                ],
+                "timeInForce": [
+                    "GTC",
+                    "IOC",
+                    "FOK",
+                    "GTX",
+                    "GTD"
+                ]
+            },
+            {
+                "symbol": "IPUSDC",
+                "pair": "IPUSDC",
+                "contractType": "PERPETUAL",
+                "deliveryDate": 4133404800000,
+                "onboardDate": 1741169700000,
+                "status": "TRADING",
+                "maintMarginPercent": "2.5000",
+                "requiredMarginPercent": "5.0000",
+                "baseAsset": "IP",
+                "quoteAsset": "USDC",
+                "marginAsset": "USDC",
+                "pricePrecision": 6,
+                "quantityPrecision": 1,
+                "baseAssetPrecision": 8,
+                "quotePrecision": 8,
+                "underlyingType": "COIN",
+                "underlyingSubType": [],
+                "triggerProtect": "0.1500",
+                "liquidationFee": "0.015000",
+                "marketTakeBound": "0.15",
+                "maxMoveOrderLimit": 10000,
+                "filters": [
+                    {
+                        "tickSize": "0.000010",
+                        "maxPrice": "2000",
+                        "minPrice": "0.000010",
+                        "filterType": "PRICE_FILTER"
+                    },
+                    {
+                        "minQty": "0.1",
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "0.1",
+                        "maxQty": "200000"
+                    },
+                    {
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "0.1",
+                        "maxQty": "10000",
+                        "stepSize": "0.1"
+                    },
+                    {
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
+                    },
+                    {
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                    },
+                    {
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
+                    },
+                    {
+                        "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4"
+                    }
+                ],
+                "orderTypes": [
+                    "LIMIT",
+                    "MARKET",
+                    "STOP",
+                    "STOP_MARKET",
+                    "TAKE_PROFIT",
+                    "TAKE_PROFIT_MARKET",
+                    "TRAILING_STOP_MARKET"
+                ],
+                "timeInForce": [
+                    "GTC",
+                    "IOC",
+                    "FOK",
+                    "GTX",
+                    "GTD"
+                ]
+            },
+            {
+                "symbol": "TRUMPUSDC",
+                "pair": "TRUMPUSDC",
+                "contractType": "PERPETUAL",
+                "deliveryDate": 4133404800000,
+                "onboardDate": 1741255200000,
+                "status": "TRADING",
+                "maintMarginPercent": "2.5000",
+                "requiredMarginPercent": "5.0000",
+                "baseAsset": "TRUMP",
+                "quoteAsset": "USDC",
+                "marginAsset": "USDC",
+                "pricePrecision": 6,
+                "quantityPrecision": 2,
+                "baseAssetPrecision": 8,
+                "quotePrecision": 8,
+                "underlyingType": "COIN",
+                "underlyingSubType": [],
+                "triggerProtect": "0.1500",
+                "liquidationFee": "0.015000",
+                "marketTakeBound": "0.15",
+                "maxMoveOrderLimit": 10000,
+                "filters": [
+                    {
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.001000",
+                        "tickSize": "0.001000",
+                        "maxPrice": "20000"
+                    },
+                    {
+                        "maxQty": "70000",
+                        "filterType": "LOT_SIZE",
+                        "minQty": "0.01",
+                        "stepSize": "0.01"
+                    },
+                    {
+                        "maxQty": "5000",
+                        "minQty": "0.01",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "0.01"
+                    },
+                    {
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
+                    },
+                    {
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
+                    },
+                    {
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
+                    },
+                    {
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500"
+                    }
+                ],
+                "orderTypes": [
+                    "LIMIT",
+                    "MARKET",
+                    "STOP",
+                    "STOP_MARKET",
+                    "TAKE_PROFIT",
+                    "TAKE_PROFIT_MARKET",
+                    "TRAILING_STOP_MARKET"
+                ],
+                "timeInForce": [
+                    "GTC",
+                    "IOC",
+                    "FOK",
+                    "GTX",
+                    "GTD"
+                ]
+            },
+            {
+                "symbol": "ADAUSDC",
+                "pair": "ADAUSDC",
+                "contractType": "PERPETUAL",
+                "deliveryDate": 4133404800000,
+                "onboardDate": 1741256100000,
+                "status": "TRADING",
+                "maintMarginPercent": "2.5000",
+                "requiredMarginPercent": "5.0000",
+                "baseAsset": "ADA",
+                "quoteAsset": "USDC",
+                "marginAsset": "USDC",
+                "pricePrecision": 6,
+                "quantityPrecision": 1,
+                "baseAssetPrecision": 8,
+                "quotePrecision": 8,
+                "underlyingType": "COIN",
+                "underlyingSubType": [],
+                "triggerProtect": "0.1500",
+                "liquidationFee": "0.015000",
+                "marketTakeBound": "0.15",
+                "maxMoveOrderLimit": 10000,
+                "filters": [
+                    {
+                        "maxPrice": "200",
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.000100",
+                        "minPrice": "0.000100"
+                    },
+                    {
                         "maxQty": "1000000",
+                        "filterType": "LOT_SIZE",
                         "minQty": "0.1",
                         "stepSize": "0.1"
                     },
                     {
-                        "maxQty": "300000",
-                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "100000",
+                        "minQty": "0.1",
                         "stepSize": "0.1",
+                        "filterType": "MARKET_LOT_SIZE"
+                    },
+                    {
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
+                    },
+                    {
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                    },
+                    {
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
+                    },
+                    {
+                        "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500"
+                    }
+                ],
+                "orderTypes": [
+                    "LIMIT",
+                    "MARKET",
+                    "STOP",
+                    "STOP_MARKET",
+                    "TAKE_PROFIT",
+                    "TAKE_PROFIT_MARKET",
+                    "TRAILING_STOP_MARKET"
+                ],
+                "timeInForce": [
+                    "GTC",
+                    "IOC",
+                    "FOK",
+                    "GTX",
+                    "GTD"
+                ]
+            },
+            {
+                "symbol": "REDUSDT",
+                "pair": "REDUSDT",
+                "contractType": "PERPETUAL",
+                "deliveryDate": 4133404800000,
+                "onboardDate": 1741276800000,
+                "status": "TRADING",
+                "maintMarginPercent": "2.5000",
+                "requiredMarginPercent": "5.0000",
+                "baseAsset": "RED",
+                "quoteAsset": "USDT",
+                "marginAsset": "USDT",
+                "pricePrecision": 7,
+                "quantityPrecision": 0,
+                "baseAssetPrecision": 8,
+                "quotePrecision": 8,
+                "underlyingType": "COIN",
+                "underlyingSubType": [],
+                "triggerProtect": "0.1500",
+                "liquidationFee": "0.015000",
+                "marketTakeBound": "0.15",
+                "maxMoveOrderLimit": 10000,
+                "filters": [
+                    {
+                        "minPrice": "0.0001000",
+                        "maxPrice": "200",
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0001000"
+                    },
+                    {
+                        "maxQty": "1000000",
+                        "filterType": "LOT_SIZE",
+                        "minQty": "1",
+                        "stepSize": "1"
+                    },
+                    {
+                        "stepSize": "1",
+                        "maxQty": "100000",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1"
+                    },
+                    {
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
+                    },
+                    {
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                    },
+                    {
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
+                    },
+                    {
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4"
+                    }
+                ],
+                "orderTypes": [
+                    "LIMIT",
+                    "MARKET",
+                    "STOP",
+                    "STOP_MARKET",
+                    "TAKE_PROFIT",
+                    "TAKE_PROFIT_MARKET",
+                    "TRAILING_STOP_MARKET"
+                ],
+                "timeInForce": [
+                    "GTC",
+                    "IOC",
+                    "FOK",
+                    "GTX",
+                    "GTD"
+                ]
+            },
+            {
+                "symbol": "PNUTUSDC",
+                "pair": "PNUTUSDC",
+                "contractType": "PERPETUAL",
+                "deliveryDate": 4133404800000,
+                "onboardDate": 1741341600000,
+                "status": "TRADING",
+                "maintMarginPercent": "2.5000",
+                "requiredMarginPercent": "5.0000",
+                "baseAsset": "PNUT",
+                "quoteAsset": "USDC",
+                "marginAsset": "USDC",
+                "pricePrecision": 7,
+                "quantityPrecision": 0,
+                "baseAssetPrecision": 8,
+                "quotePrecision": 8,
+                "underlyingType": "COIN",
+                "underlyingSubType": [],
+                "triggerProtect": "0.1500",
+                "liquidationFee": "0.015000",
+                "marketTakeBound": "0.15",
+                "maxMoveOrderLimit": 10000,
+                "filters": [
+                    {
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0000100",
+                        "tickSize": "0.0000100",
+                        "maxPrice": "200"
+                    },
+                    {
+                        "stepSize": "1",
+                        "minQty": "1",
+                        "maxQty": "5000000",
+                        "filterType": "LOT_SIZE"
+                    },
+                    {
+                        "stepSize": "1",
+                        "maxQty": "100000",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "minQty": "1"
+                    },
+                    {
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
+                    },
+                    {
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
+                    },
+                    {
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
+                    },
+                    {
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500",
+                        "multiplierDown": "0.8500"
+                    }
+                ],
+                "orderTypes": [
+                    "LIMIT",
+                    "MARKET",
+                    "STOP",
+                    "STOP_MARKET",
+                    "TAKE_PROFIT",
+                    "TAKE_PROFIT_MARKET",
+                    "TRAILING_STOP_MARKET"
+                ],
+                "timeInForce": [
+                    "GTC",
+                    "IOC",
+                    "FOK",
+                    "GTX",
+                    "GTD"
+                ]
+            },
+            {
+                "symbol": "HBARUSDC",
+                "pair": "HBARUSDC",
+                "contractType": "PERPETUAL",
+                "deliveryDate": 4133404800000,
+                "onboardDate": 1741342500000,
+                "status": "TRADING",
+                "maintMarginPercent": "2.5000",
+                "requiredMarginPercent": "5.0000",
+                "baseAsset": "HBAR",
+                "quoteAsset": "USDC",
+                "marginAsset": "USDC",
+                "pricePrecision": 7,
+                "quantityPrecision": 0,
+                "baseAssetPrecision": 8,
+                "quotePrecision": 8,
+                "underlyingType": "COIN",
+                "underlyingSubType": [],
+                "triggerProtect": "0.1500",
+                "liquidationFee": "0.015000",
+                "marketTakeBound": "0.15",
+                "maxMoveOrderLimit": 10000,
+                "filters": [
+                    {
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.0000100",
+                        "maxPrice": "200",
+                        "tickSize": "0.0000100"
+                    },
+                    {
+                        "filterType": "LOT_SIZE",
+                        "maxQty": "4000000",
+                        "minQty": "1",
+                        "stepSize": "1"
+                    },
+                    {
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1",
+                        "maxQty": "100000",
+                        "minQty": "1"
+                    },
+                    {
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
+                    },
+                    {
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
+                    },
+                    {
+                        "filterType": "MIN_NOTIONAL",
+                        "notional": "5"
+                    },
+                    {
+                        "multiplierUp": "1.1500",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500"
+                    }
+                ],
+                "orderTypes": [
+                    "LIMIT",
+                    "MARKET",
+                    "STOP",
+                    "STOP_MARKET",
+                    "TAKE_PROFIT",
+                    "TAKE_PROFIT_MARKET",
+                    "TRAILING_STOP_MARKET"
+                ],
+                "timeInForce": [
+                    "GTC",
+                    "IOC",
+                    "FOK",
+                    "GTX",
+                    "GTD"
+                ]
+            },
+            {
+                "symbol": "VICUSDT",
+                "pair": "VICUSDT",
+                "contractType": "PERPETUAL",
+                "deliveryDate": 4133404800000,
+                "onboardDate": 1741798800000,
+                "status": "TRADING",
+                "maintMarginPercent": "2.5000",
+                "requiredMarginPercent": "5.0000",
+                "baseAsset": "VIC",
+                "quoteAsset": "USDT",
+                "marginAsset": "USDT",
+                "pricePrecision": 7,
+                "quantityPrecision": 0,
+                "baseAssetPrecision": 8,
+                "quotePrecision": 8,
+                "underlyingType": "COIN",
+                "underlyingSubType": [],
+                "triggerProtect": "0.1500",
+                "liquidationFee": "0.015000",
+                "marketTakeBound": "0.15",
+                "maxMoveOrderLimit": 10000,
+                "filters": [
+                    {
+                        "minPrice": "0.0001000",
+                        "tickSize": "0.0001000",
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "200"
+                    },
+                    {
+                        "minQty": "1",
+                        "stepSize": "1",
+                        "maxQty": "3000000",
+                        "filterType": "LOT_SIZE"
+                    },
+                    {
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1",
+                        "maxQty": "300000",
+                        "minQty": "1"
+                    },
+                    {
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
+                    },
+                    {
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                    },
+                    {
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
+                    },
+                    {
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierUp": "1.1500"
+                    }
+                ],
+                "orderTypes": [
+                    "LIMIT",
+                    "MARKET",
+                    "STOP",
+                    "STOP_MARKET",
+                    "TAKE_PROFIT",
+                    "TAKE_PROFIT_MARKET",
+                    "TRAILING_STOP_MARKET"
+                ],
+                "timeInForce": [
+                    "GTC",
+                    "IOC",
+                    "FOK",
+                    "GTX",
+                    "GTD"
+                ]
+            },
+            {
+                "symbol": "EPICUSDT",
+                "pair": "EPICUSDT",
+                "contractType": "PERPETUAL",
+                "deliveryDate": 4133404800000,
+                "onboardDate": 1741852800000,
+                "status": "TRADING",
+                "maintMarginPercent": "2.5000",
+                "requiredMarginPercent": "5.0000",
+                "baseAsset": "EPIC",
+                "quoteAsset": "USDT",
+                "marginAsset": "USDT",
+                "pricePrecision": 6,
+                "quantityPrecision": 1,
+                "baseAssetPrecision": 8,
+                "quotePrecision": 8,
+                "underlyingType": "COIN",
+                "underlyingSubType": [],
+                "triggerProtect": "0.1500",
+                "liquidationFee": "0.015000",
+                "marketTakeBound": "0.15",
+                "maxMoveOrderLimit": 10000,
+                "filters": [
+                    {
+                        "tickSize": "0.000100",
+                        "maxPrice": "200",
+                        "minPrice": "0.000100",
+                        "filterType": "PRICE_FILTER"
+                    },
+                    {
+                        "maxQty": "500000",
+                        "filterType": "LOT_SIZE",
+                        "minQty": "0.1",
+                        "stepSize": "0.1"
+                    },
+                    {
+                        "stepSize": "0.1",
+                        "maxQty": "20000",
+                        "filterType": "MARKET_LOT_SIZE",
                         "minQty": "0.1"
+                    },
+                    {
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
+                    },
+                    {
+                        "filterType": "MAX_NUM_ALGO_ORDERS",
+                        "limit": 10
+                    },
+                    {
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
+                    },
+                    {
+                        "multiplierDown": "0.8500",
+                        "multiplierDecimal": "4",
+                        "multiplierUp": "1.1500",
+                        "filterType": "PERCENT_PRICE"
+                    }
+                ],
+                "orderTypes": [
+                    "LIMIT",
+                    "MARKET",
+                    "STOP",
+                    "STOP_MARKET",
+                    "TAKE_PROFIT",
+                    "TAKE_PROFIT_MARKET",
+                    "TRAILING_STOP_MARKET"
+                ],
+                "timeInForce": [
+                    "GTC",
+                    "IOC",
+                    "FOK",
+                    "GTX",
+                    "GTD"
+                ]
+            },
+            {
+                "symbol": "BMTUSDT",
+                "pair": "BMTUSDT",
+                "contractType": "PERPETUAL",
+                "deliveryDate": 4133404800000,
+                "onboardDate": 1742218200000,
+                "status": "TRADING",
+                "maintMarginPercent": "2.5000",
+                "requiredMarginPercent": "5.0000",
+                "baseAsset": "BMT",
+                "quoteAsset": "USDT",
+                "marginAsset": "USDT",
+                "pricePrecision": 7,
+                "quantityPrecision": 0,
+                "baseAssetPrecision": 8,
+                "quotePrecision": 8,
+                "underlyingType": "COIN",
+                "underlyingSubType": [],
+                "triggerProtect": "0.1500",
+                "liquidationFee": "0.015000",
+                "marketTakeBound": "0.15",
+                "maxMoveOrderLimit": 10000,
+                "filters": [
+                    {
+                        "maxPrice": "200",
+                        "minPrice": "0.0001000",
+                        "filterType": "PRICE_FILTER",
+                        "tickSize": "0.0001000"
+                    },
+                    {
+                        "filterType": "LOT_SIZE",
+                        "minQty": "1",
+                        "stepSize": "1",
+                        "maxQty": "8000000"
+                    },
+                    {
+                        "maxQty": "800000",
+                        "filterType": "MARKET_LOT_SIZE",
+                        "stepSize": "1",
+                        "minQty": "1"
                     },
                     {
                         "filterType": "MAX_NUM_ORDERS",
@@ -33928,9 +34700,163 @@ export class ConstantsService {
                     },
                     {
                         "multiplierDecimal": "4",
-                        "multiplierUp": "1.1500",
                         "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500",
                         "filterType": "PERCENT_PRICE"
+                    }
+                ],
+                "orderTypes": [
+                    "LIMIT",
+                    "MARKET",
+                    "STOP",
+                    "STOP_MARKET",
+                    "TAKE_PROFIT",
+                    "TAKE_PROFIT_MARKET",
+                    "TRAILING_STOP_MARKET"
+                ],
+                "timeInForce": [
+                    "GTC",
+                    "IOC",
+                    "FOK",
+                    "GTX",
+                    "GTD"
+                ]
+            },
+            {
+                "symbol": "MUBARAKUSDT",
+                "pair": "MUBARAKUSDT",
+                "contractType": "PERPETUAL",
+                "deliveryDate": 4133404800000,
+                "onboardDate": 1742219100000,
+                "status": "TRADING",
+                "maintMarginPercent": "2.5000",
+                "requiredMarginPercent": "5.0000",
+                "baseAsset": "MUBARAK",
+                "quoteAsset": "USDT",
+                "marginAsset": "USDT",
+                "pricePrecision": 7,
+                "quantityPrecision": 0,
+                "baseAssetPrecision": 8,
+                "quotePrecision": 8,
+                "underlyingType": "COIN",
+                "underlyingSubType": [],
+                "triggerProtect": "0.1500",
+                "liquidationFee": "0.015000",
+                "marketTakeBound": "0.15",
+                "maxMoveOrderLimit": 10000,
+                "filters": [
+                    {
+                        "minPrice": "0.0001000",
+                        "filterType": "PRICE_FILTER",
+                        "maxPrice": "200",
+                        "tickSize": "0.0001000"
+                    },
+                    {
+                        "minQty": "1",
+                        "maxQty": "10000000",
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "1"
+                    },
+                    {
+                        "stepSize": "1",
+                        "maxQty": "1000000",
+                        "minQty": "1",
+                        "filterType": "MARKET_LOT_SIZE"
+                    },
+                    {
+                        "limit": 200,
+                        "filterType": "MAX_NUM_ORDERS"
+                    },
+                    {
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                    },
+                    {
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
+                    },
+                    {
+                        "multiplierUp": "1.1500",
+                        "multiplierDecimal": "4",
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDown": "0.8500"
+                    }
+                ],
+                "orderTypes": [
+                    "LIMIT",
+                    "MARKET",
+                    "STOP",
+                    "STOP_MARKET",
+                    "TAKE_PROFIT",
+                    "TAKE_PROFIT_MARKET",
+                    "TRAILING_STOP_MARKET"
+                ],
+                "timeInForce": [
+                    "GTC",
+                    "IOC",
+                    "FOK",
+                    "GTX",
+                    "GTD"
+                ]
+            },
+            {
+                "symbol": "FORMUSDT",
+                "pair": "FORMUSDT",
+                "contractType": "PERPETUAL",
+                "deliveryDate": 4133404800000,
+                "onboardDate": 1742371200000,
+                "status": "TRADING",
+                "maintMarginPercent": "2.5000",
+                "requiredMarginPercent": "5.0000",
+                "baseAsset": "FORM",
+                "quoteAsset": "USDT",
+                "marginAsset": "USDT",
+                "pricePrecision": 6,
+                "quantityPrecision": 1,
+                "baseAssetPrecision": 8,
+                "quotePrecision": 8,
+                "underlyingType": "COIN",
+                "underlyingSubType": [],
+                "triggerProtect": "0.1500",
+                "liquidationFee": "0.015000",
+                "marketTakeBound": "0.15",
+                "maxMoveOrderLimit": 10000,
+                "filters": [
+                    {
+                        "maxPrice": "200",
+                        "tickSize": "0.000100",
+                        "filterType": "PRICE_FILTER",
+                        "minPrice": "0.000100"
+                    },
+                    {
+                        "filterType": "LOT_SIZE",
+                        "stepSize": "0.1",
+                        "minQty": "0.1",
+                        "maxQty": "600000"
+                    },
+                    {
+                        "filterType": "MARKET_LOT_SIZE",
+                        "maxQty": "50000",
+                        "minQty": "0.1",
+                        "stepSize": "0.1"
+                    },
+                    {
+                        "filterType": "MAX_NUM_ORDERS",
+                        "limit": 200
+                    },
+                    {
+                        "limit": 10,
+                        "filterType": "MAX_NUM_ALGO_ORDERS"
+                    },
+                    {
+                        "notional": "5",
+                        "filterType": "MIN_NOTIONAL"
+                    },
+                    {
+                        "filterType": "PERCENT_PRICE",
+                        "multiplierDecimal": "4",
+                        "multiplierDown": "0.8500",
+                        "multiplierUp": "1.1500"
                     }
                 ],
                 "orderTypes": [
