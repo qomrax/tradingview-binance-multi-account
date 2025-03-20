@@ -25,14 +25,12 @@ export class PositionParameters {
 
     private get takeProfitPrice(): string {
         const adjustedTakeProfitPercentage = this.settings.takeProfitPercentage / this.leverage;
-        const takeProfitPriceDiff = this.markPrice * adjustedTakeProfitPercentage;
-
         let stop: number;
 
         if (this.side === "BUY") {
-            stop = this.markPrice + takeProfitPriceDiff;
+            stop = this.markPrice * (1 + adjustedTakeProfitPercentage);
         } else {
-            stop = this.markPrice - takeProfitPriceDiff;
+            stop = this.markPrice * (1 - adjustedTakeProfitPercentage);
         }
 
         return String(stop.toFixed(this.pricePrecision))
@@ -40,14 +38,12 @@ export class PositionParameters {
 
     private get stopLossPrice(): string {
         const adjustedStopLossPercentage = this.settings.stopLossPercentage / this.leverage;
-        const stopLossPriceDiff = this.markPrice * adjustedStopLossPercentage;
-
         let stop: number;
 
         if (this.side === "BUY") {
-            stop = this.markPrice - stopLossPriceDiff;
+            stop = this.markPrice * (1 - adjustedStopLossPercentage);
         } else {
-            stop = this.markPrice + stopLossPriceDiff;
+            stop = this.markPrice * (1 + adjustedStopLossPercentage);
         }
 
         return String(stop.toFixed(this.pricePrecision))

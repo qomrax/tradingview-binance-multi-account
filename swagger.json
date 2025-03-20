@@ -246,6 +246,27 @@
         ]
       }
     },
+    "/binance/test": {
+      "get": {
+        "operationId": "BinanceController_test",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Position created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FuturesOrderDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "binance"
+        ]
+      }
+    },
     "/errors/error": {
       "get": {
         "operationId": "ErrorController_find",

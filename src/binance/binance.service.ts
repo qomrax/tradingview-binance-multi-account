@@ -13,6 +13,11 @@ export class BinanceService {
         function write(data: any, name: string) {
             writeFileSync(`data/${new Date().getTime()}-${name}.json`, JSON.stringify(data, null, 4))
         }
+
+        write(await this.clientManagerService.runOnSingleClient(client => {
+            return client.client.futuresExchangeInfo()
+        }), "exchange-info")
+
     }
 
     async webhook(data: OpenPositionDto) {
