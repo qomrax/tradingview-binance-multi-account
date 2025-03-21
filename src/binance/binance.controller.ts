@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Body } from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { BinanceService } from './binance.service';
 import { ApiBody, ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 import { OpenPositionDto, OpenPositionWithAuth } from './dto/create-position';
@@ -68,14 +68,5 @@ export class BinanceController {
         });
 
         return { status: true };
-    }
-
-    @Get('test')
-    @ApiCreatedResponse({
-        type: FuturesOrderDto,
-        description: "Position created."
-    })
-    async test() {
-        await this.binanceService.test()
     }
 }
