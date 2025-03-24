@@ -23,6 +23,7 @@ export class CustomerClient {
                             this.response(member.name)
                             return data
                         } catch (error) {
+                            console.log(error)
                             await this.error(error);
                             throw error;
                         }
