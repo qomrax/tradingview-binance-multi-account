@@ -161,6 +161,7 @@ export class Position {
         try {
             return await this.order(orderType)
         } catch (err) {
+            console.log(err)
             if (cancelOrders) {
                 await this.cancelOrders()
             }
@@ -178,6 +179,7 @@ export class Position {
             return await this.openOrders()
         }
         catch (err) {
+            console.log(err)
             return {
                 error: {
                     url: err.url,

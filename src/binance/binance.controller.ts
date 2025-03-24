@@ -34,6 +34,7 @@ export class BinanceController {
             const result = await task();
             resolve(result);
         } catch (error) {
+            console.log(error)
             reject(error);
         } finally {
             this.processing = false;
