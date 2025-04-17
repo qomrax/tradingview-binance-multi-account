@@ -1,6 +1,6 @@
 module.exports = {
   apps: [{
-    name: "api-hakan",
+    name: "api-ramazan",
     script: "yarn start"
   }]
 }
