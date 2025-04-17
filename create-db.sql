@@ -7,7 +7,7 @@ CREATE USER IF NOT EXISTS 'admin'@'127.0.0.1' IDENTIFIED BY 'admin123';
 
 -- Grant all privileges to the admin user on the database
 GRANT ALL PRIVILEGES ON `api-hakan`.* TO 'admin'@'%';
-GRANT ALL PRIVILEGES ON `api-hakan`.* TO 'admin'@'localhost';
+GRANT ALL PRIVILEGES ON `api-hakan`.* TO 'admin'@'127.0.0.1';
 
 -- Apply the changes
 FLUSH PRIVILEGES;
