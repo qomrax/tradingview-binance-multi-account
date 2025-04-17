@@ -19,9 +19,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "generate": "chmod +x ./scripts/publish-axios.sh && ./scripts/publish-axios.sh",
-    "change-name": "chmod +x ./scripts/change-name.sh && ./scripts/change-name.sh",
-    "nginx": "chmod +x ./scripts/nginx.sh && ./scripts/nginx.sh",
-    "create-db": "chmod +x ./scripts/create-db.sh && ./scripts/create-db.sh"
+    "change-name": "chmod +x ./scripts/change-name.sh && ./scripts/change-name.sh"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
