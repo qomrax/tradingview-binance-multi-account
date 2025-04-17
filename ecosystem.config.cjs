@@ -1,6 +1,6 @@
 module.exports = {
   apps: [{
-    name: "tradingview-binance-nestjs",
+    name: "api-hakan",
     script: "yarn start"
   }]
 }
