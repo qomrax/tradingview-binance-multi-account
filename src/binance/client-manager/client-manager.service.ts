@@ -5,10 +5,12 @@ import { ErrorService } from 'src/binance/error/error.service';
 import { ResponseService } from '../response/response.service';
 import { PositionService } from '../position/position.service';
 import { OrderSide_LT } from 'binance-api-node';
-
+import Client, { Binance } from "binance-api-node"
 @Injectable()
 export class ClientManagerService {
     clients_: CustomerClient[] = []
+
+    static binance = Client()
 
     constructor(
         private usersService: UsersService,
@@ -55,7 +57,7 @@ export class ClientManagerService {
     }
 
     async getFuturesMarkPrice(symbol: string): Promise<number> {
-        const price = await this.client.client.futuresPrices({ symbol })
+        const price = await ClientManagerService.binance.futuresPrices({ symbol })
         return Number(price[symbol])
     }
 

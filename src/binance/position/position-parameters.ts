@@ -2,6 +2,7 @@ import { ConstantsService } from "src/constants/constants.service";
 import { OrderSide_LT, PositionSide_LT, StopMarketNewFuturesOrder, MarketNewFuturesOrder, TakeProfitMarketNewFuturesOrder } from "binance-api-node";
 import { SettingsService } from "src/settings/settings.service";
 import { Settings } from "src/settings/settings.entity";
+import { downRoundToFixed } from "../utils";
 
 export class PositionParameters {
     settings: Settings
@@ -12,8 +13,11 @@ export class PositionParameters {
         public constantsService: ConstantsService,
         public settingsService: SettingsService,
     ) {
-
     }
+
+
+
+
 
     private get pricePrecision() {
         return this.constantsService.findPricePrecision(this.symbol)
@@ -34,8 +38,7 @@ export class PositionParameters {
         } else {
             stop = this.markPrice - takeProfitPriceDiff;
         }
-
-        return String(stop.toFixed(this.pricePrecision))
+        return downRoundToFixed(stop, this.pricePrecision)
     }
 
     private get stopLossPrice(): string {
@@ -50,7 +53,7 @@ export class PositionParameters {
             stop = this.markPrice + stopLossPriceDiff;
         }
 
-        return String(stop.toFixed(this.pricePrecision))
+        return downRoundToFixed(stop, this.pricePrecision)
     }
 
     private get positionSide(): PositionSide_LT {

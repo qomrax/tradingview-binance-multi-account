@@ -3,6 +3,7 @@ import { PositionParameters } from "./position-parameters";
 import { FuturesAccountInfoResult, FuturesOrder } from "binance-api-node";
 import { CustomerClient } from "../client-manager/customer-client";
 import { OrderType_LT } from "binance-api-node";
+import { downRoundToFixed } from "../utils";
 
 export class Position {
     futuresAccountInfo: FuturesAccountInfoResult
@@ -18,7 +19,7 @@ export class Position {
     private get availableBalance() {
         const availableBalance = Number(this.futuresAccountInfo.availableBalance)
 
-        return availableBalance * (1 - this.constantsService.GUARANTEE_BUFFER_FOR_POSITION_OPENING_PERCENTAGE)
+        return availableBalance
     }
 
     private get totalMarginBalance() {
@@ -29,23 +30,11 @@ export class Position {
         return this.totalMarginBalance * this.positionParameters.notionalPercentage;
     }
 
-    private get bufferNotional() {
-        return this.totalMarginBalance * this.constantsService.GUARANTEE_BUFFER_FOR_POSITION_OPENING_PERCENTAGE;
-    }
-
     private get quantity(): string {
         const quantity = this.positionNotional / this.positionParameters.markPrice;
         const leveragedQuantity = quantity * this.positionParameters.leverage
-        const fixedQuantity = leveragedQuantity.toFixed(this.positionParameters.quantityPrecision);
+        const fixedQuantity = downRoundToFixed(leveragedQuantity, this.positionParameters.quantityPrecision)
         return String(fixedQuantity);
-    }
-
-    private get isPositionNotionNotEnoughForBinance() {
-        return this.positionParameters.minNotional > this.positionNotional
-    }
-
-    private get isAvailableNotBalanceEnough() {
-        return this.availableBalance < this.positionNotional + this.bufferNotional
     }
 
     private get isThisSymbolOpened() {
