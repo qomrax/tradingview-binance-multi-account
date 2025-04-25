@@ -1,9 +1,9 @@
 server {
     listen 80;
-    server_name api.ramazan.qraxiss.com;
+    server_name api.customer_name.qraxiss.com;
 
-    access_log /var/log/nginx/api.ramazan.qraxiss.com_access.log;
-    error_log /var/log/nginx/api.ramazan.qraxiss.com_error.log;
+    access_log /var/log/nginx/api.customer_name.qraxiss.com_access.log;
+    error_log /var/log/nginx/api.customer_name.qraxiss.com_error.log;
 
     location / {
         proxy_pass http://127.0.0.1:3001;
