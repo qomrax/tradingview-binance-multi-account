@@ -43,8 +43,8 @@ export class Position {
     }
 
     private get isPositionCountMoreOrEqualWithMaxPositionCount() {
-        // const isPositionCountMoreOrEqualWithMaxPositionCount = this.positionParameters.maximumPosition <= this.positions.length
-        const isPositionCountMoreOrEqualWithMaxPositionCount = false
+        const isPositionCountMoreOrEqualWithMaxPositionCount = this.positionParameters.maximumPosition <= this.positions.length
+        // const isPositionCountMoreOrEqualWithMaxPositionCount = false
         return isPositionCountMoreOrEqualWithMaxPositionCount
     }
 
@@ -62,16 +62,18 @@ export class Position {
             return `Position already exists for ${this.positionParameters.symbol}`;
         }
 
-        // if (this.isPositionCountMoreOrEqualWithMaxPositionCount) {
-        //     return `Max positions reached (${this.positionParameters.maximumPosition})`;
-        // }
+        if (this.isPositionCountMoreOrEqualWithMaxPositionCount) {
+            return `Max positions reached (${this.positionParameters.maximumPosition})`;
+        }
     }
 
     get canPositionOpen() {
         if (this.isThisSymbolOpened) {
             return false;
         }
-
+        if (this.isPositionCountMoreOrEqualWithMaxPositionCount) {
+            return false;
+        }
 
         // if (this.isAvailableNotBalanceEnough) {
         //     return false
@@ -79,12 +81,6 @@ export class Position {
 
         // if (this.isPositionNotionNotEnoughForBinance) {
         //     return false
-        // }
-
-
-
-        // if (this.isPositionCountMoreOrEqualWithMaxPositionCount) {
-        //     return false;
         // }
 
         return true
