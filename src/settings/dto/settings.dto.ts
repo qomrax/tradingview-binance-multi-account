@@ -67,9 +67,16 @@ export class SettingsDto {
     @Max(1)
     stopLossPercentage: number;
 
-    // @IsNumber()
-    // @Min(1)
-    // @Max(15)
+    @ApiProperty({
+        example: 5,
+        description: 'Maximum Position',
+        required: true,
+        maximum: 100,
+        minimum: 1
+    })
+    @IsNumber()
+    @Min(1)
+    @Max(15)
     maximumPosition: number;
 }
 
@@ -106,4 +113,17 @@ export class SettingsResponseDto extends SettingsDto {
     @IsNumber()
     @Transform(multi100)
     notionalPercentage: number;
+
+
+    @ApiProperty({
+        example: 5,
+        description: 'Maximum position',
+        required: true,
+        maximum: 100,
+        minimum: 1
+    })
+    @IsNumber()
+    @Min(1)
+    @Max(15)
+    maximumPosition: number;
 }
