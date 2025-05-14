@@ -58,8 +58,15 @@ export class UpdateSettingsDto {
     @IsNumber()
     stopLossPercentage: number;
 
-    // @IsNumber()
-    // @Min(1)
-    // @Max(15)
+    @ApiProperty({
+        example: 5,
+        description: 'Max Position',
+        required: true,
+        maximum: 15,
+        minimum: 1
+    })
+    @IsNumber()
+    @Min(1)
+    @Max(15)
     maximumPosition: number
 }

@@ -71,7 +71,7 @@ export class SettingsDto {
         example: 5,
         description: 'Maximum Position',
         required: true,
-        maximum: 100,
+        maximum: 15,
         minimum: 1
     })
     @IsNumber()
@@ -119,7 +119,7 @@ export class SettingsResponseDto extends SettingsDto {
         example: 5,
         description: 'Maximum position',
         required: true,
-        maximum: 100,
+        maximum: 15,
         minimum: 1
     })
     @IsNumber()
